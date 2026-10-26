@@ -1,0 +1,85 @@
+/* The Debug view: a status grid, the logs, the telemetry and the heartbeat.
+   Numbers are tabular and paths and expressions are monospaced. */
+
+.grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px var(--s4);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.grid dt {
+  color: var(--faint);
+}
+
+.grid dd {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.log {
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  font: var(--fs-meta) / 1.5 var(--mono);
+}
+
+.log div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.log time {
+  margin-right: 6px;
+  color: var(--faint);
+}
+
+details > .log {
+  max-height: 150px;
+  margin-top: var(--s2);
+}
+
+/* The poll heartbeat: a poll that worked is not work, so it never reaches the
+   request history. Each beat replays the ring so the dot flashes; a failed
+   poll paints it solid red. */
+.heartbeat-dot {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  width: 8px;
+  height: 8px;
+  background: var(--faint);
+  border-radius: 50%;
+}
+
+.heartbeat-dot.beating {
+  background: var(--green);
+}
+
+.heartbeat-dot.beating::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--green-ring);
+  border-radius: 50%;
+  animation: heartbeat-beat 0.85s ease-out;
+}
+
+.heartbeat-dot.failing {
+  background: var(--red);
+}
+
+@keyframes heartbeat-beat {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(2.6);
+  }
+}

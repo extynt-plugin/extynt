@@ -1,0 +1,27 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/decode" },
+    { "path": "./packages/decide" },
+    { "path": "./packages/collection" },
+    { "path": "./packages/project-graph" },
+    { "path": "./packages/capability-catalogue" },
+    { "path": "./packages/mcp-server" },
+    { "path": "./packages/host-ae" },
+    { "path": "./packages/visual-evidence" },
+    { "path": "./packages/action-plan" },
+    { "path": "./packages/workflow" },
+    { "path": "./packages/host-native" },
+    { "path": "./packages/llm" },
+    { "path": "./packages/ui-text" },
+    { "path": "./apps/panel" },
+    { "path": "./apps/sidecar" },
+    { "path": "./scripts" },
+    { "path": "./plugin" },
+    { "path": "./tests" },
+    { "path": "./tools/native-spike" },
+    { "path": "./tools/host-verification" },
+    { "path": "./tools/chat-tests" },
+    { "path": "./tools/fake-plugin" }
+  ]
+}

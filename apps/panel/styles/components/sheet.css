@@ -1,0 +1,388 @@
+/* The sheet: what lifts from the status bar. Sections appear only when they have
+   something to say, in this order: Waiting for you, Now, Needs a look, Checklist,
+   Changes, Connection, spend. The thread's one-line fold for a run of plans is here too,
+   since it only points at the sheet. */
+
+.sheet {
+  flex: 1;
+  min-height: 0;
+  padding: 0 var(--s3) var(--s4);
+  overflow-y: auto;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+
+.sheet-head {
+  padding: var(--s3) 0 var(--s2);
+}
+
+.sheet-job {
+  color: var(--muted);
+  font-size: var(--fs-small);
+}
+
+.sheet-phases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+  margin-top: var(--s2);
+}
+
+.sheet-phase {
+  padding: 0 var(--s2);
+  color: var(--muted);
+  font-size: var(--fs-meta);
+  font-variant-numeric: tabular-nums;
+  background: var(--raised);
+  border-radius: var(--r-pill);
+}
+
+.sheet-phase.done {
+  color: var(--green);
+}
+
+.sheet-section {
+  padding: var(--s3) 0;
+  border-top: 1px solid var(--line);
+}
+
+.sheet-head + .sheet-section,
+.sheet > .sheet-section:first-child {
+  border-top: 0;
+}
+
+.sheet-title {
+  margin: 0 0 var(--s2);
+  color: var(--muted);
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+
+.sheet-empty {
+  margin: var(--s4) 0;
+}
+
+.sheet-spend {
+  padding-top: var(--s3);
+}
+
+/* Waiting for you: read-only detail; the buttons are in the bar. */
+.sheet-item {
+  padding: var(--s2) var(--s3);
+  margin-bottom: var(--s2);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
+.sheet-item.current {
+  border-color: var(--amber);
+}
+
+.sheet-item-head {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.sheet-item-title {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-weight: 600;
+}
+
+.sheet-item-next {
+  flex: none;
+  color: var(--faint);
+  font-size: var(--fs-meta);
+}
+
+/* Now: one row per worker; an outside agent's row carries a dashed tag and no controls. */
+.now-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s2);
+  min-height: 26px;
+}
+
+.role-tag {
+  flex: none;
+  min-width: 56px;
+  color: var(--faint);
+  font-size: var(--fs-meta);
+}
+
+.now-text {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.now-tail {
+  flex: none;
+  color: var(--faint);
+  font-size: var(--fs-meta);
+  font-variant-numeric: tabular-nums;
+}
+
+.now-row[role="button"] {
+  cursor: pointer;
+}
+
+.now-detail {
+  margin: var(--s1) 0 var(--s2) var(--s3);
+  color: var(--faint);
+  font-size: var(--fs-small);
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* Needs a look */
+.look-row {
+  justify-content: flex-start;
+  gap: var(--s2);
+  width: 100%;
+  min-height: 30px;
+  padding: var(--s1) var(--s2);
+  white-space: normal;
+  text-align: left;
+  background: var(--amber-soft);
+  border-color: transparent;
+}
+
+.look-mark {
+  flex: none;
+  color: var(--amber);
+  font-weight: 700;
+}
+
+.look-text {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.look-go {
+  flex: none;
+  color: var(--muted);
+  font-size: var(--fs-meta);
+}
+
+/* Checklist: the current phase open, the rest as counts. */
+.check-phase-head {
+  justify-content: flex-start;
+  gap: var(--s2);
+  width: 100%;
+  min-height: 28px;
+  padding: 0 var(--s1);
+  text-align: left;
+  background: transparent;
+  border-color: transparent;
+}
+
+.check-phase-head .check-text {
+  flex: 1;
+}
+
+.check-count {
+  color: var(--faint);
+  font-size: var(--fs-meta);
+  font-variant-numeric: tabular-nums;
+}
+
+.check-more {
+  color: var(--faint);
+  font-size: var(--fs-meta);
+}
+
+.check-phase .check-list {
+  margin: 0 0 var(--s2) var(--s4);
+  padding: 0;
+  list-style: none;
+}
+
+/* Changes: newest first, with Undo on the row and nowhere else. */
+.filter-chips {
+  display: flex;
+  gap: var(--s1);
+  margin-bottom: var(--s2);
+}
+
+.filter-chips .chip {
+  min-height: 24px;
+  line-height: 22px;
+}
+
+.filter-chips .chip.on {
+  color: var(--text);
+  background: var(--raised);
+}
+
+.change-row {
+  padding: var(--s2) 0;
+  border-top: 1px solid var(--line);
+}
+
+.change-row:first-of-type {
+  border-top: 0;
+}
+
+.change-head {
+  justify-content: flex-start;
+  gap: var(--s2);
+  width: 100%;
+  min-height: 26px;
+  padding: 0;
+  text-align: left;
+  background: transparent;
+  border-color: transparent;
+}
+
+.change-time {
+  flex: none;
+  color: var(--faint);
+  font-size: var(--fs-meta);
+  font-variant-numeric: tabular-nums;
+}
+
+.change-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.change-meta {
+  margin: 2px 0 var(--s1);
+  color: var(--faint);
+  font-size: var(--fs-meta);
+}
+
+.change-row .actions {
+  display: flex;
+  gap: var(--s2);
+}
+
+.change-row .actions button {
+  min-height: var(--control-sm);
+  padding: 0 var(--s2);
+  font-size: var(--fs-small);
+}
+
+.change-detail {
+  margin-top: var(--s2);
+}
+
+.change-fold,
+.plan-fold {
+  justify-content: flex-start;
+  gap: var(--s2);
+  width: 100%;
+  min-height: 28px;
+  padding: 0 var(--s2);
+  color: var(--muted);
+  font-size: var(--fs-small);
+  text-align: left;
+  background: transparent;
+  border-color: var(--line);
+  border-style: solid;
+}
+
+.plan-fold {
+  align-self: stretch;
+  white-space: normal;
+}
+
+.fold-text {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.fold-note {
+  flex-basis: 100%;
+  color: var(--faint);
+  font-size: var(--fs-meta);
+}
+
+.fold-more {
+  flex: none;
+  color: var(--faint);
+}
+
+/* Connection: each link on a row; the steps to clear a block are plain text under it. */
+.link-row {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  min-height: 26px;
+}
+
+.link-value {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  text-align: right;
+}
+
+.status-name {
+  color: var(--text);
+}
+
+.state-note {
+  margin-top: var(--s3);
+  padding: var(--card-pad);
+  line-height: 1.5;
+  background: var(--raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r);
+}
+
+.state-note p {
+  margin: 0 0 var(--s2);
+}
+
+.state-head {
+  font-size: var(--fs-title);
+  font-weight: 600;
+}
+
+.state-fine,
+.state-outcome {
+  color: var(--muted);
+  font-size: var(--fs-meta);
+}
+
+.state-steps {
+  margin: 0 0 var(--s2);
+  padding: 0;
+  list-style: none;
+}
+
+.state-steps li {
+  margin: 0 0 var(--s1);
+}
+
+.state-steps label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s2);
+  min-height: 24px;
+  cursor: pointer;
+}
+
+.state-steps input {
+  flex: none;
+  margin: 2px 0 0;
+  accent-color: var(--accent-solid);
+}
+
+.state-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+}

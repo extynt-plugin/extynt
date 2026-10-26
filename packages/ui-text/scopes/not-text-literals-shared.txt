@@ -1,0 +1,2 @@
+loopback origin of this page # developer error text
+Authorization # HTTP header name

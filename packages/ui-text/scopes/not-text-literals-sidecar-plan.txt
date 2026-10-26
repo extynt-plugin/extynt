@@ -1,0 +1,11 @@
+plan.progress. # catalogue key prefix the dynamic progress lookup builds, not shown
+plan.undo. # catalogue key prefix the dynamic undo lookup builds, not shown
+plan.row. # catalogue key prefix the dynamic row lookup builds, not shown
+Set font # the English row label the stand-in matcher compares against, never shown
+ is not installed # the English marker withStandIn searches for in a sentence, never shown
+Set  # compared against the English rows to tell a set-only plan, never shown
+set_track_matte with no matte layer # operation-name hint in the English because diagnostic, kept English
+set_composition_guides with replace or clear # operation-name hint in the English because diagnostic, kept English
+, control  # joiner inside the English because diagnostic, kept English
+ADBE Text Properties/ADBE Text Document # After Effects match-name path, not text
+ADBE Effect Parade/ # After Effects match-name path, not text

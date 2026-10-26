@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.strict.json",
+  "compilerOptions": {
+    "rootDir": "..",
+    "outDir": "dist",
+    "tsBuildInfoFile": "dist/.tsbuildinfo",
+    "composite": true,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "allowImportingTsExtensions": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
+  "references": [{ "path": "../packages/decode" }],
+  "include": ["**/*.ts", "../eslint.config.ts", "../tools/chat-tests/seed-fonts.ts"],
+  "exclude": ["dist"]
+}

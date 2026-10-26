@@ -1,0 +1,172 @@
+/*
+ * Design tokens for the extynt panel. Rules: docs/design/panel-ui-principles.md.
+ *
+ * Theme contract: the host (or any page) sets data-theme="dark" or
+ * data-theme="light" on <html>. With no data-theme attribute the panel follows
+ * prefers-color-scheme, and with neither it is dark. Every value is a fixed
+ * colour so nothing depends on color-mix(), which older WebKit lacks. The
+ * light block appears twice (explicit and media fallback) and
+ * tests/tokens-contrast.test.ts proves the two copies are identical.
+ */
+
+:root {
+  /* Primitives: cool greys, then the violet accent. */
+  --grey-1000: #121316;
+  --grey-950: #16171b;
+  --grey-900: #1d1f25;
+  --grey-850: #262932;
+  --grey-800: #30343e;
+  --grey-750: #2e323d;
+  --grey-700: #3f4452;
+  --grey-500: #8a91a0;
+  --grey-400: #99a0ad;
+  --grey-100: #e9eaef;
+  --grey-0: #ffffff;
+  --grey-50: #f5f6f8;
+  --grey-75: #eef0f3;
+  --grey-100-light: #e6e9ee;
+  --grey-150: #dde0e6;
+  --grey-250: #c3c8d2;
+  --grey-450: #656c7a;
+  --grey-550: #5d6370;
+  --grey-900-light: #181a1f;
+  --violet-500: #7c6cf2;
+  --violet-600: #6a5ae8;
+  --violet-650: #5e4ee0;
+  --violet-700: #5243d2;
+  --violet-300: #a99dff;
+
+  /* Scales shared by both themes. */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s6: 24px;
+  --card-pad: 14px;
+  --r-sm: 4px;
+  --r: 8px;
+  --r-lg: 12px;
+  --r-pill: 999px;
+  --control: 30px;
+  --control-sm: 24px;
+  --icon: 16px;
+  --fs-meta: 11px;
+  --fs-small: 12px;
+  --fs: 13px;
+  --fs-title: 14px;
+  --fs-display: 16px;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --t-fast: 120ms;
+  --t-base: 160ms;
+}
+
+/* Dark: the default, and the explicit data-theme="dark". */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: var(--grey-950);
+  --surface: var(--grey-900);
+  --raised: var(--grey-850);
+  --hover: var(--grey-750);
+  --field: var(--grey-1000);
+  --line: var(--grey-800);
+  --line-strong: var(--grey-700);
+  --text: var(--grey-100);
+  --muted: var(--grey-400);
+  --faint: var(--grey-500);
+  --accent: var(--violet-500);
+  --accent-solid: var(--violet-600);
+  --accent-hover: var(--violet-650);
+  --accent-pressed: var(--violet-700);
+  --accent-soft: rgba(124, 108, 242, 0.16);
+  --accent-line: rgba(124, 108, 242, 0.45);
+  --accent-text: var(--violet-300);
+  --on-accent: #ffffff;
+  --user-bg: #2a2846;
+  --green: #4cc38a;
+  --green-soft: rgba(76, 195, 138, 0.14);
+  --green-ring: rgba(76, 195, 138, 0.6);
+  --amber: #e8b04b;
+  --amber-soft: rgba(232, 176, 75, 0.14);
+  --on-amber: #16171b;
+  --red: #f2807f;
+  --red-soft: rgba(242, 128, 127, 0.14);
+  --red-soft-strong: rgba(242, 128, 127, 0.24);
+  --red-text: #f59a99;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --frame: #000000;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: var(--grey-50);
+  --surface: var(--grey-0);
+  --raised: var(--grey-75);
+  --hover: var(--grey-100-light);
+  --field: var(--grey-0);
+  --line: var(--grey-150);
+  --line-strong: var(--grey-250);
+  --text: var(--grey-900-light);
+  --muted: var(--grey-550);
+  --faint: var(--grey-450);
+  --accent: var(--violet-500);
+  --accent-solid: var(--violet-600);
+  --accent-hover: var(--violet-650);
+  --accent-pressed: var(--violet-700);
+  --accent-soft: rgba(124, 108, 242, 0.12);
+  --accent-line: rgba(106, 90, 232, 0.4);
+  --accent-text: #5240d4;
+  --on-accent: #ffffff;
+  --user-bg: #e4e3f7;
+  --green: #136a42;
+  --green-soft: rgba(19, 106, 66, 0.12);
+  --green-ring: rgba(19, 106, 66, 0.5);
+  --amber: #855300;
+  --amber-soft: rgba(133, 83, 0, 0.12);
+  --on-amber: #ffffff;
+  --red: #c03434;
+  --red-soft: rgba(192, 52, 52, 0.1);
+  --red-soft-strong: rgba(192, 52, 52, 0.18);
+  --red-text: #a82525;
+  --shadow: 0 8px 24px rgba(24, 26, 31, 0.16);
+  --frame: #14151a;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+    --bg: var(--grey-50);
+    --surface: var(--grey-0);
+    --raised: var(--grey-75);
+    --hover: var(--grey-100-light);
+    --field: var(--grey-0);
+    --line: var(--grey-150);
+    --line-strong: var(--grey-250);
+    --text: var(--grey-900-light);
+    --muted: var(--grey-550);
+    --faint: var(--grey-450);
+    --accent: var(--violet-500);
+    --accent-solid: var(--violet-600);
+    --accent-hover: var(--violet-650);
+    --accent-pressed: var(--violet-700);
+    --accent-soft: rgba(124, 108, 242, 0.12);
+    --accent-line: rgba(106, 90, 232, 0.4);
+    --accent-text: #5240d4;
+    --on-accent: #ffffff;
+    --user-bg: #e4e3f7;
+    --green: #136a42;
+    --green-soft: rgba(19, 106, 66, 0.12);
+    --green-ring: rgba(19, 106, 66, 0.5);
+    --amber: #855300;
+    --amber-soft: rgba(133, 83, 0, 0.12);
+    --on-amber: #ffffff;
+    --red: #c03434;
+    --red-soft: rgba(192, 52, 52, 0.1);
+    --red-soft-strong: rgba(192, 52, 52, 0.18);
+    --red-text: #a82525;
+    --shadow: 0 8px 24px rgba(24, 26, 31, 0.16);
+    --frame: #14151a;
+  }
+}

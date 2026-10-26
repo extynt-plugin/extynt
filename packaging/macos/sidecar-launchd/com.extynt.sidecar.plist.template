@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.extynt.sidecar</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>__NODE_BIN__</string>
+    <!-- Node 24.21's V8 can crash in a full GC with Sparkplug (baseline) frames on the stack
+         (SIGSEGV in ClearStaleLeftTrimmedPointerVisitor); the other tiers are unaffected. -->
+    <string>--no-sparkplug</string>
+    <string>__INSTALL_ROOT__/sidecar/apps/sidecar/dist/src/main.js</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <!-- The sidecar writes its bound loopback port to session.json for both
+         the native panel and the MCP launcher. Avoid a stale listener on 3210. -->
+    <key>AE_BRIDGE_PORT</key>
+    <string>0</string>
+    <!-- The served panel UI is installed beside the sidecar, not inside it. -->
+    <key>EXTYNT_UI_DIRECTORY</key>
+    <string>__INSTALL_ROOT__/ui</string>
+    <!-- "production" for the release package: the sidecar ignores its dev-only
+         switches (EXTYNT_SVG_FORCE_CONVERTER) and its diagnostics stay off. -->
+    <key>NODE_ENV</key>
+    <string>__NODE_ENV__</string>
+  </dict>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <dict>
+    <!-- A host-close request is a successful, intentional exit and must stay
+         down. Unexpected/non-zero exits are restarted by launchd. -->
+    <key>SuccessfulExit</key>
+    <false/>
+  </dict>
+  <!-- Standard, not Background: Background confines the sidecar and everything it starts to the efficiency cores with
+       throttled disk I/O. The effect catalogue's render engine inherits that and ran about 6x slower (measured: engine
+       start-up 3.8 s at Standard, 22.5 s at Background), and the panel's requests wait on it too. The sidecar is idle
+       almost all the time, so Standard costs nothing then. -->
+  <key>ProcessType</key>
+  <string>Standard</string>
+  <key>StandardOutPath</key>
+  <string>__INSTALL_ROOT__/sidecar.log</string>
+  <key>StandardErrorPath</key>
+  <string>__INSTALL_ROOT__/sidecar.error.log</string>
+</dict>
+</plist>

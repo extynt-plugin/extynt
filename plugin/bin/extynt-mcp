@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+# Starts the extynt MCP server with the Node.js runtime the installer put
+# in the per-user profile (macOS and Windows), so agent hosts need no Node.js of their own. Falls
+# back to node on PATH (a repo checkout or a developer build).
+here="$(cd "$(dirname "$0")" && pwd)"
+runtime="${HOME:-}/Library/Application Support/extynt/runtime/bin/node"
+if [ -n "${EXTYNT_NODE:-}" ]; then node="${EXTYNT_NODE}"
+elif [ -x "${runtime}" ]; then node="${runtime}"
+elif command -v node >/dev/null 2>&1; then node="node"
+else
+  echo "extynt: no Node.js runtime found. Install extynt (install.sh) first; it includes one." >&2
+  exit 1
+fi
+exec "${node}" --no-sparkplug "${here}/extynt-mcp.ts" "$@"

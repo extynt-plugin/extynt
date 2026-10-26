@@ -1,0 +1,5 @@
+# Pinned native and shell tooling for the quality gate. Install with: pnpm setup:tools
+lizard==1.24.0
+clang-format==23.1.2
+clang-tidy==22.1.8
+shellcheck-py==0.11.0.1

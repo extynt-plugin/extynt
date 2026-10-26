@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig.strict.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "dist",
+    "tsBuildInfoFile": "dist/.tsbuildinfo",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "composite": true,
+    "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
+  "include": ["bin/*.ts"]
+}

@@ -1,0 +1,19 @@
+Reply with the single word OK. # model-facing connectivity prompt
+You are a connectivity check.  # model-facing system prompt
+No tools in a connectivity check. # model-facing system prompt
+model-test-  # request id prefix
+Bearer  # HTTP header value
+CATALOG_HTTP_ # machine error code prefix
+-messages # URL path suffix
+-chat # URL path suffix
+a message with content # decoder expectation shown to developers
+The body is {"scope":"full"}. # developer-facing contract note for a panel-only route
+The body is {compositionId, time?}. # developer-facing contract note for a panel-only route
+the job was stopped # abort reason for logs, never shown
+the turn was stopped # abort reason for logs, never shown
+BASE_URL # environment variable suffix
+REASONING_EFFORT # environment variable suffix
+CONTEXT_WINDOW # environment variable suffix
+ACCEPTS_IMAGES # environment variable suffix
+API_KEY # environment variable suffix
+ALLOW_TRAINING_RISK # environment variable suffix

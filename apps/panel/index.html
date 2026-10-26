@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark light"><title data-i18n="chrome.brand.name">extynt</title>
+<link rel="stylesheet" href="styles/tokens.css"><link rel="stylesheet" href="styles/base.css"><link rel="stylesheet" href="styles/layout.css">
+<link rel="stylesheet" href="styles/components/badge-dot.css"><link rel="stylesheet" href="styles/components/status-bar.css"><link rel="stylesheet" href="styles/components/sheet.css"><link rel="stylesheet" href="styles/components/page.css"><link rel="stylesheet" href="styles/components/context.css"><link rel="stylesheet" href="styles/components/setup-card.css"><link rel="stylesheet" href="styles/components/message.css"><link rel="stylesheet" href="styles/components/notice.css"><link rel="stylesheet" href="styles/components/plan-card.css"><link rel="stylesheet" href="styles/components/receipt.css"><link rel="stylesheet" href="styles/components/variant.css"><link rel="stylesheet" href="styles/components/list-row.css"><link rel="stylesheet" href="styles/components/composer.css"><link rel="stylesheet" href="styles/components/menu.css"><link rel="stylesheet" href="styles/components/empty-state.css"><link rel="stylesheet" href="styles/components/settings.css"><link rel="stylesheet" href="styles/components/diagnostics.css">
+
+</head><body><div class="app" id="app">
+<header class="topbar">
+  <button id="chat-title" class="chat-title" type="button" title="Chats" data-i18n-title="chrome.topbar.chats" aria-label="Chats" data-i18n-aria-label="chrome.topbar.chats"><span class="chat-title-text" data-i18n="chrome.topbar.newChat">New chat</span></button>
+  <div class="toolbar">
+    <button id="chat-clear" class="icon-btn" type="button" title="New chat" data-i18n-title="chrome.topbar.newChat" aria-label="New chat" data-i18n-aria-label="chrome.topbar.newChat"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M7.5 2.5h-3a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-3"/><path d="M11.5 2l2.5 2.5L8.5 10H6V7.5z"/></svg></button>
+    <button id="open-settings" class="icon-btn" type="button" title="Settings" data-i18n-title="chrome.topbar.settings" aria-label="Settings" data-i18n-aria-label="chrome.topbar.settings"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4.5h6.5M12.5 4.5h1M2.5 11.5h1M7 11.5h6.5"/><circle cx="10.75" cy="4.5" r="1.75"/><circle cx="5.25" cy="11.5" r="1.75"/></svg></button>
+  </div>
+</header>
+<div id="chat-output" role="log" aria-live="polite"></div>
+<div id="status-zone" class="status-zone" data-open="false">
+  <section id="status-bar" class="status-bar" data-state="idle" data-tone="quiet" role="status" aria-label="Status" data-i18n-aria-label="chrome.status.label"></section>
+  <div id="sheet" class="sheet" aria-label="Details" data-i18n-aria-label="chrome.sheet.label" hidden></div>
+</div>
+<span id="bar-announce" class="sr-only" role="status" aria-live="polite"></span>
+<form class="composer" id="composer">
+  <div class="composer-box">
+    <div id="attach" class="attach" hidden></div>
+    <div id="references" class="refs" aria-label="Reference images" data-i18n-aria-label="chrome.references.label" hidden></div>
+    <div id="context-chip-row" class="ctx-row" hidden><button id="context-chip" class="ctx-chip" type="button" aria-haspopup="true" aria-expanded="false" title="What extynt will act on" data-i18n-title="chrome.context.chipTitle"><span class="ctx-chip-label" data-i18n="chrome.context.acting">Acting on</span><span class="ctx-chip-text" data-i18n="chrome.context.whole">Whole composition</span></button></div>
+    <div class="composer-row">
+      <textarea id="chat-message" rows="1" placeholder="Ask, or describe a change…" data-i18n-placeholder="chrome.composer.placeholder" aria-label="Message" data-i18n-aria-label="chrome.composer.message" title="Enter sends · Shift+Enter starts a new line" data-i18n-title="chrome.composer.enterHint"></textarea>
+      <button id="snapshot" type="button" class="icon-btn" title="Attach a frame of the active composition" data-i18n-title="chrome.composer.attachFrameTitle" aria-label="Attach a frame" data-i18n-aria-label="chrome.composer.attachFrame"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="4.5" width="12" height="8.5" rx="1.5"/><path d="M5.5 4.5l1-1.8h3l1 1.8"/><circle cx="8" cy="8.75" r="2.1"/></svg></button>
+      <span class="attach-wrap"><button id="attach-images" type="button" class="icon-btn" tabindex="-1" aria-hidden="true" title="Attach reference images (PNG, JPEG or WebP, up to 6, 5 MB each). You can also paste or drop them here." data-i18n-title="chrome.composer.attachImagesHint"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3.5v9M3.5 8h9"/></svg></button><input id="attach-input" class="attach-input" type="file" accept="image/png,image/jpeg,image/webp" multiple aria-label="Attach images" data-i18n-aria-label="chrome.composer.attachImages" title="Attach reference images (PNG, JPEG or WebP, up to 6, 5 MB each)" data-i18n-title="chrome.composer.attachImagesLimits"></span>
+      <button id="model-picker" class="icon-btn effort-picker" type="button" title="Model and reasoning effort" data-i18n-title="chrome.composer.effort" aria-label="Model and reasoning effort" data-i18n-aria-label="chrome.composer.effort" aria-haspopup="menu" aria-expanded="false"><span class="effort-label"></span></button>
+      <button id="chat" class="primary" type="button" data-i18n="chrome.composer.send">Send</button>
+    </div>
+  </div>
+</form>
+</div>
+
+<aside id="page" class="page" aria-label="Settings" data-i18n-aria-label="chrome.page.settings" aria-hidden="true">
+  <header class="page-head"><button id="page-back" class="icon-btn" type="button" title="Back" data-i18n-title="chrome.page.back" aria-label="Back" data-i18n-aria-label="chrome.page.back"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3.5L5.5 8l4.5 4.5"/></svg></button><h1 id="page-title" class="page-title" data-i18n="chrome.page.settings">Settings</h1></header>
+  <div class="page-body">
+
+    <div data-panel="chats" hidden>
+      <input id="sessions-search" class="menu-filter" type="search" placeholder="Search chats" data-i18n-placeholder="chrome.chats.search" aria-label="Search chats" data-i18n-aria-label="chrome.chats.search" autocomplete="off" spellcheck="false">
+      <section class="section"><div id="sessions-list"><div class="muted" data-i18n="chrome.chats.empty">No earlier chats.</div></div></section>
+      <section class="section"><div class="tools"><button id="chat-history-export" type="button" title="Saves the full chat archive to Documents/extynt/Chat Logs and opens that folder." data-i18n-title="chrome.chats.exportTitle" data-i18n="chrome.chats.export">Save chat log</button><button id="benchmark-history-clear" class="danger" type="button" title="Requires a second press. Deletes saved chats." data-i18n-title="chrome.chats.clearTitle" data-i18n="chrome.chats.clear">Clear history…</button></div>
+        <div id="chats-result" class="result" hidden></div>
+        <p class="muted" data-i18n="chrome.chats.clearNote">Clear needs a second press. Project changes and Undo are in the sheet, not here.</p></section>
+    </div>
+
+    <div data-panel="settings">
+      <section class="section acc" id="about-section"><button id="acc-about" class="acc-head" type="button" aria-expanded="false"><span class="acc-name" data-i18n="settings.about.name">About</span></button>
+        <div id="acc-about-body" class="acc-body" hidden>
+          <div class="subsection"><h3 data-i18n="settings.about.versions">Versions</h3><dl id="about-versions" class="grid">
+            <dt data-i18n="settings.about.product">extynt</dt><dd id="about-product"></dd>
+            <dt data-i18n="settings.about.panelBuild">Panel build</dt><dd id="about-panel"></dd>
+            <dt data-i18n="settings.about.sidecar">Sidecar</dt><dd id="about-sidecar"></dd>
+            <dt data-i18n="settings.about.mcpServer">MCP server</dt><dd id="about-mcp"></dd>
+            <dt data-i18n="settings.about.plugin">After Effects plugin</dt><dd id="about-plugin"></dd>
+            <dt data-i18n="settings.about.afterEffects">After Effects</dt><dd id="about-ae"></dd>
+          </dl></div>
+          <p class="muted legal-note" data-i18n="settings.about.legal">Adobe and After Effects are trademarks of Adobe Inc. extynt is independent and is not affiliated with, endorsed by, or sponsored by Adobe.</p>
+        </div>
+      </section>
+      <section class="section acc" id="model-section"><button id="acc-model" class="acc-head" type="button" aria-expanded="false"><span class="acc-name" data-i18n="settings.model.name">Provider &amp; keys</span><span id="model-state" class="pill">…</span></button>
+        <div id="acc-model-body" class="acc-body" hidden>
+          <div id="model-primary" class="model-slot"></div>
+          <details id="model-fallback-details"><summary title="Used only when the first model fails" data-i18n="settings.model.fallbackSummary" data-i18n-title="settings.model.fallbackTitle">Fallback (used only if the first fails)</summary><div id="model-fallback" class="model-slot"></div></details>
+          <div class="actions model-actions"><button id="model-save" class="primary" type="button" data-i18n="settings.model.save">Save</button><button id="model-test" type="button" data-i18n="settings.model.test">Test</button></div>
+          <div id="model-status" class="plan-sub"></div>
+          <p class="muted" data-i18n="settings.model.chosenElsewhere">Which model and effort to use is chosen next to the message box, not here.</p>
+        </div>
+      </section>
+      <section class="section acc" id="decision-section"><button id="acc-decision" class="acc-head" type="button" aria-expanded="false"><span class="acc-name" data-i18n="settings.decision.name">Decision model</span></button>
+        <div id="acc-decision-body" class="acc-body" hidden>
+          <p class="muted" data-i18n="settings.decision.purpose"></p>
+          <div class="model-slot">
+          <label for="decision-provider" data-i18n="settings.decision.provider"></label><select id="decision-provider"></select>
+          <label for="decision-key" data-i18n="settings.decision.apiKey"></label><input id="decision-key" type="password" autocomplete="off" spellcheck="false">
+          <details id="decision-advanced"><summary data-i18n="settings.decision.advanced"></summary>
+            <div id="decision-model-field"><label for="decision-model" data-i18n="settings.decision.model"></label><input id="decision-model" type="text" autocomplete="off" spellcheck="false"></div>
+            <div id="decision-base-url-field"><label for="decision-base-url" data-i18n="settings.decision.baseUrl"></label><input id="decision-base-url" type="text" autocomplete="off" spellcheck="false"></div>
+            <div id="decision-account-id-field"><label for="decision-account-id" data-i18n="settings.decision.accountId"></label><input id="decision-account-id" type="text" autocomplete="off" spellcheck="false"></div>
+          </details>
+          </div>
+          <div id="decision-status" class="decision-receipt" role="status"></div>
+          <div class="actions"><button id="decision-save" class="primary" type="button" data-i18n="settings.model.save">Save</button><button id="decision-test" type="button" data-i18n="settings.model.test">Test</button><button id="decision-remove" type="button" data-i18n="settings.decision.remove" hidden></button></div>
+        </div>
+      </section>
+      <section class="section acc" id="approvals-section"><button id="acc-approvals" class="acc-head" type="button" aria-expanded="false"><span class="acc-name" data-i18n="settings.approvals.name">Approvals</span><span id="approvals-state" class="pill">…</span></button>
+        <div id="acc-approvals-body" class="acc-body" hidden>
+          <h3 id="ask-heading" data-i18n="settings.approvals.heading">When should extynt ask before changing your project?</h3>
+          <div id="ask-list" class="ask-list"></div>
+          <p id="ask-foot" class="ask-foot muted" data-i18n="settings.approvals.mcpNote">AI agents connected over MCP follow their own app's approval setting.</p>
+        </div>
+      </section>
+      <section class="section acc" id="frames-section"><button id="acc-frames" class="acc-head" type="button" aria-expanded="false"><span class="acc-name" data-i18n="settings.frames.name">Preferences</span><span id="frames-state" class="pill">…</span></button>
+        <div id="acc-frames-body" class="acc-body" hidden>
+          <div class="subsection"><h3 id="interface-language-title" data-i18n="settings.language.title"></h3><select id="interface-language" data-i18n-aria-label="settings.language.title"></select><p class="muted" data-i18n="settings.language.note"></p></div>
+          <label class="toggle"><input id="show-thumbnails" type="checkbox" checked><span data-i18n="settings.prefs.frames.title">Before/after frames</span><span class="note" data-i18n="settings.prefs.frames.note">Saves a small frame before and after each change, on this computer.</span></label>
+          <label class="toggle"><input id="suggest-prompts" type="checkbox" checked><span data-i18n="settings.prefs.suggest.title">Suggest prompts for the selection</span><span class="note" data-i18n="settings.prefs.suggest.note">Sends the selected layers' names and effects to your model.</span></label>
+          <label class="toggle"><input id="rate-limit-enabled" type="checkbox" checked><span data-i18n="settings.prefs.rateLimit.title">Pause after heavy use</span><span class="note" data-i18n="settings.prefs.rateLimit.note">A guard against a runaway loop spending your API budget.</span></label>
+          <label class="toggle"><input id="developer-page" type="checkbox"><span data-i18n="settings.prefs.developer.title">Developer page</span><span class="note" data-i18n="settings.prefs.developer.note">Adds a Developer row to Settings: versions, the host link, an event tail and the catalogue tools.</span></label>
+        </div>
+      </section>
+      <section class="section acc" id="memory-section"><button id="acc-memory" class="acc-head" type="button" aria-expanded="false"><span class="acc-name" data-i18n="settings.memory.name">Memory</span><span id="memory-state" class="pill">…</span></button>
+        <div id="acc-memory-body" class="acc-body" hidden>
+          <label class="toggle"><input id="learn-from-work" type="checkbox" checked><span data-i18n="settings.memory.learn.title">Learn from my work</span><span class="note" data-i18n="settings.memory.learn.note">Learns locally from values you keep and effects you use, and never leaves this computer.</span></label>
+          <div class="tools"><button id="memory-forget" type="button" data-i18n="settings.memory.forget" data-i18n-title="settings.memory.forgetTitle" title="Requires a second press. Deletes what extynt learned from your work. Notes an agent wrote are kept.">Forget what it learned</button></div>
+          <div id="memory-learned" class="memory-status" role="status"></div>
+          <div class="subsection"><h3 data-i18n="settings.memory.documentHeading">Document this plugin</h3>
+            <div class="muted" data-i18n="settings.memory.documentIntro">Lets an agent write labelled guesses about what a plugin's controls do. Off for every plugin until you turn it on.</div>
+            <input id="memory-plugin-filter" class="menu-filter" type="text" placeholder="Filter plugins" aria-label="Filter plugins" data-i18n-placeholder="settings.memory.filterPlugins" data-i18n-aria-label="settings.memory.filterPlugins" autocomplete="off" spellcheck="false" hidden>
+            <div id="memory-plugins" class="memory-plugins" role="group" aria-label="Plugins an agent may document" data-i18n-aria-label="settings.memory.pluginsGroup"></div>
+            <div id="memory-plugins-note" class="muted" data-i18n="settings.memory.noPlugins">No plugins yet. They appear here once extynt has learned your effects.</div>
+          </div>
+          <div class="subsection"><details id="notes-history"><summary title="See what agents wrote about an effect, bring back a replaced note, or forget notes" data-i18n="settings.memory.notesHistory" data-i18n-title="settings.memory.notesHistoryTitle">Notes history</summary>
+            <div class="memory-history">
+              <label for="notes-effect" data-i18n="settings.memory.effectLabel">Effect</label>
+              <input id="notes-effect" type="text" placeholder="Effect name or match name" data-i18n-placeholder="settings.memory.effectPlaceholder" autocomplete="off" spellcheck="false">
+              <div id="notes-suggest" class="memory-suggest" hidden></div>
+              <div class="tools"><button id="notes-show" type="button" data-i18n="settings.memory.showNotes">Show notes</button></div>
+              <div id="notes-status" class="memory-status" role="status"></div>
+              <div id="notes-list"></div>
+              <div id="notes-replace" class="memory-replace" hidden></div>
+              <div id="notes-forget-row" class="tools" hidden><button id="notes-forget-effect" class="danger" type="button" data-i18n="settings.memory.forgetEffect">Forget all for this effect</button><button id="notes-forget-plugin" class="danger" type="button" data-i18n="settings.memory.forgetPlugin">Forget all for this plugin</button></div>
+            </div>
+          </details></div>
+          <div id="memory-status" class="memory-status" role="status"></div>
+        </div>
+      </section>
+      <section class="section acc" id="agents-section"><button id="acc-agents" class="acc-head" type="button" aria-expanded="false"><span class="acc-name" data-i18n="settings.agents.name">Agents</span><span class="pill" data-i18n="settings.agents.connect">Connect</span></button>
+        <div id="acc-agents-body" class="acc-body" hidden>
+          <div class="muted" data-i18n="settings.agents.intro">Any AI agent that supports the Model Context Protocol (MCP) can use extynt, even with this panel closed. Pick one way to connect. What an agent is doing is shown in the status bar and the sheet, not here.</div>
+          <label class="mcp-label" for="mcp-prompt" data-i18n="settings.agents.giveToAi">Give this to your AI</label>
+          <textarea id="mcp-prompt" class="mcp-text" readonly spellcheck="false" rows="9"></textarea>
+          <div class="tools"><button id="mcp-copy-prompt" type="button" data-i18n="settings.agents.copyPrompt">Copy prompt</button></div>
+          <label class="mcp-label" data-i18n="settings.agents.addYourself">Or add the server yourself</label>
+          <div class="tools"><button id="mcp-json" type="button" data-i18n="settings.agents.showConfig">Show MCP config</button></div>
+          <div id="mcp-json-block" class="result mcp-config" hidden></div>
+        </div>
+      </section>
+      <section class="section" id="developer-section" hidden><button id="open-developer" class="acc-head" type="button"><span class="acc-name" data-i18n="settings.developer.name">Developer</span></button></section>
+    </div>
+
+    <div data-panel="debug" hidden>
+      <section class="section"><h2 data-i18n="settings.debug.status">Status</h2><dl class="grid" id="status-grid">
+        <dt data-i18n="settings.about.sidecar">Sidecar</dt><dd id="diag-sidecar"></dd>
+        <dt data-i18n="settings.debug.product">Product</dt><dd id="diag-product"></dd>
+        <dt data-i18n="settings.debug.snapshot">Snapshot</dt><dd id="diag-snapshot"></dd>
+        <dt data-i18n="settings.debug.host">Host</dt><dd id="diag-host"></dd>
+        <dt data-i18n="settings.debug.model">Model</dt><dd id="diag-model"></dd>
+      </dl></section>
+      <section class="section" id="workflow-status-section"><h2><span data-i18n="settings.debug.workflow.heading">Workflow</span><span class="spacer"></span><span id="workflow-engine" class="pill"></span></h2>
+        <div id="workflow-status-summary" class="muted"></div>
+        <dl class="grid stack-top">
+          <dt data-i18n="settings.debug.workflow.recovery">Recovery</dt><dd id="workflow-recovery"></dd>
+          <dt data-i18n="settings.debug.workflow.applied">Applied</dt><dd id="workflow-applied"></dd>
+          <dt data-i18n="settings.debug.workflow.remaining">Remaining</dt><dd id="workflow-remaining"></dd>
+          <dt data-i18n="settings.debug.workflow.paused">Paused</dt><dd id="workflow-pause"></dd>
+          <dt data-i18n="settings.debug.workflow.job">Job</dt><dd id="workflow-job"></dd>
+          <dt data-i18n="settings.debug.workflow.batch">Batch</dt><dd id="workflow-batch"></dd>
+          <dt data-i18n="settings.debug.workflow.evidence">Evidence</dt><dd id="workflow-evidence"></dd>
+          <dt data-i18n="settings.debug.workflow.blocker">Blocker</dt><dd id="workflow-blocker"></dd>
+        </dl>
+        <div class="tools"><button id="workflow-refresh" type="button" data-i18n="settings.debug.refresh">Refresh</button></div>
+      </section>
+      <section class="section"><h2 data-i18n="settings.debug.eventTail.heading">Event tail (ids only)</h2><div id="event-tail" class="log"></div></section>
+      <section class="section"><h2 data-i18n="settings.debug.telemetry.heading">Telemetry</h2><div id="telemetry-display" class="mono pre"></div><details class="stack-top"><summary data-i18n="settings.debug.requestHistory">Request history</summary><div id="request-history" class="log"></div></details></section>
+      <section class="section"><h2 data-i18n="settings.debug.tools.heading">Tools</h2><div class="tools"><button id="host-capabilities" type="button" data-i18n="settings.debug.readEffects" data-i18n-title="settings.debug.readEffectsTitle" title="Reads installed effects and fonts from After Effects.">Read installed effects &amp; fonts</button><button id="catalogue-build" type="button" data-i18n="settings.debug.buildCatalogue" data-i18n-title="settings.debug.buildCatalogueTitle" title="Probe each installed effect's controls once, in a temporary scratch project on this machine, and remember them. Runs only while the open project is an empty untitled one.">Build effect catalogue</button></div><div id="catalogue-progress" class="muted stack-top"></div><div id="activity-list" class="result" hidden></div></section>
+    </div>
+
+  </div>
+</aside>
+<script src="main.js"></script></body></html>

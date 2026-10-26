@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- System-domain installer: one administrator password installs the plugin and the host library for every user on this Mac; the helper is set up for the signed-in user.
+     No check script and no plugin page: either makes Installer warn that the package "will run a program". Checks run in preinstall. -->
+<installer-gui-script minSpecVersion="2">
+    <title>extynt AI tools __VERSION__</title>
+    <background file="background.png" mime-type="image/png" alignment="bottomleft" scaling="none"/>
+    <background-darkAqua file="background-dark.png" mime-type="image/png" alignment="bottomleft" scaling="none"/>
+    <welcome file="welcome.html" mime-type="text/html"/>
+    <conclusion file="conclusion.html" mime-type="text/html"/>
+    <options customize="never" require-scripts="false" hostArchitectures="__HOST_ARCHITECTURES__"/>
+    <domains enable_anywhere="false" enable_currentUserHome="false" enable_localSystem="true"/>
+    <volume-check>
+        <allowed-os-versions><os-version min="13.5"/></allowed-os-versions>
+    </volume-check>
+    <choices-outline><line choice="extynt"/></choices-outline>
+    <choice id="extynt" visible="false" title="extynt"><pkg-ref id="com.extynt.installer"/></choice>
+    <pkg-ref id="com.extynt.installer" version="__VERSION__" auth="root" onConclusion="none">extynt-payload.pkg</pkg-ref>
+</installer-gui-script>

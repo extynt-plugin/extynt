@@ -1,0 +1,6 @@
+# Windows scripts and resource files stay CRLF in a working tree on every platform; shell scripts stay LF.
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.rc text eol=crlf
+*.sh text eol=lf

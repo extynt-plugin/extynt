@@ -1,0 +1,55 @@
+extynt
+Copyright (c) 2026 extynt
+
+extynt is released under the MIT License (see LICENSE).
+
+Third-party material in this repository
+
+apps/panel/runtime/icons.ts
+  Icon geometry derived from the DeepSeek Harness web client
+  (https://github.com/deepseek-ai/deepseek-harness), used under the MIT license.
+
+  MIT License
+  Copyright (c) DeepSeek
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+  documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit
+  persons to whom the Software is furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+  Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+  COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Where the full texts are
+
+  Every installed copy of extynt carries the full license texts below in a licenses folder next to this NOTICE: the
+  folder extynt was installed to on Windows, ~/Library/Application Support/extynt on macOS. Paths are relative to that
+  folder.
+
+xxHash (compiled into the native plugin; BSD 2-Clause, Copyright (c) 2012-2021 Yann Collet)
+  licenses/xxhash-LICENSE.txt
+
+AEQuery (adapted in the After Effects host scripts; MIT)
+  licenses/AEQUERY-LICENSE.txt
+
+Node.js (the runtime extynt installs for its sidecar; MIT and the licenses of its bundled components)
+  licenses/node-LICENSE.txt
+
+Trademarks and non-affiliation
+
+extynt is an independent open-source project. It is not affiliated with, endorsed by, sponsored by or approved by Adobe
+Inc. or by any other company named below. No Adobe SDK code is included; the After Effects SDK is obtained from Adobe
+separately.
+
+Adobe and After Effects are either registered trademarks or trademarks of Adobe Inc. in the United States and/or other
+countries. Claude, Claude Code and Anthropic are trademarks of Anthropic, PBC. OpenAI, Codex and GPT are trademarks of
+OpenAI, Inc. Google and Gemini are trademarks of Google LLC. DeepSeek is a trademark of Hangzhou DeepSeek Artificial
+Intelligence Co., Ltd. xAI and Grok are trademarks of X.AI Corp. OpenRouter is a trademark of OpenRouter, Inc. Ollama is
+a trademark of Ollama, Inc. Cloudflare, Workers AI and AI Gateway are trademarks of Cloudflare, Inc. TypeSafe and Jev are trademarks of TypeSafe AI. Windows and WebView2 are trademarks of Microsoft Corporation. macOS and WKWebView are
+trademarks of Apple Inc. Node.js is a trademark of the OpenJS Foundation. All other names are trademarks of their
+respective owners. They are named only to say which services extynt can connect to or which platforms it runs on.

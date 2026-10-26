@@ -1,0 +1,3 @@
+PROVIDER # environment variable suffix
+FORMAT # environment variable suffix
+MODEL # environment variable suffix

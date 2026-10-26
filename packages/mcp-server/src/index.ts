@@ -1,0 +1,67 @@
+/** The MCP surface: the package's public contracts, the advertised tool catalogue, and the JSON-RPC adapter the stdio launcher drives. */
+import { PLAN_UNDO_BATCH_SIZE } from "@extynt/host-ae";
+
+export { canonicalJson } from "./json.js";
+export { CANONICAL_FIELDS, DECLARES, DECLARED_PATHS, declaredBindings } from "./placeholders.js";
+export { chooseVariant } from "./variant-sets.js";
+export { declaredNames } from "./placeholders.js";
+export { planOperations } from "./plan-coherence.js";
+export { ownedRemovalIndexes } from "./own-work.js";
+export { verdictFix } from "./batch.js";
+export { operationChanges } from "./batch-verdicts.js";
+export type { OperationVerdict, OperationVerdictStatus } from "./batch.js";
+export type { PlanOperationSource } from "./plan-coherence.js";
+export { planOperationCount } from "./plan-coherence.js";
+export { changesNothing } from "./plan-no-change.js";
+export { addToPlan } from "./plan-add.js";
+export { completePlan } from "./plan-complete.js";
+export { createPlan } from "./plan-create.js";
+export { toMcpToolResult } from "./transport.js";
+export { undoabilityOfOperation } from "./notices.js";
+export { PLAN_EXAMPLES, planExampleFor } from "./plan-examples.js";
+export { operationOutcomes } from "./receipts.js";
+export { rolledBackCorrection, readbackRepairText, type ReadbackMismatch } from "./receipt-repair.js";
+export { ROLLED_BACK_STATE, isVerifiedOutcome, VERIFIED_OUTCOMES, type OperationOutcome, type OperationOutcomeRow, type OperationOutcomeSummary } from "./receipts.js";
+export { AGENT_APPROVAL_TTL_MS, PROPOSAL_OPERATION_LIMIT } from "./core-constants.js";
+export { amendPlan } from "./plan-amend.js";
+export { keyframeTimeBound } from "./plan-bounds.js";
+export { normalizeTextLineBreaks } from "./operation-fields.js";
+export { planPathProblem } from "./path-policy.js";
+export { planProblemMessage, planProblems } from "./plan-problems.js";
+export { planVerification } from "./plan-verification.js";
+export { mintJobId, now, storeComposedPlan, storeDraftPlan } from "./plan-store.js";
+export { toolError } from "./tool-result.js";
+export type { PlanProblem } from "./plan-problem.js";
+export type { LostPlanNote, LostPlans } from "./plan-lost.js";
+export { supplyDeclarationIds } from "./compose-declaration-ids.js";
+export { QUEUE_CHECKPOINT_SIZE, queueAdd, queueFinish, queueFix } from "./queue.js";
+export { receiptRefusal, receiptRetry, statusFromApplyReceipt } from "./plan-work.js";
+export { withArrayArg } from "./queue-parse.js";
+export { receiptJson, type ReceiptFailure, type ReceiptHostStamp, type StoredReceipt, type UndoDetails } from "./stored-receipt.js";
+export { newestWorkRecord, latestWorkView, workOutcomeView } from "./plan-work.js";
+export { statusResult } from "./tool-project.js";
+export { checkPlanUndo } from "./plan-undo.js";
+export type { PlanUndoCheck } from "./plan-undo.js";
+export { undoGroupName } from "./undo-stack.js";
+export { batchUndoRemaining, jobBatches, jobFields, jobStatus } from "./job-status.js";
+export type { JobStatus } from "./job-status.js";
+
+export { listVariantSets, MAX_VARIANT_SETS, variantApprovalAllowed } from "./variant-sets.js";
+export type { ChooseOutcome, VariantCandidate, VariantReason, VariantSet, VariantStatus } from "./variant-sets.js";
+export { MCP_SERVER_VERSION } from "./version.js";
+export { INSTRUCTIONS_CHAR_BUDGET, MCP_SERVER_INSTRUCTIONS } from "./instructions.js";
+export { TOOL_DEFINITIONS, IN_PANEL_AGENT_HIDDEN_TOOLS, PANEL_AGENT_ONLY_TOOLS, EXTERNAL_HIDDEN_TOOLS, agentToolDefinitions, planCardTools, listTools } from "./tool-catalogue.js";
+export { operationReference } from "./operation-reference.js";
+export { companionSolidPlaceholder, compileSvgScene, designPlaceholder, extractSvg, jsonNodes, LAYER_SHAPE_NODES, plannedSceneLayer, sceneLayerLimitProblem, sceneLayerOperations, sceneManifest, SCENE_BATCH_NODE_BUDGET, SCENE_LIMITS, splitHeavyLayers, type CompiledScene, type CompiledSceneLayer, type PlannedSceneLayer, type SceneBuildTarget, type SceneCompileResult, type SceneManifestLayer } from "./svg-scene/index.js";
+export { workflowCompletionEvidenceOf, workflowCompletionReferenceOf } from "./workflow-completion.js";
+export type { WorkflowCompletionEvidenceInput, WorkflowCompletionReferenceInput } from "./workflow-completion.js";
+
+export type { FontSubstitution, PlanPresentation, PlanStatus, PlanVerificationSummary, RuntimeOperationEvidence, StoredPlan, ToolAnnotations, ToolContext, ToolDefinition } from "./contracts.js";
+export { PLAN_UNDO_BATCH_SIZE };
+
+export { callTool } from "./tool-run.js";
+export type { ToolFailure, ToolResult } from "./tool-result.js";
+export { jsonFieldsOf, jsonOf } from "./json.js";
+export { handleMcpRequest } from "./rpc.js";
+export type { JsonRpcRequest } from "./rpc.js";
+export { hostLedgerPath, readLocalHostLedger, writeLocalHostLedgerEntry } from "./local-ledger.js";

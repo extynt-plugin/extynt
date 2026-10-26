@@ -1,0 +1,116 @@
+/* The page: one full-panel component with a back arrow, used for Chats, Settings and
+   Developer. At the minimum width it is the panel; wider, a 420px sheet on the right.
+   Settings is an accordion: each row shows its state in one line, one open at a time. */
+
+.page {
+  position: fixed;
+  inset: 0 0 0 auto;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 420px);
+  background: var(--bg);
+  border-left: 1px solid var(--line);
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform var(--t-base) var(--ease), visibility 0s linear var(--t-base);
+}
+
+.page.open {
+  box-shadow: var(--shadow);
+  transform: none;
+  visibility: visible;
+  transition: transform var(--t-base) var(--ease);
+}
+
+.page-head {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  height: 44px;
+  padding: 0 var(--s1);
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.page-title {
+  margin: 0;
+  font-size: var(--fs-title);
+  font-weight: 600;
+}
+
+/* The page is as tall as the panel, so its body is the part that scrolls;
+   otherwise the last section sits below the frame with no way to reach it. */
+.page-body {
+  flex: 1;
+  min-height: 0;
+  padding: var(--s1) var(--s4) var(--s6);
+  overflow-y: auto;
+}
+
+.section.acc {
+  padding: 0;
+}
+
+.acc-head {
+  justify-content: flex-start;
+  gap: var(--s2);
+  width: 100%;
+  min-height: 44px;
+  padding: 0 var(--s1);
+  font-size: var(--fs-title);
+  font-weight: 600;
+  text-align: left;
+  background: transparent;
+  border-color: transparent;
+}
+
+.acc-head:hover:not(:disabled) {
+  background: transparent;
+  border-color: transparent;
+}
+
+.acc-name {
+  flex: none;
+}
+
+.acc-head .pill {
+  flex: 1;
+  min-width: 0;
+  justify-content: flex-start;
+  overflow: hidden;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  background: transparent;
+}
+
+.acc-head::after {
+  content: "";
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  transform: rotate(-45deg);
+  transition: transform var(--t-fast) var(--ease);
+}
+
+.acc-head[aria-expanded="true"]::after {
+  transform: rotate(45deg);
+}
+
+#open-developer::after {
+  transform: rotate(-45deg);
+}
+
+.acc-body {
+  padding: var(--s1) var(--s1) var(--s4);
+}
+
+.session-group {
+  margin: var(--s3) 0 var(--s1);
+  color: var(--muted);
+  font-size: var(--fs-small);
+  font-weight: 600;
+}

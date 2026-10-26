@@ -1,0 +1,15 @@
+{
+  "name": "@extynt/panel",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@extynt/decode": "workspace:*",
+    "@extynt/ui-text": "workspace:*"
+  },
+  "scripts": {
+    "build": "node ../../scripts/build-panel.ts && tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "pnpm build && cd ../.. && node scripts/run-tests.ts apps/panel/dist/tests/*.test.js"
+  }
+}

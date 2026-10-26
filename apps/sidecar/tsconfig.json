@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.strict.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "dist",
+    "tsBuildInfoFile": "dist/.tsbuildinfo",
+    "declaration": true
+  },
+  "references": [{ "path": "../../packages/mcp-server" }, { "path": "../../packages/capability-catalogue" }, { "path": "../../packages/decide" }, { "path": "../../packages/decode" }, { "path": "../../packages/action-plan" }, { "path": "../../packages/host-ae" }, { "path": "../../packages/workflow" }, { "path": "../../packages/host-native" }, { "path": "../../packages/ui-text" }, { "path": "../../tools/fake-plugin" }],
+  "include": ["src/**/*.ts", "tests/**/*.ts"]
+}

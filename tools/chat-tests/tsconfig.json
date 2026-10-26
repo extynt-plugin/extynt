@@ -1,0 +1,6 @@
+{
+  "extends": "../../tsconfig.strict.json",
+  "compilerOptions": { "rootDir": ".", "outDir": "dist", "tsBuildInfoFile": "dist/.tsbuildinfo", "declaration": true, "composite": true, "noUnusedLocals": true, "noUnusedParameters": true },
+  "references": [{ "path": "../../packages/decode" }, { "path": "../../packages/decide" }, { "path": "../../packages/project-graph" }, { "path": "../../packages/host-native" }, { "path": "../fake-plugin" }, { "path": "../../packages/llm" }],
+  "include": ["src/**/*.ts", "tests/**/*.ts"]
+}

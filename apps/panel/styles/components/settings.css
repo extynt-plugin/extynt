@@ -1,0 +1,548 @@
+/* Settings: sections, switches, segmented controls, fields, and the model,
+   memory and agent groups the runtime renders into them. */
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  margin-top: var(--s3);
+}
+
+.section h2 + .tools {
+  margin-top: 0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  margin-top: var(--s3);
+}
+
+.mcp-text {
+  width: 100%;
+  margin-top: var(--s2);
+  font-family: var(--mono);
+  font-size: var(--fs-small);
+  resize: vertical;
+}
+
+.mcp-config {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: var(--mono);
+  font-size: var(--fs-small);
+}
+
+.subsection {
+  margin-top: var(--s4);
+}
+
+.subsection h3 {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  margin: 0 0 var(--s2);
+  font-size: var(--fs);
+  font-weight: 600;
+}
+
+.stack-top {
+  margin-top: var(--s2);
+}
+
+/* A disclosure, then sub-groups a step down in weight. */
+details.group > summary {
+  display: flex;
+  align-items: center;
+  gap: var(--s1);
+  min-height: 24px;
+  color: var(--text);
+  font-size: var(--fs-title);
+  font-weight: 600;
+  list-style: none;
+}
+
+details.group > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.group > summary::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin: 0 var(--s1);
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  transform: rotate(-45deg);
+  transition: transform var(--t-fast) var(--ease);
+}
+
+details.group[open] > summary::before {
+  transform: rotate(45deg);
+}
+
+/* Fields: a quiet label above a full-width control. */
+details label,
+.mcp-label,
+.model-slot label,
+.field > label {
+  display: block;
+  margin-top: var(--s3);
+  color: var(--muted);
+  font-size: var(--fs-small);
+}
+
+.model-slot label:first-child,
+.field:first-child > label {
+  margin-top: 0;
+}
+
+details input,
+.model-slot input,
+.model-slot select,
+#interface-language,
+#mcp-command {
+  width: 100%;
+  margin-top: var(--s1);
+}
+
+#mcp-command {
+  font: var(--fs-small) var(--mono);
+}
+
+.model-slot .hint {
+  margin-top: var(--s1);
+  color: var(--faint);
+  font-size: var(--fs-small);
+}
+
+.model-slot .hint.warn {
+  color: var(--amber);
+}
+
+.model-results {
+  margin-top: var(--s1);
+  background: var(--raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r);
+}
+
+.model-result {
+  display: block;
+  width: 100%;
+  min-height: 36px;
+  padding: 7px 10px;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  overflow-wrap: anywhere;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.model-result:hover,
+.model-result:focus-visible {
+  background: var(--surface);
+  outline: none;
+}
+
+.model-result-custom {
+  color: var(--accent-text);
+  border-bottom: 0;
+}
+
+.model-result-empty {
+  padding: var(--s2) 10px;
+  color: var(--faint);
+  font-size: var(--fs-small);
+}
+
+.model-actions {
+  display: flex;
+  gap: var(--s2);
+  margin-top: var(--s4);
+}
+
+#model-status {
+  margin-top: var(--s2);
+  white-space: pre-wrap;
+}
+
+#model-fallback-details {
+  margin-top: var(--s4);
+}
+
+/* Status lines carry a mark rather than a glyph typed into text. */
+.status-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  line-height: 1.5;
+}
+
+.status-row .icon {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  margin-top: 2px;
+  color: var(--muted);
+}
+
+.status-row[data-ok="false"] .icon {
+  color: var(--red);
+}
+
+.status-row[data-ok="true"] .icon {
+  color: var(--green);
+}
+
+/* A toggle is a label, a switch at the end of its row, and a note under it. */
+/* An on/off setting reads like an Approvals choice: a check at the left, the
+   name over a muted line, and the whole row highlighted while it is on. */
+.toggle {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--s2);
+  row-gap: 2px;
+  align-items: start;
+  margin-top: var(--s1);
+  padding: var(--s2);
+  color: var(--text);
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: var(--r);
+  cursor: pointer;
+}
+
+.section h2 + .toggle,
+.muted + .toggle {
+  margin-top: var(--s2);
+}
+
+.toggle:hover {
+  background: var(--hover);
+}
+
+.toggle:has(input:checked) {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.toggle input[type="checkbox"] {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: auto;
+  min-height: 0;
+  margin: 3px 0 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.toggle .note {
+  grid-column: 2;
+  color: var(--muted);
+  font-size: var(--fs-small);
+  font-weight: 400;
+  overflow-wrap: anywhere;
+}
+
+/* A segmented control: a track of equal buttons, the chosen one raised. */
+.segmented {
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  background: var(--field);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
+.segmented button {
+  min-height: calc(var(--control) - 6px);
+  padding: 0 var(--s3);
+  color: var(--muted);
+  background: transparent;
+  border-color: transparent;
+  border-radius: 6px;
+}
+
+.segmented button.on,
+.segmented button[aria-pressed="true"] {
+  color: var(--text);
+  font-weight: 600;
+  background: var(--raised);
+  border-color: var(--line-strong);
+}
+
+/* Approvals: a vertical list of radio rows, each a label with a title and a
+   muted note. The chosen row takes a subtle accent edge. */
+.ask-list {
+  display: grid;
+  gap: var(--s1);
+}
+
+.ask-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s2);
+  padding: var(--s2);
+  border: 1px solid transparent;
+  border-radius: var(--r);
+  cursor: pointer;
+}
+
+.ask-choice:hover {
+  background: var(--hover);
+}
+
+.ask-choice.on {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.ask-choice input[type="radio"] {
+  flex: none;
+  width: auto;
+  min-height: 0;
+  margin: 3px 0 0;
+  accent-color: var(--accent);
+}
+
+.ask-text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.ask-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s2);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.ask-tag {
+  padding: 0 var(--s1);
+  color: var(--accent-text);
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  background: var(--accent-soft);
+  border-radius: var(--r-pill);
+}
+
+.ask-note {
+  color: var(--muted);
+  font-size: var(--fs-small);
+  overflow-wrap: anywhere;
+}
+
+.ask-foot {
+  margin: var(--s2) 0 0;
+  font-size: var(--fs-small);
+}
+
+/* Memory: what extynt learns, the plugins an agent may document, and the
+   notes history. */
+.memory-plugins {
+  margin-top: var(--s2);
+  background: var(--field);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
+.memory-plugins:empty,
+#memory-plugins-note:empty,
+.memory-status:empty {
+  display: none;
+}
+
+.memory-plugin {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  min-height: 30px;
+  padding: 0 var(--s2);
+  cursor: pointer;
+}
+
+.memory-plugin:hover {
+  background: var(--hover);
+}
+
+.memory-plugin input {
+  flex: none;
+  margin: 0;
+  accent-color: var(--accent-solid);
+}
+
+.memory-plugin-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.memory-plugin-count {
+  flex: none;
+  color: var(--faint);
+  font-size: var(--fs-meta);
+  font-variant-numeric: tabular-nums;
+}
+
+#memory-plugins-note {
+  margin-top: var(--s1);
+  font-size: var(--fs-small);
+}
+
+.memory-status {
+  margin-top: var(--s3);
+  color: var(--muted);
+  font-size: var(--fs-small);
+  overflow-wrap: anywhere;
+}
+
+.memory-history {
+  margin-top: var(--s2);
+}
+
+.memory-history input[type="radio"] {
+  width: auto;
+  min-height: 0;
+  margin: 3px 0 0;
+  accent-color: var(--accent-solid);
+}
+
+.memory-suggest {
+  margin-top: var(--s1);
+  background: var(--raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r);
+}
+
+.memory-suggestion {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 0;
+}
+
+.memory-list-head {
+  margin-top: var(--s3);
+  font-weight: 600;
+}
+
+.memory-note {
+  padding: var(--s2) 0;
+  border-top: 1px solid var(--line);
+}
+
+.memory-note-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.memory-note-kind {
+  font-weight: 600;
+}
+
+.memory-note-where,
+.memory-note-fine {
+  color: var(--muted);
+  font-size: var(--fs-small);
+  overflow-wrap: anywhere;
+}
+
+.memory-note-text {
+  margin-top: var(--s1);
+  overflow-wrap: anywhere;
+}
+
+.memory-note-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  margin-top: var(--s2);
+}
+
+.memory-replace {
+  margin-top: var(--s3);
+  padding-top: var(--s2);
+  border-top: 1px solid var(--line);
+}
+
+.memory-replace p {
+  margin: 0;
+}
+
+.memory-candidate {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s2);
+  min-height: 24px;
+  margin-top: var(--s2);
+  overflow-wrap: anywhere;
+}
+
+.legal-note {
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.training-notice .hint {
+  margin-top: var(--s1);
+  color: var(--faint);
+  font-size: var(--fs-small);
+}
+
+.training-notice .hint.warn {
+  color: var(--amber);
+}
+
+.training-notice .training-ack {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  margin-top: var(--s1);
+  font-size: var(--fs-small);
+}
+
+.training-notice .training-ack input {
+  width: auto;
+  margin: 0;
+}
+
+.decision-receipt {
+  margin: 12px 0 0;
+}
+
+.decision-line {
+  margin: 0 0 6px;
+  padding: 8px 10px;
+  border-left: 3px solid var(--green);
+  font: 11px/1.5 var(--mono);
+}
+
+.decision-line.good {
+  color: var(--green);
+}
+
+.decision-line.muted {
+  border-left-color: var(--line-strong);
+  color: var(--muted);
+}
+
+.decision-line.warn {
+  border-left-color: var(--amber);
+  background: var(--amber-soft);
+  color: var(--amber);
+}

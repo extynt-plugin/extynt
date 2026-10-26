@@ -1,0 +1,65 @@
+{
+ "note": "Expected values produced by encodePathSegment in apps/panel/host/probe.jsx; tools/native-spike/path-parity.ts re-checks them against that file.",
+ "encode": [
+  {
+   "input": "ADBE Transform Group",
+   "encoded": "ADBE Transform Group"
+  },
+  {
+   "input": "dropShadow/mode2",
+   "encoded": "dropShadow%2Fmode2"
+  },
+  {
+   "input": "50%",
+   "encoded": "50%25"
+  },
+  {
+   "input": "a#b",
+   "encoded": "a%23b"
+  },
+  {
+   "input": "%2F",
+   "encoded": "%252F"
+  },
+  {
+   "input": "x/y%z#w",
+   "encoded": "x%2Fy%25z%23w"
+  },
+  {
+   "input": "",
+   "encoded": ""
+  },
+  {
+   "input": "é ü 日本語",
+   "encoded": "é ü 日本語"
+  },
+  {
+   "input": "100%/#",
+   "encoded": "100%25%2F%23"
+  },
+  {
+   "input": "//",
+   "encoded": "%2F%2F"
+  },
+  {
+   "input": "%%",
+   "encoded": "%25%25"
+  },
+  {
+   "input": "ADBE Vector Group",
+   "encoded": "ADBE Vector Group"
+  },
+  {
+   "input": "ADBE Effect Parade",
+   "encoded": "ADBE Effect Parade"
+  },
+  {
+   "input": "Fill #1",
+   "encoded": "Fill %231"
+  },
+  {
+   "input": "tab\tand\u0001ctl",
+   "encoded": "tab\tand\u0001ctl"
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+{
+  "description": "Visual waiver: whether a fully confirmed read-back proves the request so that no rendered frame is needed; a look, scene, match or motion keeps its frame.",
+  "cases": [
+    {"id": "set-position", "goal": "Set the title position to 100, 200", "designed": false, "structuralOperations": false, "exactValuesOnly": true, "allConfirmed": true, "expected": true},
+    {"id": "rename-layers", "goal": "Rename the layers to match the list", "designed": false, "structuralOperations": true, "exactValuesOnly": false, "allConfirmed": true, "expected": true},
+    {"id": "new-comp", "goal": "Create a 1920 by 1080 comp named MAIN", "designed": false, "structuralOperations": true, "exactValuesOnly": false, "allConfirmed": true, "expected": true},
+    {"id": "unconfirmed", "goal": "Set the title position to 100, 200", "designed": false, "structuralOperations": false, "exactValuesOnly": true, "allConfirmed": false, "expected": false},
+    {"id": "draw-scene", "goal": "Draw a rocket scene", "designed": true, "structuralOperations": false, "exactValuesOnly": false, "allConfirmed": true, "expected": false},
+    {"id": "look-cinematic", "goal": "Make it look cinematic", "designed": false, "structuralOperations": false, "exactValuesOnly": true, "allConfirmed": true, "expected": false, "hard": true},
+    {"id": "match-reference", "goal": "Match the colours of the reference frame", "designed": false, "structuralOperations": false, "exactValuesOnly": true, "allConfirmed": true, "expected": false, "hard": true},
+    {"id": "opacity-value", "goal": "Set the logo opacity to 50 percent", "designed": false, "structuralOperations": false, "exactValuesOnly": true, "allConfirmed": true, "expected": true, "hard": true},
+    {"id": "scale-value", "goal": "Scale the title to 120 percent", "designed": false, "structuralOperations": false, "exactValuesOnly": true, "allConfirmed": true, "expected": true},
+    {"id": "designed-card", "goal": "Build a title card with a gradient background", "designed": true, "structuralOperations": true, "exactValuesOnly": false, "allConfirmed": true, "expected": false},
+    {"id": "parent", "goal": "Parent the title to the null", "designed": false, "structuralOperations": true, "exactValuesOnly": false, "allConfirmed": true, "expected": true},
+    {"id": "animate", "goal": "Animate the title sliding in", "designed": false, "structuralOperations": false, "exactValuesOnly": false, "allConfirmed": true, "expected": false},
+    {"id": "style-tweak", "goal": "Make the title style bolder", "designed": false, "structuralOperations": false, "exactValuesOnly": true, "allConfirmed": true, "expected": false, "hard": true},
+    {"id": "es-rename", "goal": "Renombra las capas", "designed": false, "structuralOperations": true, "exactValuesOnly": false, "allConfirmed": true, "expected": true, "lang": "es", "hard": true},
+    {"id": "de-scene", "goal": "Gestalte eine Szene mit Raumschiffen", "designed": true, "structuralOperations": false, "exactValuesOnly": false, "allConfirmed": true, "expected": false, "lang": "de", "hard": true},
+    {"id": "ja-value", "goal": "タイトルの位置を100,200にして", "designed": false, "structuralOperations": false, "exactValuesOnly": true, "allConfirmed": true, "expected": true, "lang": "ja", "hard": true},
+    {"goal": "Renombra las capas según la lista", "designed": false, "structuralOperations": true, "exactValuesOnly": false, "allConfirmed": true, "expected": true, "id": "v-es-rename", "lang": "es", "hard": true},
+    {"goal": "Renomme les calques selon la liste", "designed": false, "structuralOperations": true, "exactValuesOnly": false, "allConfirmed": true, "expected": true, "id": "v-fr-rename", "lang": "fr", "hard": true},
+    {"goal": "按列表重命名图层", "designed": false, "structuralOperations": true, "exactValuesOnly": false, "allConfirmed": true, "expected": true, "id": "v-zh-rename", "lang": "zh", "hard": true},
+    {"goal": "设计一个火箭场景", "designed": true, "structuralOperations": false, "exactValuesOnly": false, "allConfirmed": true, "expected": false, "id": "v-zh-scene", "lang": "zh", "hard": true},
+    {"goal": "Donne un rendu plus cinématographique", "designed": false, "structuralOperations": false, "exactValuesOnly": false, "allConfirmed": true, "expected": false, "id": "v-fr-look", "lang": "fr", "hard": true},
+    {"goal": "Sperre die Logo-Ebene", "designed": false, "structuralOperations": true, "exactValuesOnly": false, "allConfirmed": true, "expected": true, "id": "v-de-lock", "lang": "de", "hard": true}
+  ]
+}

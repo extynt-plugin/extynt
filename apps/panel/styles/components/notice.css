@@ -1,0 +1,39 @@
+/* Notices: a quiet line with a tone edge and an action at its end, plus the
+   i / ? / ! disclosure icons and their popovers. Grey i is a remark, amber ?
+   is "we could not confirm this", red ! is a real problem. */
+
+.msg.notice {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  gap: var(--s3);
+  padding: var(--s1) 0 var(--s1) var(--s3);
+  color: var(--muted);
+  font-size: var(--fs-small);
+  border-left: 2px solid var(--line-strong);
+}
+
+.msg.notice.warn {
+  border-color: var(--amber);
+}
+
+.msg.notice.bad {
+  color: var(--red-text);
+  border-color: var(--red);
+}
+
+.msg.notice.good {
+  border-color: var(--green);
+}
+
+.msg.notice button {
+  flex: none;
+  margin-left: auto;
+}
+
+.msg.notice button,
+.msg.error button {
+  min-height: var(--control-sm);
+  padding: 0 var(--s2);
+  font-size: var(--fs-meta);
+}

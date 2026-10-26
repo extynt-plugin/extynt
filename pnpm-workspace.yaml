@@ -1,0 +1,7 @@
+packages:
+  - "packages/*"
+  - "apps/*"
+  # The live host-verification kit is a real workspace project: without this
+  # entry nothing installs or builds it, its @extynt/* links point at a
+  # nonexistent tools/<pkg>, and its suite silently never runs.
+  - "tools/*"

@@ -1,0 +1,222 @@
+{
+ "description": "Control habits: a phrase that fits several controls of one effect equally, with the user's use counts by control match name; with no habit the answer is none, with it the habitual control, and a control the phrase names outright still wins.",
+ "effects": {
+  "fill": {
+   "displayName": "Fill",
+   "controls": [
+    {
+     "matchName": "ADBE Fill-0001",
+     "displayName": "Fill Mask",
+     "valueType": "menu"
+    },
+    {
+     "matchName": "ADBE Fill-0002",
+     "displayName": "All Masks",
+     "valueType": "checkbox"
+    },
+    {
+     "matchName": "ADBE Fill-0003",
+     "displayName": "Color",
+     "valueType": "color"
+    },
+    {
+     "matchName": "ADBE Fill-0004",
+     "displayName": "Invert Fill",
+     "valueType": "checkbox"
+    },
+    {
+     "matchName": "ADBE Fill-0005",
+     "displayName": "Horizontal Feather",
+     "valueType": "slider"
+    },
+    {
+     "matchName": "ADBE Fill-0006",
+     "displayName": "Vertical Feather",
+     "valueType": "slider"
+    },
+    {
+     "matchName": "ADBE Fill-0007",
+     "displayName": "Opacity",
+     "valueType": "slider"
+    }
+   ]
+  },
+  "glow": {
+   "displayName": "Glow",
+   "controls": [
+    {
+     "matchName": "ADBE Glo2-0001",
+     "displayName": "Glow Based On",
+     "valueType": "menu"
+    },
+    {
+     "matchName": "ADBE Glo2-0002",
+     "displayName": "Glow Threshold",
+     "valueType": "slider"
+    },
+    {
+     "matchName": "ADBE Glo2-0003",
+     "displayName": "Glow Radius",
+     "valueType": "slider"
+    },
+    {
+     "matchName": "ADBE Glo2-0004",
+     "displayName": "Glow Intensity",
+     "valueType": "slider"
+    },
+    {
+     "matchName": "ADBE Glo2-0005",
+     "displayName": "Composite Original",
+     "valueType": "menu"
+    },
+    {
+     "matchName": "ADBE Glo2-0006",
+     "displayName": "Glow Operation",
+     "valueType": "menu"
+    },
+    {
+     "matchName": "ADBE Glo2-0007",
+     "displayName": "Glow Colors",
+     "valueType": "menu"
+    },
+    {
+     "matchName": "ADBE Glo2-0008",
+     "displayName": "Color Looping",
+     "valueType": "menu"
+    },
+    {
+     "matchName": "ADBE Glo2-0009",
+     "displayName": "Color Loops",
+     "valueType": "slider"
+    },
+    {
+     "matchName": "ADBE Glo2-0010",
+     "displayName": "Color Phase",
+     "valueType": "angle"
+    },
+    {
+     "matchName": "ADBE Glo2-0011",
+     "displayName": "A & B Midpoint",
+     "valueType": "slider"
+    },
+    {
+     "matchName": "ADBE Glo2-0012",
+     "displayName": "Color A",
+     "valueType": "color"
+    },
+    {
+     "matchName": "ADBE Glo2-0013",
+     "displayName": "Color B",
+     "valueType": "color"
+    },
+    {
+     "matchName": "ADBE Glo2-0014",
+     "displayName": "Glow Dimensions",
+     "valueType": "menu"
+    }
+   ]
+  },
+  "mosaic": {
+   "displayName": "Mosaic",
+   "controls": [
+    {
+     "matchName": "ADBE Mosaic-0001",
+     "displayName": "Horizontal Blocks",
+     "valueType": "slider"
+    },
+    {
+     "matchName": "ADBE Mosaic-0002",
+     "displayName": "Vertical Blocks",
+     "valueType": "slider"
+    },
+    {
+     "matchName": "ADBE Mosaic-0003",
+     "displayName": "Sharp Colors",
+     "valueType": "checkbox"
+    }
+   ]
+  }
+ },
+ "cases": [
+  {
+   "id": "fill-feather-none",
+   "effect": "fill",
+   "phrase": "feather",
+   "habit": {},
+   "wanted": null
+  },
+  {
+   "id": "fill-feather-horizontal",
+   "effect": "fill",
+   "phrase": "feather",
+   "habit": {
+    "ADBE Fill-0005": 5
+   },
+   "wanted": "ADBE Fill-0005"
+  },
+  {
+   "id": "fill-feather-explicit",
+   "effect": "fill",
+   "phrase": "the vertical feather",
+   "habit": {
+    "ADBE Fill-0005": 6
+   },
+   "wanted": "ADBE Fill-0006"
+  },
+  {
+   "id": "glow-color-none",
+   "effect": "glow",
+   "phrase": "change the color",
+   "habit": {},
+   "wanted": null
+  },
+  {
+   "id": "glow-color-a",
+   "effect": "glow",
+   "phrase": "change the color",
+   "habit": {
+    "ADBE Glo2-0012": 4
+   },
+   "wanted": "ADBE Glo2-0012"
+  },
+  {
+   "id": "mosaic-blocks-vertical",
+   "effect": "mosaic",
+   "phrase": "set the blocks",
+   "habit": {
+    "ADBE Mosaic-0002": 3
+   },
+   "wanted": "ADBE Mosaic-0002"
+  },
+  {
+   "id": "fill-feather-de",
+   "lang": "de",
+   "effect": "fill",
+   "phrase": "die Kante weicher machen",
+   "habit": {
+    "ADBE Fill-0006": 5
+   },
+   "wanted": "ADBE Fill-0006"
+  },
+  {
+   "id": "mosaic-blocks-fr",
+   "lang": "fr",
+   "effect": "mosaic",
+   "phrase": "augmente le nombre de blocs",
+   "habit": {
+    "ADBE Mosaic-0001": 4
+   },
+   "wanted": "ADBE Mosaic-0001"
+  },
+  {
+   "id": "glow-color-es",
+   "lang": "es",
+   "effect": "glow",
+   "phrase": "cambia el color del brillo",
+   "habit": {
+    "ADBE Glo2-0013": 4
+   },
+   "wanted": "ADBE Glo2-0013"
+  }
+ ]
+}

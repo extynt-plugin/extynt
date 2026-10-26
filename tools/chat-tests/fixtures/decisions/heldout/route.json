@@ -1,0 +1,61 @@
+{
+ "description": "Route: whether a request is answer-only, one edit for a single agent, or a long job that gains from specialists.",
+ "cases": [
+  {
+   "id": "ho-what-is-ae",
+   "request": "What is the difference between a null object and an adjustment layer?",
+   "label": "answer-only"
+  },
+  {
+   "id": "ho-how-many-layers",
+   "request": "How many layers does the current composition have?",
+   "label": "answer-only"
+  },
+  {
+   "id": "ho-de-frage",
+   "request": "Warum wirkt mein Text nach dem Hinzufügen von Unschärfe so pixelig?",
+   "label": "answer-only",
+   "lang": "de"
+  },
+  {
+   "id": "ho-es-simple",
+   "request": "Cambia el color del texto a blanco",
+   "label": "single-agent",
+   "lang": "es"
+  },
+  {
+   "id": "ho-ja-info",
+   "request": "このコンプのフレームレートは何ですか？",
+   "label": "answer-only",
+   "lang": "ja"
+  },
+  {
+   "id": "ho-explain-hard",
+   "request": "Should I use a precomp or just parent these layers? Just tell me which",
+   "label": "answer-only",
+   "hard": true
+  },
+  {
+   "id": "ho-move-logo",
+   "request": "Center the logo and make it 20 percent smaller",
+   "label": "single-agent"
+  },
+  {
+   "id": "ho-add-fill",
+   "request": "Tint the shape layer teal with a Fill effect",
+   "label": "single-agent",
+   "hard": true
+  },
+  {
+   "id": "ho-explainer",
+   "request": "Build a 45 second explainer video with a script, illustrated characters, scene transitions and a closing call to action",
+   "label": "specialist-workflow"
+  },
+  {
+   "id": "ho-ui-kit",
+   "request": "Design an animated dashboard UI with six charts, hover states and a loading sequence, then review each screen",
+   "label": "specialist-workflow",
+   "hard": true
+  }
+ ]
+}

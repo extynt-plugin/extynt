@@ -1,0 +1,6 @@
+{
+  "extends": "../../tsconfig.strict.json",
+  "compilerOptions": { "rootDir": ".", "outDir": "dist", "tsBuildInfoFile": "dist/.tsbuildinfo", "declaration": true, "composite": true },
+  "references": [{ "path": "../project-graph" }, { "path": "../action-plan" }, { "path": "../visual-evidence" }],
+  "include": ["src/**/*.ts", "tests/**/*.ts"]
+}

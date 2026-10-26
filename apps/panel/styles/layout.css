@@ -1,0 +1,139 @@
+/* The frame: a fixed header, one scrolling transcript, the status bar (and the
+   sheet that lifts from it), a fixed composer, and a page that slides over them.
+   Only the transcript, the sheet and the page body scroll, so a row that grows
+   eats the transcript instead of pushing content out of a frame nothing can
+   scroll. The reference width is 360px; 260px is the supported minimum. */
+
+.app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.topbar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  height: 44px;
+  padding: 0 var(--s1) 0 var(--s3);
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+/* The chat title is the topbar's one wide control: it ellipsises, the icons stay. */
+.chat-title {
+  flex: 1;
+  justify-content: flex-start;
+  min-width: 0;
+  padding: 0 var(--s2);
+  font-size: var(--fs-title);
+  font-weight: 600;
+  background: transparent;
+  border-color: transparent;
+}
+
+.chat-title:hover:not(:disabled) {
+  background: var(--hover);
+  border-color: transparent;
+}
+
+.chat-title-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chat-title::after {
+  content: "";
+  flex: none;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 var(--s1);
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  transform: rotate(45deg);
+}
+
+.toolbar {
+  flex: none;
+  display: flex;
+  gap: 2px;
+}
+
+/* With the sheet lifted the transcript shrinks to a peek of the latest messages
+   above it; the bar is the sheet's header and the composer stays below. */
+.app[data-sheet="open"] #chat-output {
+  flex: 0 1 84px;
+}
+
+/* The transcript is the panel's scroller. min-height:0 is the whole fix for
+   "the last message cannot be reached": a flex item's automatic minimum is its
+   content, and without it the transcript paints past the frame. */
+#chat-output {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  padding: var(--s4) var(--s3) var(--s3);
+  overflow-y: auto;
+}
+
+.composer {
+  flex: none;
+  padding: var(--s2) var(--s3) var(--s3);
+  background: var(--bg);
+}
+
+/* Sections are separated by space and one hairline, not boxed. */
+.section {
+  padding: var(--s4) 0 var(--s6);
+  border-top: 1px solid var(--line);
+}
+
+[data-panel] > .section:first-child {
+  border-top: 0;
+}
+
+.section h2 {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  min-height: 24px;
+  margin: 0 0 var(--s3);
+  color: var(--text);
+  font-size: var(--fs-title);
+  font-weight: 600;
+}
+
+@container panel (min-width: 340px) {
+  .topbar {
+    padding-left: var(--s4);
+  }
+
+  #chat-output {
+    padding: var(--s4) var(--s4) var(--s3);
+  }
+
+  .composer {
+    padding: var(--s2) var(--s4) var(--s4);
+  }
+}
+
+@container panel (min-width: 480px) {
+  #chat-output {
+    padding: var(--s6) var(--s6) var(--s4);
+  }
+
+  .composer {
+    padding: var(--s2) var(--s6) var(--s4);
+  }
+
+  .topbar {
+    padding-left: var(--s6);
+  }
+}

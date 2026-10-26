@@ -1,0 +1,526 @@
+{
+ "description": "Property choice: which property of a layer or effect the user's phrase means, or null when none or it cannot be told.",
+ "cases": [
+  {
+   "id": "ho-grow",
+   "phrase": "make it grow bigger",
+   "target": "Layer",
+   "candidates": [
+    {
+     "key": "ADBE Transform Group/ADBE Anchor Point",
+     "title": "Anchor Point",
+     "group": "Transform"
+    },
+    {
+     "key": "ADBE Transform Group/ADBE Position",
+     "title": "Position",
+     "group": "Transform"
+    },
+    {
+     "key": "ADBE Transform Group/ADBE Scale",
+     "title": "Scale",
+     "group": "Transform"
+    },
+    {
+     "key": "ADBE Transform Group/ADBE Rotate Z",
+     "title": "Rotation",
+     "group": "Transform"
+    },
+    {
+     "key": "ADBE Transform Group/ADBE Opacity",
+     "title": "Opacity",
+     "group": "Transform"
+    }
+   ],
+   "wanted": "ADBE Transform Group/ADBE Scale"
+  },
+  {
+   "id": "ho-fade-out",
+   "phrase": "let it vanish gradually",
+   "target": "Layer",
+   "candidates": [
+    {
+     "key": "ADBE Transform Group/ADBE Anchor Point",
+     "title": "Anchor Point",
+     "group": "Transform"
+    },
+    {
+     "key": "ADBE Transform Group/ADBE Position",
+     "title": "Position",
+     "group": "Transform"
+    },
+    {
+     "key": "ADBE Transform Group/ADBE Scale",
+     "title": "Scale",
+     "group": "Transform"
+    },
+    {
+     "key": "ADBE Transform Group/ADBE Rotate Z",
+     "title": "Rotation",
+     "group": "Transform"
+    },
+    {
+     "key": "ADBE Transform Group/ADBE Opacity",
+     "title": "Opacity",
+     "group": "Transform"
+    }
+   ],
+   "wanted": "ADBE Transform Group/ADBE Opacity",
+   "hard": true
+  },
+  {
+   "id": "ho-shadow-faint",
+   "phrase": "make the shadow fainter",
+   "target": "Drop Shadow",
+   "candidates": [
+    {
+     "key": "ADBE Drop Shadow-0001",
+     "title": "Shadow Color",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Drop Shadow-0002",
+     "title": "Opacity",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Drop Shadow-0003",
+     "title": "Direction",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Drop Shadow-0004",
+     "title": "Distance",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Drop Shadow-0005",
+     "title": "Softness",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Drop Shadow-0006",
+     "title": "Shadow Only",
+     "group": "Effect Controls"
+    }
+   ],
+   "wanted": "ADBE Drop Shadow-0002"
+  },
+  {
+   "id": "ho-glow-colour-mode",
+   "phrase": "only glow where the picture is brightest, raise that cutoff",
+   "target": "Glow",
+   "candidates": [
+    {
+     "key": "ADBE Glo2-0001",
+     "title": "Glow Based On",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0002",
+     "title": "Glow Threshold",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0003",
+     "title": "Glow Radius",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0004",
+     "title": "Glow Intensity",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0005",
+     "title": "Composite Original",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0006",
+     "title": "Glow Operation",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0007",
+     "title": "Glow Colors",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0008",
+     "title": "Color Looping",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0009",
+     "title": "Color Loops",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0010",
+     "title": "Color Phase",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0011",
+     "title": "A & B Midpoint",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0012",
+     "title": "Color A",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0013",
+     "title": "Color B",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0014",
+     "title": "Glow Dimensions",
+     "group": "Effect Controls"
+    }
+   ],
+   "wanted": "ADBE Glo2-0002",
+   "hard": true
+  },
+  {
+   "id": "ho-noise-rough",
+   "phrase": "make the clouds rougher with more detail",
+   "target": "Fractal Noise",
+   "candidates": [
+    {
+     "key": "ADBE Fractal Noise-0001",
+     "title": "Fractal Type",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Fractal Noise-0002",
+     "title": "Noise Type",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Fractal Noise-0003",
+     "title": "Invert",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Fractal Noise-0004",
+     "title": "Contrast",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Fractal Noise-0005",
+     "title": "Brightness",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Fractal Noise-0006",
+     "title": "Overflow",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Fractal Noise-0007",
+     "title": "Transform",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Fractal Noise-0008",
+     "title": "Complexity",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Fractal Noise-0009",
+     "title": "Evolution",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Fractal Noise-0010",
+     "title": "Opacity",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Fractal Noise-0011",
+     "title": "Blending Mode",
+     "group": "Effect Controls"
+    }
+   ],
+   "wanted": "ADBE Fractal Noise-0008"
+  },
+  {
+   "id": "ho-de-position",
+   "phrase": "Verschiebe es nach oben",
+   "target": "Layer",
+   "candidates": [
+    {
+     "key": "ADBE Transform Group/ADBE Anchor Point",
+     "title": "Anchor Point",
+     "group": "Transform"
+    },
+    {
+     "key": "ADBE Transform Group/ADBE Position",
+     "title": "Position",
+     "group": "Transform"
+    },
+    {
+     "key": "ADBE Transform Group/ADBE Scale",
+     "title": "Scale",
+     "group": "Transform"
+    },
+    {
+     "key": "ADBE Transform Group/ADBE Rotate Z",
+     "title": "Rotation",
+     "group": "Transform"
+    },
+    {
+     "key": "ADBE Transform Group/ADBE Opacity",
+     "title": "Opacity",
+     "group": "Transform"
+    }
+   ],
+   "wanted": "ADBE Transform Group/ADBE Position",
+   "lang": "de"
+  },
+  {
+   "id": "ho-ja-soft",
+   "phrase": "影をもっとぼかして",
+   "target": "Drop Shadow",
+   "candidates": [
+    {
+     "key": "ADBE Drop Shadow-0001",
+     "title": "Shadow Color",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Drop Shadow-0002",
+     "title": "Opacity",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Drop Shadow-0003",
+     "title": "Direction",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Drop Shadow-0004",
+     "title": "Distance",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Drop Shadow-0005",
+     "title": "Softness",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Drop Shadow-0006",
+     "title": "Shadow Only",
+     "group": "Effect Controls"
+    }
+   ],
+   "wanted": "ADBE Drop Shadow-0005",
+   "lang": "ja"
+  },
+  {
+   "id": "ho-es-brillo",
+   "phrase": "haz que el brillo sea más intenso",
+   "target": "Glow",
+   "candidates": [
+    {
+     "key": "ADBE Glo2-0001",
+     "title": "Glow Based On",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0002",
+     "title": "Glow Threshold",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0003",
+     "title": "Glow Radius",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0004",
+     "title": "Glow Intensity",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0005",
+     "title": "Composite Original",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0006",
+     "title": "Glow Operation",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0007",
+     "title": "Glow Colors",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0008",
+     "title": "Color Looping",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0009",
+     "title": "Color Loops",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0010",
+     "title": "Color Phase",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0011",
+     "title": "A & B Midpoint",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0012",
+     "title": "Color A",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0013",
+     "title": "Color B",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0014",
+     "title": "Glow Dimensions",
+     "group": "Effect Controls"
+    }
+   ],
+   "wanted": "ADBE Glo2-0004",
+   "lang": "es"
+  },
+  {
+   "id": "ho-null-fast-fill",
+   "phrase": "speed it up",
+   "target": "Fill",
+   "candidates": [
+    {
+     "key": "ADBE Fill-0001",
+     "title": "Fill Mask",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Fill-0002",
+     "title": "All Masks",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Fill-0003",
+     "title": "Color",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Fill-0004",
+     "title": "Invert",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Fill-0005",
+     "title": "Horizontal Feather",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Fill-0006",
+     "title": "Vertical Feather",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Fill-0007",
+     "title": "Opacity",
+     "group": "Effect Controls"
+    }
+   ],
+   "wanted": null,
+   "hard": true
+  },
+  {
+   "id": "ho-null-glow-mood",
+   "phrase": "give it a dreamier feel",
+   "target": "Glow",
+   "candidates": [
+    {
+     "key": "ADBE Glo2-0001",
+     "title": "Glow Based On",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0002",
+     "title": "Glow Threshold",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0003",
+     "title": "Glow Radius",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0004",
+     "title": "Glow Intensity",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0005",
+     "title": "Composite Original",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0006",
+     "title": "Glow Operation",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0007",
+     "title": "Glow Colors",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0008",
+     "title": "Color Looping",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0009",
+     "title": "Color Loops",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0010",
+     "title": "Color Phase",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0011",
+     "title": "A & B Midpoint",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0012",
+     "title": "Color A",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0013",
+     "title": "Color B",
+     "group": "Effect Controls"
+    },
+    {
+     "key": "ADBE Glo2-0014",
+     "title": "Glow Dimensions",
+     "group": "Effect Controls"
+    }
+   ],
+   "wanted": null
+  }
+ ]
+}

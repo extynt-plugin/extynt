@@ -1,0 +1,13 @@
+Set up extynt as an MCP server for me. # prompt for the user's coding agent
+Server name: extynt # prompt for the user's coding agent
+Transport: stdio # prompt for the user's coding agent
+Command: # prompt for the user's coding agent
+Arguments: # prompt for the user's coding agent
+Steps: # prompt for the user's coding agent
+2. Add this server to your MCP configuration, using the mcpServers format if your agent supports it. If you cannot edit that configuration yourself, tell me the exact steps for this agent and stop there. # prompt for the user's coding agent
+3. Restart or reload so the server starts. # prompt for the user's coding agent
+4. Check that the server is connected and that a tool named ae_status is listed. # prompt for the user's coding agent
+5. Tell me whether it worked, and if not, what failed. Change nothing else. # prompt for the user's coding agent
+~/Library/Application Support/extynt/bin/extynt-mcp # prompt for the user's coding agent
+Replace ~ with the full path of my home folder, because configuration files do not expand it. # prompt for the user's coding agent
+Use the command and arguments exactly as written; cmd expands %ProgramData% itself. # prompt for the user's coding agent

@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.strict.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "dist",
+    "tsBuildInfoFile": "dist/.tsbuildinfo",
+    "declaration": true,
+    "composite": true
+  },
+  "references": [{ "path": "../decode" }, { "path": "../project-graph" }],
+  "include": ["src/**/*.ts", "tests/**/*.ts"]
+}

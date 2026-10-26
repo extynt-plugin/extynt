@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "extynt": {
+      "command": "sh",
+      "args": [
+        "./bin/extynt-mcp"
+      ]
+    }
+  }
+}

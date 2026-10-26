@@ -1,0 +1,23 @@
+// Public surface of @extynt/decode: composable decoders that turn untrusted JSON-like input into exact TypeScript types.
+export { DecodeFailure, decode, decodeJson, decodeOrCode, decodeOrThrow, isNotJson } from "./decoder.js";
+export { Failure, fail, failShowing } from "./failure.js";
+export { isFiniteNumber } from "./guards.js";
+export type { AnyDecoder, DecodeError, DecodeResult, Decoder, Infer } from "./decoder.js";
+export { boolean, literal, nullValue, number, string } from "./primitives.js";
+export type { Literal, NumberLimits, StringLimits } from "./primitives.js";
+export { array, lazy, map, nullable, record, refine, tuple } from "./composites.js";
+export type { ArrayLimits, TupleOf } from "./composites.js";
+export { object, optional, strictObject } from "./object.js";
+export type { ObjectOf, OptionalDecoder, Shape } from "./object.js";
+export { taggedUnion, union } from "./union.js";
+export { brand, rawJson } from "./brand.js";
+export type { Brand, RawJson } from "./brand.js";
+export { absentAs, fallback, skippingInvalid, skippingInvalidRecord } from "./lenient.js";
+export { JSON_NESTING_LIMIT, isJsonArray, isJsonObject, jsonObject, jsonValue, jsonValueWithin, wireJson } from "./json.js";
+export type { JsonArray, JsonObject, JsonValue } from "./json.js";
+export { decodeModelJson, stripCodeFence } from "./model-json.js";
+export { presentFields } from "./present-fields.js";
+export type { Present } from "./present-fields.js";
+export { errorCauseCode } from "./error-cause.js";
+export { accepts, failureText, instanceOf, onError, onFailureText } from "./boundary.js";
+export { Foreign, importFunctions } from "./foreign.js";

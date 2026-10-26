@@ -1,0 +1,117 @@
+{
+ "description": "Font description matching against a fixed inventory of system-shipped installed families: every installed family a motion designer would accept for the phrase, or an empty list when no installed family is meant.",
+ "cases": [
+  {
+   "id": "ho-bold-slab",
+   "phrase": "a chunky slab serif for a western poster",
+   "accepted": [
+    "Bookman Old Style",
+    "Playbill",
+    "Rockwell",
+    "Rockwell Extra Bold",
+    "Superclarendon",
+    "Wide Latin"
+   ]
+  },
+  {
+   "id": "ho-code",
+   "phrase": "a coding font with fixed width letters",
+   "accepted": [
+    "Consolas",
+    "Menlo",
+    "Monaco",
+    "SF Mono",
+    "Cascadia Mono",
+    "Andale Mono",
+    "Lucida Console",
+    "Courier New"
+   ],
+   "hard": true
+  },
+  {
+   "id": "ho-name-futura",
+   "phrase": "futura",
+   "accepted": [
+    "Futura"
+   ]
+  },
+  {
+   "id": "ho-gothic-blackletter",
+   "phrase": "gothic blackletter like a metal band",
+   "accepted": [
+    "Blackadder ITC",
+    "Old English Text MT"
+   ],
+   "hard": true
+  },
+  {
+   "id": "ho-de-handschrift",
+   "phrase": "eine verspielte Handschrift",
+   "accepted": [
+    "Bradley Hand",
+    "Chalkboard",
+    "Chalkboard SE",
+    "Comic Sans MS",
+    "Ink Free",
+    "Kristen ITC",
+    "Marker Felt",
+    "Mistral",
+    "Noteworthy",
+    "Segoe Print"
+   ],
+   "lang": "de"
+  },
+  {
+   "id": "ho-es-elegante",
+   "phrase": "una letra serif elegante para una boda",
+   "accepted": [
+    "Baskerville",
+    "Big Caslon",
+    "Bodoni 72",
+    "Bodoni MT",
+    "Cochin",
+    "Didot",
+    "Garamond",
+    "Hoefler Text",
+    "Optima",
+    "Palatino"
+   ],
+   "lang": "es",
+   "hard": true
+  },
+  {
+   "id": "ho-ja-mincho",
+   "phrase": "明朝体のフォント",
+   "accepted": [
+    "Hiragino Mincho ProN",
+    "Yu Mincho",
+    "MS Mincho"
+   ],
+   "lang": "ja"
+  },
+  {
+   "id": "ho-impact-headline",
+   "phrase": "heavy condensed sans for a news headline",
+   "accepted": [
+    "Arial Black",
+    "Arial Narrow",
+    "Avenir Next Condensed",
+    "Bernard MT Condensed",
+    "DIN Condensed",
+    "Franklin Gothic Medium",
+    "Impact"
+   ]
+  },
+  {
+   "id": "ho-none-bigger",
+   "phrase": "center the subtitle under the logo",
+   "accepted": []
+  },
+  {
+   "id": "ho-none-comic-neue",
+   "phrase": "Comic Neue",
+   "accepted": [],
+   "hard": true
+  }
+ ]
+}

@@ -1,0 +1,4 @@
+Bearer # HTTP authorization scheme, not shown
+Accept # HTTP header name, not shown
+Files # DataTransfer type name, not shown
+chrome.chips. # template type prefix for the chip keys, not shown

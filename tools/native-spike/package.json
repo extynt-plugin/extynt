@@ -1,0 +1,14 @@
+{
+  "name": "@extynt/native-spike",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Measures and verifies the extynt native After Effects plugin: bench, compare against the ExtendScript probe, dump, and the stability pass. Runs as TypeScript through Node's type stripping.",
+  "dependencies": {
+    "@extynt/decode": "workspace:*"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "pnpm --workspace-root build && node --test tests/*.test.ts"
+  }
+}

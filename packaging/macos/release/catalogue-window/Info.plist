@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- extynt Catalogue.app: the small window that learns the installed effects once, right after install. No Dock icon. -->
+<plist version="1.0">
+<dict>
+    <key>CFBundleIdentifier</key><string>com.extynt.catalogue-window</string>
+    <key>CFBundleExecutable</key><string>extynt Catalogue</string>
+    <key>CFBundleName</key><string>extynt</string>
+    <key>CFBundleDisplayName</key><string>extynt</string>
+    <key>CFBundlePackageType</key><string>APPL</string>
+    <key>CFBundleShortVersionString</key><string>__VERSION__</string>
+    <key>CFBundleVersion</key><string>__VERSION__</string>
+    <key>LSMinimumSystemVersion</key><string>13.5</string>
+    <key>LSUIElement</key><true/>
+    <key>NSPrincipalClass</key><string>NSApplication</string>
+    <key>NSRequiresAquaSystemAppearance</key><false/>
+</dict>
+</plist>

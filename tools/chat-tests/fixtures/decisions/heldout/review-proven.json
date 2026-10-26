@@ -1,0 +1,15 @@
+{
+ "description": "Held-out review pre-screen cases, not used to fit the bands.",
+ "cases": [
+  {"id": "ho-solid-name", "goal": "Rename the solid to BG and lock it", "specs": ["Layer named BG and locked"], "batches": 1, "exact": 2, "approximate": 0, "unconfirmed": 0, "operations": ["set_layer_name", "set_layer_attribute"], "expected": true},
+  {"id": "ho-de-duration", "goal": "Setze die Dauer der Komposition auf 10 Sekunden", "specs": ["Composition duration 10 s"], "batches": 1, "exact": 1, "approximate": 0, "unconfirmed": 0, "operations": ["set_composition_settings"], "expected": true, "lang": "de"},
+  {"id": "ho-es-scale", "goal": "Pon la escala de todas las capas al 80 por ciento", "specs": ["Todas las capas a escala 80"], "batches": 1, "exact": 6, "approximate": 0, "unconfirmed": 0, "operations": ["set_layer_property"], "expected": true, "lang": "es"},
+  {"id": "ho-ja-comp", "goal": "1920x1080の新しいコンポジションMAINを作って", "specs": ["コンポジションMAINは1920x1080"], "batches": 1, "exact": 1, "approximate": 0, "unconfirmed": 0, "operations": ["create_composition"], "expected": true, "lang": "ja"},
+  {"id": "ho-remove-markers", "goal": "Remove every marker from the footage layer", "specs": ["No markers on the footage layer"], "batches": 1, "exact": 1, "approximate": 0, "unconfirmed": 0, "operations": ["remove_marker"], "expected": true},
+  {"id": "ho-de-scene", "goal": "Zeichne eine Berglandschaft mit Nebel", "specs": ["Berge in mehreren Ebenen", "Nebel im Vordergrund"], "batches": 3, "exact": 15, "approximate": 0, "unconfirmed": 0, "operations": ["create_layer", "ensure_layer_style"], "expected": false, "lang": "de"},
+  {"id": "ho-es-glow", "goal": "Haz que el texto brille con un resplandor suave", "specs": ["El texto brilla suavemente"], "batches": 1, "exact": 4, "approximate": 0, "unconfirmed": 0, "operations": ["ensure_effect", "set_effect_control"], "expected": false, "lang": "es"},
+  {"id": "ho-ja-motion", "goal": "タイトルを滑らかにフェードインさせて", "specs": ["タイトルが滑らかにフェードイン"], "batches": 2, "exact": 5, "approximate": 0, "unconfirmed": 0, "operations": ["animate_property"], "expected": false, "lang": "ja"},
+  {"id": "ho-coerced", "goal": "Set the camera zoom to 1500", "specs": ["Camera zoom 1500"], "batches": 1, "exact": 0, "approximate": 1, "unconfirmed": 0, "operations": ["set_camera_options"], "expected": false},
+  {"id": "ho-polish", "goal": "Polish the colour grade so it looks cinematic", "specs": ["Cinematic grade"], "batches": 1, "exact": 6, "approximate": 0, "unconfirmed": 0, "operations": ["ensure_effect", "set_effect_control"], "expected": false, "hard": true}
+ ]
+}

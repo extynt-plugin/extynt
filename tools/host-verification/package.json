@@ -1,0 +1,11 @@
+{
+  "name": "@extynt/host-verification",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Live After Effects verification kit: generates one ExtendScript that applies every plan type, reads back exactly what After Effects holds, and an analyzer that turns the report into host verification status.",
+  "dependencies": { "@extynt/decode": "workspace:*", "@extynt/action-plan": "workspace:*", "@extynt/capability-catalogue": "workspace:*", "@extynt/host-ae": "workspace:*", "@extynt/mcp-server": "workspace:*", "@extynt/project-graph": "workspace:*" },
+  "bin": { "extynt-host-verification": "./dist/src/cli.js" },
+  "exports": { ".": { "types": "./dist/src/index.d.ts", "import": "./dist/src/index.js" } },
+  "scripts": { "build": "tsc -p tsconfig.json", "typecheck": "tsc -p tsconfig.json --noEmit", "test": "pnpm build && node ../../scripts/run-tests.ts dist/tests/*.test.js" }
+}

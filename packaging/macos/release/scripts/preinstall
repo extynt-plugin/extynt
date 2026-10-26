@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# Runs as root before the payload lands. Stops the install with a clear message when it cannot succeed: nobody is
+# signed in at the console, or no supported After Effects is installed (the plugin has nowhere to go). After Effects may stay
+# open: the plugin file is replaced in place and loads the next time After Effects starts (the catalogue window says so), and
+# the catalogue runs in a headless engine of its own.
+applications="${EXTYNT_APPLICATIONS_DIR:-/Applications}"
+console_user="$(stat -f %Su /dev/console)"
+case "${console_user}" in
+  root|loginwindow|"") echo "extynt installs its helper for the signed-in user; sign in at the Mac's console and run the installer again." >&2; exit 1 ;;
+esac
+for year in 2025 2026; do
+  if [[ -d "${applications}/Adobe After Effects ${year}/Adobe After Effects ${year}.app" ]]; then exit 0; fi
+done
+echo "extynt needs Adobe After Effects 2025 or 2026 in ${applications}; none was found." >&2
+exit 1

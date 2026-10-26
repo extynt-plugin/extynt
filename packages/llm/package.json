@@ -1,0 +1,29 @@
+{
+  "name": "@extynt/llm",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
+    },
+    "./openai": {
+      "types": "./dist/src/openai.d.ts",
+      "import": "./dist/src/openai.js"
+    },
+    "./anthropic": {
+      "types": "./dist/src/anthropic.d.ts",
+      "import": "./dist/src/anthropic.js"
+    }
+  },
+  "dependencies": {
+    "@extynt/decode": "workspace:*",
+    "@extynt/project-graph": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "pnpm build && node ../../scripts/run-tests.ts dist/tests/*.test.js"
+  }
+}

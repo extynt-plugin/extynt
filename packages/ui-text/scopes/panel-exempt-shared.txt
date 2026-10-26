@@ -1,0 +1,2 @@
+apps/panel/runtime/icons.ts # SVG path data, not words
+apps/panel/runtime/gallery-icons.ts # SVG path data, not words

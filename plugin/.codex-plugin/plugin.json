@@ -1,0 +1,20 @@
+{
+  "name": "extynt",
+  "version": "0.1.0",
+  "description": "An LLM-agnostic runtime for controlling creative applications through MCP, plugins, and sidecars.",
+  "author": {
+    "name": "extynt",
+    "email": "hello@extynt.com"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "extynt",
+    "shortDescription": "Control After Effects through extynt.",
+    "longDescription": "An LLM-agnostic runtime for controlling creative applications through MCP, plugins, and sidecars. Inspect After Effects projects and apply typed, approved action plans through the local extynt sidecar.",
+    "developerName": "extynt",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "Help me change my After Effects project with extynt."
+  },
+  "mcpServers": "./.mcp.json"
+}

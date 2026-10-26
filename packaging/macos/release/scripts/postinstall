@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# Runs as root after the payload lands. The root half of install.sh (old-install sweep, host library, plugin) runs here;
+# the per-user half (sidecar, login service) runs as the console user inside that user's login session.
+version="__VERSION__"
+system_root="${EXTYNT_SYSTEM_SUPPORT_DIR:-/Library/Application Support}/extynt"
+payload="${system_root}/installer/${version}"
+
+console_user="$(stat -f %Su /dev/console)"
+case "${console_user}" in
+  root|loginwindow|"") echo "extynt installs its helper for the signed-in user; nobody is signed in at the console." >&2; exit 1 ;;
+esac
+user_home="$(dscl . -read "/Users/${console_user}" NFSHomeDirectory | sed 's/^NFSHomeDirectory: //')"
+user_id="$(id -u "${console_user}")"
+log_dir="${user_home}/Library/Application Support/extynt"
+log_file="${log_dir}/installer.log"
+
+# The root half executes scripts from the payload, so the payload must be root's and closed to writes first.
+lock_payload() {
+  chown -R root:wheel "${payload}"
+  chmod -R go-w "${payload}"
+}
+
+open_log() {
+  sudo -u "${console_user}" mkdir -p "${log_dir}"
+  sudo -u "${console_user}" touch "${log_file}"
+  exec >> "${log_file}" 2>&1
+  echo "== extynt installer ${version} $(date -u +%Y-%m-%dT%H:%M:%SZ) for ${console_user}"
+}
+
+run_system_half() {
+  env HOME="${user_home}" EXTYNT_INSTALL_CONTEXT=pkg EXTYNT_SUDO=env "${payload}/install.sh" --system-only
+}
+
+run_user_half() {
+  launchctl asuser "${user_id}" sudo -u "${console_user}" -H env HOME="${user_home}" EXTYNT_INSTALL_CONTEXT=pkg "${payload}/install.sh" --user-only
+}
+
+# The effect catalogue's window, opened as the signed-in user; it starts the catalogue in the background and the package
+# finishes at once. Without a GUI session (a remote `installer` run) it does not open, and the catalogue runs the first
+# time After Effects starts instead.
+open_catalogue_window() {
+  launchctl asuser "${user_id}" sudo -u "${console_user}" -H /usr/bin/open -n "${payload}/catalogue-window/extynt Catalogue.app" ||
+    echo "The effect catalogue window did not open; the catalogue runs when After Effects next starts."
+}
+
+# Keep only the payload that was just installed; uninstall.sh lives inside it and is also linked at a fixed path.
+prune_old_payloads() {
+  local old
+  for old in "${system_root}/installer/"*; do
+    [[ "${old}" == "${payload}" ]] || rm -rf "${old}"
+  done
+  ln -sfn "${payload}/uninstall.sh" "${system_root}/uninstall.sh"
+}
+
+# The language extynt's panel starts in (docs/architecture/ui-languages.md). Installer shows the first of the user's preferred
+# languages that the package has pages for (en, es, de, fr, ja, zh-Hans), so that is the installer's language.
+ui_language_of() {
+  case "$1" in
+    zh-Hans*|zh_Hans*|zh-CN*|zh_CN*|zh-SG*|zh_SG*) echo "zh-Hans" ;;
+    en*|es*|de*|fr*|ja*) echo "${1:0:2}" ;;
+  esac
+}
+
+installer_language() {
+  local tag code
+  while IFS= read -r tag; do
+    tag="$(tr -d ' ",()' <<<"${tag}")"
+    code="$(ui_language_of "${tag}")"
+    if [[ -n "${code}" ]]; then echo "${code}"; return 0; fi
+  done < <(sudo -u "${console_user}" defaults read -g AppleLanguages 2>/dev/null)
+  return 0
+}
+
+# ui-language in the console user's state folder, first line the code. No supported language: no file, the panel then follows After Effects.
+write_ui_language() {
+  local code
+  code="$(installer_language)"
+  [[ -n "${code}" ]] || return 0
+  printf '%s\n' "${code}" | sudo -u "${console_user}" tee "${log_dir}/ui-language" > /dev/null
+}
+
+lock_payload
+open_log
+write_ui_language
+run_system_half
+run_user_half
+prune_old_payloads
+open_catalogue_window
+echo "== extynt installer finished"
+exit 0

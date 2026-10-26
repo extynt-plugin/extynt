@@ -1,0 +1,328 @@
+{
+ "description": "Property habits: a phrase that fits several properties of one layer equally, with the user's use counts by property key; with no habit the answer is none, with it the habitual property, and a property the phrase names outright still wins.",
+ "cases": [
+  {
+   "id": "opacity-none",
+   "phrase": "fade the opacity",
+   "target": "Shape Layer",
+   "candidates": [
+    {
+     "key": "ADBE Vector Graphic - Fill/ADBE Vector Fill Color",
+     "title": "Fill Color",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Color",
+     "title": "Stroke Color",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Fill/ADBE Vector Fill Opacity",
+     "title": "Fill Opacity",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Opacity",
+     "title": "Stroke Opacity",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Width",
+     "title": "Stroke Width",
+     "group": "Contents"
+    }
+   ],
+   "habit": {},
+   "wanted": null
+  },
+  {
+   "id": "opacity-fill",
+   "phrase": "fade the opacity",
+   "target": "Shape Layer",
+   "candidates": [
+    {
+     "key": "ADBE Vector Graphic - Fill/ADBE Vector Fill Color",
+     "title": "Fill Color",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Color",
+     "title": "Stroke Color",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Fill/ADBE Vector Fill Opacity",
+     "title": "Fill Opacity",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Opacity",
+     "title": "Stroke Opacity",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Width",
+     "title": "Stroke Width",
+     "group": "Contents"
+    }
+   ],
+   "habit": {
+    "ADBE Vector Graphic - Fill/ADBE Vector Fill Opacity": 6
+   },
+   "wanted": "ADBE Vector Graphic - Fill/ADBE Vector Fill Opacity"
+  },
+  {
+   "id": "opacity-explicit",
+   "phrase": "lower the stroke opacity",
+   "target": "Shape Layer",
+   "candidates": [
+    {
+     "key": "ADBE Vector Graphic - Fill/ADBE Vector Fill Color",
+     "title": "Fill Color",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Color",
+     "title": "Stroke Color",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Fill/ADBE Vector Fill Opacity",
+     "title": "Fill Opacity",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Opacity",
+     "title": "Stroke Opacity",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Width",
+     "title": "Stroke Width",
+     "group": "Contents"
+    }
+   ],
+   "habit": {
+    "ADBE Vector Graphic - Fill/ADBE Vector Fill Opacity": 6
+   },
+   "wanted": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Opacity"
+  },
+  {
+   "id": "color-none",
+   "phrase": "change the color",
+   "target": "Shape Layer",
+   "candidates": [
+    {
+     "key": "ADBE Vector Graphic - Fill/ADBE Vector Fill Color",
+     "title": "Fill Color",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Color",
+     "title": "Stroke Color",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Fill/ADBE Vector Fill Opacity",
+     "title": "Fill Opacity",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Opacity",
+     "title": "Stroke Opacity",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Width",
+     "title": "Stroke Width",
+     "group": "Contents"
+    }
+   ],
+   "habit": {},
+   "wanted": null
+  },
+  {
+   "id": "color-stroke",
+   "phrase": "change the color",
+   "target": "Shape Layer",
+   "candidates": [
+    {
+     "key": "ADBE Vector Graphic - Fill/ADBE Vector Fill Color",
+     "title": "Fill Color",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Color",
+     "title": "Stroke Color",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Fill/ADBE Vector Fill Opacity",
+     "title": "Fill Opacity",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Opacity",
+     "title": "Stroke Opacity",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Width",
+     "title": "Stroke Width",
+     "group": "Contents"
+    }
+   ],
+   "habit": {
+    "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Color": 4
+   },
+   "wanted": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Color"
+  },
+  {
+   "id": "width-habit-elsewhere",
+   "phrase": "make the stroke width bigger",
+   "target": "Shape Layer",
+   "candidates": [
+    {
+     "key": "ADBE Vector Graphic - Fill/ADBE Vector Fill Color",
+     "title": "Fill Color",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Color",
+     "title": "Stroke Color",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Fill/ADBE Vector Fill Opacity",
+     "title": "Fill Opacity",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Opacity",
+     "title": "Stroke Opacity",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Width",
+     "title": "Stroke Width",
+     "group": "Contents"
+    }
+   ],
+   "habit": {
+    "ADBE Vector Graphic - Fill/ADBE Vector Fill Color": 4
+   },
+   "wanted": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Width"
+  },
+  {
+   "id": "opacity-es",
+   "lang": "es",
+   "phrase": "baja la opacidad",
+   "target": "Shape Layer",
+   "candidates": [
+    {
+     "key": "ADBE Vector Graphic - Fill/ADBE Vector Fill Color",
+     "title": "Fill Color",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Color",
+     "title": "Stroke Color",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Fill/ADBE Vector Fill Opacity",
+     "title": "Fill Opacity",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Opacity",
+     "title": "Stroke Opacity",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Width",
+     "title": "Stroke Width",
+     "group": "Contents"
+    }
+   ],
+   "habit": {
+    "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Opacity": 5
+   },
+   "wanted": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Opacity"
+  },
+  {
+   "id": "color-de",
+   "lang": "de",
+   "phrase": "ändere die Farbe",
+   "target": "Shape Layer",
+   "candidates": [
+    {
+     "key": "ADBE Vector Graphic - Fill/ADBE Vector Fill Color",
+     "title": "Fill Color",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Color",
+     "title": "Stroke Color",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Fill/ADBE Vector Fill Opacity",
+     "title": "Fill Opacity",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Opacity",
+     "title": "Stroke Opacity",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Width",
+     "title": "Stroke Width",
+     "group": "Contents"
+    }
+   ],
+   "habit": {
+    "ADBE Vector Graphic - Fill/ADBE Vector Fill Color": 5
+   },
+   "wanted": "ADBE Vector Graphic - Fill/ADBE Vector Fill Color"
+  },
+  {
+   "id": "opacity-ja",
+   "lang": "ja",
+   "phrase": "不透明度を下げる",
+   "target": "Shape Layer",
+   "candidates": [
+    {
+     "key": "ADBE Vector Graphic - Fill/ADBE Vector Fill Color",
+     "title": "Fill Color",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Color",
+     "title": "Stroke Color",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Fill/ADBE Vector Fill Opacity",
+     "title": "Fill Opacity",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Opacity",
+     "title": "Stroke Opacity",
+     "group": "Contents"
+    },
+    {
+     "key": "ADBE Vector Graphic - Stroke/ADBE Vector Stroke Width",
+     "title": "Stroke Width",
+     "group": "Contents"
+    }
+   ],
+   "habit": {
+    "ADBE Vector Graphic - Fill/ADBE Vector Fill Opacity": 5
+   },
+   "wanted": "ADBE Vector Graphic - Fill/ADBE Vector Fill Opacity"
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+  "description": "Ended in prose: whether a turn ended in the assistant's own words reporting the work, with nothing pending (not sealed, failed, asking or refused).",
+  "cases": [
+    {"id": "report", "answer": "I added the glow and the blur to the title.", "sealed": false, "failed": false, "askedUser": false, "refused": false, "expected": true},
+    {"id": "done", "answer": "Done. The camera now pushes in over four seconds.", "sealed": false, "failed": false, "askedUser": false, "refused": false, "expected": true},
+    {"id": "sealed", "answer": "I applied the plan and am waiting for the host to confirm.", "sealed": true, "failed": false, "askedUser": false, "refused": false, "expected": false, "hard": true},
+    {"id": "failed", "answer": "I could not add the effect.", "sealed": false, "failed": true, "askedUser": false, "refused": false, "expected": false, "hard": true},
+    {"id": "asks", "answer": "Which composition should I put the glow in?", "sealed": false, "failed": false, "askedUser": true, "refused": false, "expected": false},
+    {"id": "refused", "answer": "I cannot do that here.", "sealed": false, "failed": false, "askedUser": false, "refused": true, "expected": false, "hard": true},
+    {"id": "empty", "answer": "", "sealed": false, "failed": false, "askedUser": false, "refused": false, "expected": false},
+    {"id": "whitespace", "answer": "   ", "sealed": false, "failed": false, "askedUser": false, "refused": false, "expected": false},
+    {"id": "long-report", "answer": "The title now has a glow, a soft shadow and a slow fade. I left the background alone and did not touch the logo.", "sealed": false, "failed": false, "askedUser": false, "refused": false, "expected": true},
+    {"id": "report-with-question-word", "answer": "I added the glow. Let me know if you want it stronger.", "sealed": false, "failed": false, "askedUser": false, "refused": false, "expected": true, "hard": true},
+    {"id": "sealed-but-words", "answer": "Everything is built and ready.", "sealed": true, "failed": false, "askedUser": false, "refused": false, "expected": false, "hard": true},
+    {"id": "failed-but-words", "answer": "Partly done: the blur was added but the glow failed.", "sealed": false, "failed": true, "askedUser": false, "refused": false, "expected": false, "hard": true},
+    {"id": "asks-after-work", "answer": "I added the blur. Should the glow be blue or white?", "sealed": false, "failed": false, "askedUser": true, "refused": false, "expected": false, "hard": true},
+    {"id": "short-ok", "answer": "Added.", "sealed": false, "failed": false, "askedUser": false, "refused": false, "expected": true},
+    {"answer": "I added the glow to the title. Do you want it brighter?", "expected": false, "sealed": false, "failed": false, "askedUser": false, "refused": false, "id": "v-q-end", "lang": "en", "hard": true},
+    {"answer": "Añadí el brillo al título y ajusté el desenfoque.", "expected": true, "sealed": false, "failed": false, "askedUser": false, "refused": false, "id": "v-es-report", "lang": "es", "hard": true},
+    {"answer": "¿En qué composición quieres que ponga el brillo?", "expected": false, "sealed": false, "failed": false, "askedUser": false, "refused": false, "id": "v-es-ask", "lang": "es", "hard": true},
+    {"answer": "Ich habe den Glow zum Titel hinzugefügt und die Unschärfe angepasst.", "expected": true, "sealed": false, "failed": false, "askedUser": false, "refused": false, "id": "v-de-report", "lang": "de", "hard": true},
+    {"answer": "In welcher Komposition soll ich den Glow einfügen?", "expected": false, "sealed": false, "failed": false, "askedUser": false, "refused": false, "id": "v-de-ask", "lang": "de", "hard": true},
+    {"answer": "J'ai ajouté la lueur au titre et réglé le flou.", "expected": true, "sealed": false, "failed": false, "askedUser": false, "refused": false, "id": "v-fr-report", "lang": "fr", "hard": true},
+    {"answer": "Dans quelle composition dois-je ajouter la lueur ?", "expected": false, "sealed": false, "failed": false, "askedUser": false, "refused": false, "id": "v-fr-ask", "lang": "fr", "hard": true},
+    {"answer": "タイトルにグローを追加し、ぼかしを調整しました。", "expected": true, "sealed": false, "failed": false, "askedUser": false, "refused": false, "id": "v-ja-report", "lang": "ja", "hard": true},
+    {"answer": "どのコンポジションにグローを入れますか？", "expected": false, "sealed": false, "failed": false, "askedUser": false, "refused": false, "id": "v-ja-ask", "lang": "ja", "hard": true},
+    {"answer": "我已经给标题加了发光并调整了模糊。", "expected": true, "sealed": false, "failed": false, "askedUser": false, "refused": false, "id": "v-zh-report", "lang": "zh", "hard": true},
+    {"answer": "你想把发光加到哪个合成里？", "expected": false, "sealed": false, "failed": false, "askedUser": false, "refused": false, "id": "v-zh-ask", "lang": "zh", "hard": true}
+  ]
+}

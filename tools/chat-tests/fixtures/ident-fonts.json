@@ -1,0 +1,249 @@
+{
+  "note": "A synthetic font census: invented families and PostScript names, not read from any host. A real capture stays outside the repository.",
+  "source": "synthetic",
+  "totalReported": 48,
+  "familiesReported": 12,
+  "duplicatePostScriptNames": 0,
+  "fonts": [
+    {
+      "family": "Fixture Condensed",
+      "style": "Bold",
+      "postScriptName": "FixtureCondensed-Bold"
+    },
+    {
+      "family": "Fixture Condensed",
+      "style": "Bold Italic",
+      "postScriptName": "FixtureCondensed-BoldItalic"
+    },
+    {
+      "family": "Fixture Condensed",
+      "style": "Italic",
+      "postScriptName": "FixtureCondensed-Italic"
+    },
+    {
+      "family": "Fixture Condensed",
+      "style": "Regular",
+      "postScriptName": "FixtureCondensed-Regular"
+    },
+    {
+      "family": "Fixture Display",
+      "style": "Bold",
+      "postScriptName": "FixtureDisplay-Bold"
+    },
+    {
+      "family": "Fixture Display",
+      "style": "Bold Italic",
+      "postScriptName": "FixtureDisplay-BoldItalic"
+    },
+    {
+      "family": "Fixture Display",
+      "style": "Italic",
+      "postScriptName": "FixtureDisplay-Italic"
+    },
+    {
+      "family": "Fixture Display",
+      "style": "Regular",
+      "postScriptName": "FixtureDisplay-Regular"
+    },
+    {
+      "family": "Fixture Mono",
+      "style": "Bold",
+      "postScriptName": "FixtureMono-Bold"
+    },
+    {
+      "family": "Fixture Mono",
+      "style": "Bold Italic",
+      "postScriptName": "FixtureMono-BoldItalic"
+    },
+    {
+      "family": "Fixture Mono",
+      "style": "Italic",
+      "postScriptName": "FixtureMono-Italic"
+    },
+    {
+      "family": "Fixture Mono",
+      "style": "Regular",
+      "postScriptName": "FixtureMono-Regular"
+    },
+    {
+      "family": "Fixture Rounded",
+      "style": "Bold",
+      "postScriptName": "FixtureRounded-Bold"
+    },
+    {
+      "family": "Fixture Rounded",
+      "style": "Bold Italic",
+      "postScriptName": "FixtureRounded-BoldItalic"
+    },
+    {
+      "family": "Fixture Rounded",
+      "style": "Italic",
+      "postScriptName": "FixtureRounded-Italic"
+    },
+    {
+      "family": "Fixture Rounded",
+      "style": "Regular",
+      "postScriptName": "FixtureRounded-Regular"
+    },
+    {
+      "family": "Fixture Sans",
+      "style": "Bold",
+      "postScriptName": "FixtureSans-Bold"
+    },
+    {
+      "family": "Fixture Sans",
+      "style": "Bold Italic",
+      "postScriptName": "FixtureSans-BoldItalic"
+    },
+    {
+      "family": "Fixture Sans",
+      "style": "Italic",
+      "postScriptName": "FixtureSans-Italic"
+    },
+    {
+      "family": "Fixture Sans",
+      "style": "Regular",
+      "postScriptName": "FixtureSans-Regular"
+    },
+    {
+      "family": "Fixture Script",
+      "style": "Bold",
+      "postScriptName": "FixtureScript-Bold"
+    },
+    {
+      "family": "Fixture Script",
+      "style": "Bold Italic",
+      "postScriptName": "FixtureScript-BoldItalic"
+    },
+    {
+      "family": "Fixture Script",
+      "style": "Italic",
+      "postScriptName": "FixtureScript-Italic"
+    },
+    {
+      "family": "Fixture Script",
+      "style": "Regular",
+      "postScriptName": "FixtureScript-Regular"
+    },
+    {
+      "family": "Fixture Serif",
+      "style": "Bold",
+      "postScriptName": "FixtureSerif-Bold"
+    },
+    {
+      "family": "Fixture Serif",
+      "style": "Bold Italic",
+      "postScriptName": "FixtureSerif-BoldItalic"
+    },
+    {
+      "family": "Fixture Serif",
+      "style": "Italic",
+      "postScriptName": "FixtureSerif-Italic"
+    },
+    {
+      "family": "Fixture Serif",
+      "style": "Regular",
+      "postScriptName": "FixtureSerif-Regular"
+    },
+    {
+      "family": "Fixture Slab",
+      "style": "Bold",
+      "postScriptName": "FixtureSlab-Bold"
+    },
+    {
+      "family": "Fixture Slab",
+      "style": "Bold Italic",
+      "postScriptName": "FixtureSlab-BoldItalic"
+    },
+    {
+      "family": "Fixture Slab",
+      "style": "Italic",
+      "postScriptName": "FixtureSlab-Italic"
+    },
+    {
+      "family": "Fixture Slab",
+      "style": "Regular",
+      "postScriptName": "FixtureSlab-Regular"
+    },
+    {
+      "family": "Sample Didone",
+      "style": "Bold",
+      "postScriptName": "SampleDidone-Bold"
+    },
+    {
+      "family": "Sample Didone",
+      "style": "Bold Italic",
+      "postScriptName": "SampleDidone-BoldItalic"
+    },
+    {
+      "family": "Sample Didone",
+      "style": "Italic",
+      "postScriptName": "SampleDidone-Italic"
+    },
+    {
+      "family": "Sample Didone",
+      "style": "Regular",
+      "postScriptName": "SampleDidone-Regular"
+    },
+    {
+      "family": "Sample Grotesk",
+      "style": "Bold",
+      "postScriptName": "SampleGrotesk-Bold"
+    },
+    {
+      "family": "Sample Grotesk",
+      "style": "Bold Italic",
+      "postScriptName": "SampleGrotesk-BoldItalic"
+    },
+    {
+      "family": "Sample Grotesk",
+      "style": "Italic",
+      "postScriptName": "SampleGrotesk-Italic"
+    },
+    {
+      "family": "Sample Grotesk",
+      "style": "Regular",
+      "postScriptName": "SampleGrotesk-Regular"
+    },
+    {
+      "family": "Sample Humanist",
+      "style": "Bold",
+      "postScriptName": "SampleHumanist-Bold"
+    },
+    {
+      "family": "Sample Humanist",
+      "style": "Bold Italic",
+      "postScriptName": "SampleHumanist-BoldItalic"
+    },
+    {
+      "family": "Sample Humanist",
+      "style": "Italic",
+      "postScriptName": "SampleHumanist-Italic"
+    },
+    {
+      "family": "Sample Humanist",
+      "style": "Regular",
+      "postScriptName": "SampleHumanist-Regular"
+    },
+    {
+      "family": "Sample Stencil",
+      "style": "Bold",
+      "postScriptName": "SampleStencil-Bold"
+    },
+    {
+      "family": "Sample Stencil",
+      "style": "Bold Italic",
+      "postScriptName": "SampleStencil-BoldItalic"
+    },
+    {
+      "family": "Sample Stencil",
+      "style": "Italic",
+      "postScriptName": "SampleStencil-Italic"
+    },
+    {
+      "family": "Sample Stencil",
+      "style": "Regular",
+      "postScriptName": "SampleStencil-Regular"
+    }
+  ]
+}

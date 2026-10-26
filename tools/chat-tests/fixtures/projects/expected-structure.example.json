@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "0.1",
+  "projectId": "replace-with-project-slug",
+  "initialFingerprint": "0000000000000000000000000000000000000000000000000000000000000000",
+  "activeComposition": "Main",
+  "compositions": [
+    {
+      "name": "Main",
+      "width": 1920,
+      "height": 1080,
+      "duration": 10,
+      "frameRate": 30,
+      "layers": [
+        {
+          "name": "Title",
+          "type": "text",
+          "selected": true,
+          "propertyPaths": [
+            "ADBE Transform Group/ADBE Position",
+            "ADBE Transform Group/ADBE Opacity",
+            "ADBE Text Properties/ADBE Text Document"
+          ],
+          "effectMatchNames": []
+        }
+      ]
+    }
+  ]
+}

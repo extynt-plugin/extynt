@@ -1,0 +1,6 @@
+{
+  "extends": "../../tsconfig.strict.json",
+  "compilerOptions": { "rootDir": ".", "outDir": "dist", "tsBuildInfoFile": "dist/.tsbuildinfo", "declaration": true, "composite": true, "noUnusedLocals": true, "noUnusedParameters": true },
+  "references": [{ "path": "../../packages/decode" }, { "path": "../../packages/project-graph" }, { "path": "../../packages/action-plan" }, { "path": "../../packages/capability-catalogue" }, { "path": "../../packages/host-ae" }, { "path": "../../packages/mcp-server" }],
+  "include": ["src/**/*.ts", "tests/**/*.ts"]
+}

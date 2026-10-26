@@ -1,0 +1,28 @@
+{
+  "description": "Question answered: whether the first cycle of a fresh request already answered it, with nothing left to build.",
+  "cases": [
+    {"id": "answered-question", "answer": "An orbit is a curved path around a point.", "askedUser": false, "cycle": 0, "continuation": false, "authoredWork": false, "expected": true},
+    {"id": "asks-first", "answer": "Which composition do you mean?", "askedUser": true, "cycle": 0, "continuation": false, "authoredWork": false, "expected": true},
+    {"id": "built-first", "answer": "I built the title card.", "askedUser": false, "cycle": 0, "continuation": false, "authoredWork": true, "expected": false},
+    {"id": "later-cycle", "answer": "The glow is in place.", "askedUser": false, "cycle": 2, "continuation": false, "authoredWork": true, "expected": false},
+    {"id": "later-cycle-answer", "answer": "It is a blend mode.", "askedUser": false, "cycle": 1, "continuation": false, "authoredWork": false, "expected": false, "hard": true},
+    {"id": "continuation-run", "answer": "Here is where I got to.", "askedUser": false, "cycle": 0, "continuation": true, "authoredWork": false, "expected": false, "hard": true},
+    {"id": "no-words", "answer": "", "askedUser": false, "cycle": 0, "continuation": false, "authoredWork": false, "expected": false},
+    {"id": "words-and-work", "answer": "I added the glow, which blooms the highlights.", "askedUser": false, "cycle": 0, "continuation": false, "authoredWork": true, "expected": false, "hard": true},
+    {"id": "answer-no-work", "answer": "Gaussian blur averages neighbouring pixels.", "askedUser": false, "cycle": 0, "continuation": false, "authoredWork": false, "expected": true},
+    {"id": "asks-and-built", "answer": "I built the card. Do you want a subtitle?", "askedUser": true, "cycle": 0, "continuation": false, "authoredWork": true, "expected": true, "hard": true},
+    {"id": "asks-later", "answer": "Do you want it blue?", "askedUser": true, "cycle": 3, "continuation": false, "authoredWork": true, "expected": false, "hard": true},
+    {"id": "explain", "answer": "Trim paths animate how much of a stroke is drawn.", "askedUser": false, "cycle": 0, "continuation": false, "authoredWork": false, "expected": true},
+    {"id": "whitespace", "answer": "  ", "askedUser": false, "cycle": 0, "continuation": false, "authoredWork": false, "expected": false},
+    {"id": "continuation-asks", "answer": "Which layer?", "askedUser": true, "cycle": 0, "continuation": true, "authoredWork": false, "expected": false, "hard": true},
+    {"answer": "Which comp should I use?", "expected": true, "askedUser": false, "cycle": 0, "continuation": false, "authoredWork": false, "id": "v-q-text", "lang": "en", "hard": true},
+    {"answer": "Una expresión de wiggle mueve una propiedad al azar.", "expected": true, "askedUser": false, "cycle": 0, "continuation": false, "authoredWork": false, "id": "v-es-ans", "lang": "es", "hard": true},
+    {"answer": "Ein Wiggle-Ausdruck bewegt eine Eigenschaft zufällig.", "expected": true, "askedUser": false, "cycle": 0, "continuation": false, "authoredWork": false, "id": "v-de-ans", "lang": "de", "hard": true},
+    {"answer": "Une expression wiggle fait varier une propriété au hasard.", "expected": true, "askedUser": false, "cycle": 0, "continuation": false, "authoredWork": false, "id": "v-fr-ans", "lang": "fr", "hard": true},
+    {"answer": "wiggle式はプロパティをランダムに揺らします。", "expected": true, "askedUser": false, "cycle": 0, "continuation": false, "authoredWork": false, "id": "v-ja-ans", "lang": "ja", "hard": true},
+    {"answer": "wiggle表达式会让属性随机抖动。", "expected": true, "askedUser": false, "cycle": 0, "continuation": false, "authoredWork": false, "id": "v-zh-ans", "lang": "zh", "hard": true},
+    {"answer": "我已经做好了标题卡。", "expected": false, "askedUser": false, "cycle": 0, "continuation": false, "authoredWork": true, "id": "v-zh-built", "lang": "zh", "hard": true},
+    {"answer": "J'ai construit le titre.", "expected": false, "askedUser": false, "cycle": 0, "continuation": false, "authoredWork": true, "id": "v-fr-built", "lang": "fr", "hard": true},
+    {"answer": "どのコンポジションですか？", "expected": true, "askedUser": false, "cycle": 0, "continuation": false, "authoredWork": false, "id": "v-ja-ask", "lang": "ja", "hard": true}
+  ]
+}

@@ -1,0 +1,2 @@
+// A duration written in a request ("30s", "3-second", "two minutes", "5秒"): counted as a time, never as a number of parts or deliverables.
+export const TIMED_SPAN = /\d+(?:[.,]\d+)?\s*-?\s*(?:s|secs?|seconds?|secondes?|sekunden?|sek\p{L}*|segundos?|minutes?|mins?|minutos?|minuten|min|秒钟?|分钟|分鐘)(?![\p{L}])|\d+\s*(?:秒钟?|分钟|分鐘)|(?:two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\s+(?:secs?|seconds?|minutes?|mins?)(?![\p{L}])/giu;

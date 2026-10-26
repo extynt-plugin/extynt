@@ -1,0 +1,1377 @@
+[
+ {
+  "family": "American Typewriter",
+  "style": "Regular",
+  "postScriptName": "AmericanTypewriter-Regular"
+ },
+ {
+  "family": "American Typewriter",
+  "style": "Bold",
+  "postScriptName": "AmericanTypewriter-Bold"
+ },
+ {
+  "family": "American Typewriter",
+  "style": "Light",
+  "postScriptName": "AmericanTypewriter-Light"
+ },
+ {
+  "family": "American Typewriter",
+  "style": "Condensed Bold",
+  "postScriptName": "AmericanTypewriter-CondensedBold"
+ },
+ {
+  "family": "American Typewriter",
+  "style": "Condensed Light",
+  "postScriptName": "AmericanTypewriter-CondensedLight"
+ },
+ {
+  "family": "Courier",
+  "style": "Regular",
+  "postScriptName": "Courier-Regular"
+ },
+ {
+  "family": "Courier",
+  "style": "Bold",
+  "postScriptName": "Courier-Bold"
+ },
+ {
+  "family": "Courier",
+  "style": "Oblique",
+  "postScriptName": "Courier-Oblique"
+ },
+ {
+  "family": "Courier",
+  "style": "Bold Oblique",
+  "postScriptName": "Courier-BoldOblique"
+ },
+ {
+  "family": "Courier New",
+  "style": "Regular",
+  "postScriptName": "CourierNewPSMT"
+ },
+ {
+  "family": "Courier New",
+  "style": "Bold",
+  "postScriptName": "CourierNewPS-BoldMT"
+ },
+ {
+  "family": "Courier New",
+  "style": "Italic",
+  "postScriptName": "CourierNewPS-ItalicMT"
+ },
+ {
+  "family": "Courier New",
+  "style": "Bold Italic",
+  "postScriptName": "CourierNewPS-BoldItalicMT"
+ },
+ {
+  "family": "Menlo",
+  "style": "Regular",
+  "postScriptName": "Menlo-Regular"
+ },
+ {
+  "family": "Menlo",
+  "style": "Bold",
+  "postScriptName": "Menlo-Bold"
+ },
+ {
+  "family": "Menlo",
+  "style": "Italic",
+  "postScriptName": "Menlo-Italic"
+ },
+ {
+  "family": "Menlo",
+  "style": "Bold Italic",
+  "postScriptName": "Menlo-BoldItalic"
+ },
+ {
+  "family": "Monaco",
+  "style": "Regular",
+  "postScriptName": "Monaco-Regular"
+ },
+ {
+  "family": "Andale Mono",
+  "style": "Regular",
+  "postScriptName": "AndaleMono-Regular"
+ },
+ {
+  "family": "Consolas",
+  "style": "Regular",
+  "postScriptName": "Consolas-Regular"
+ },
+ {
+  "family": "Consolas",
+  "style": "Bold",
+  "postScriptName": "Consolas-Bold"
+ },
+ {
+  "family": "Consolas",
+  "style": "Italic",
+  "postScriptName": "Consolas-Italic"
+ },
+ {
+  "family": "Consolas",
+  "style": "Bold Italic",
+  "postScriptName": "Consolas-BoldItalic"
+ },
+ {
+  "family": "Lucida Console",
+  "style": "Regular",
+  "postScriptName": "LucidaConsole-Regular"
+ },
+ {
+  "family": "SF Mono",
+  "style": "Regular",
+  "postScriptName": "SFMono-Regular"
+ },
+ {
+  "family": "SF Mono",
+  "style": "Medium",
+  "postScriptName": "SFMono-Medium"
+ },
+ {
+  "family": "SF Mono",
+  "style": "Bold",
+  "postScriptName": "SFMono-Bold"
+ },
+ {
+  "family": "SF Mono",
+  "style": "Semibold",
+  "postScriptName": "SFMono-Semibold"
+ },
+ {
+  "family": "Cascadia Mono",
+  "style": "Regular",
+  "postScriptName": "CascadiaMono-Regular"
+ },
+ {
+  "family": "Cascadia Mono",
+  "style": "Bold",
+  "postScriptName": "CascadiaMono-Bold"
+ },
+ {
+  "family": "Cascadia Mono",
+  "style": "Light",
+  "postScriptName": "CascadiaMono-Light"
+ },
+ {
+  "family": "Bradley Hand",
+  "style": "Bold",
+  "postScriptName": "BradleyHand-Bold"
+ },
+ {
+  "family": "Brush Script MT",
+  "style": "Italic",
+  "postScriptName": "BrushScriptMT-Italic"
+ },
+ {
+  "family": "Snell Roundhand",
+  "style": "Regular",
+  "postScriptName": "SnellRoundhand-Regular"
+ },
+ {
+  "family": "Snell Roundhand",
+  "style": "Bold",
+  "postScriptName": "SnellRoundhand-Bold"
+ },
+ {
+  "family": "Snell Roundhand",
+  "style": "Black",
+  "postScriptName": "SnellRoundhand-Black"
+ },
+ {
+  "family": "Apple Chancery",
+  "style": "Regular",
+  "postScriptName": "AppleChancery-Regular"
+ },
+ {
+  "family": "Zapfino",
+  "style": "Regular",
+  "postScriptName": "Zapfino-Regular"
+ },
+ {
+  "family": "Segoe Script",
+  "style": "Regular",
+  "postScriptName": "SegoeScript-Regular"
+ },
+ {
+  "family": "Segoe Script",
+  "style": "Bold",
+  "postScriptName": "SegoeScript-Bold"
+ },
+ {
+  "family": "Lucida Handwriting",
+  "style": "Italic",
+  "postScriptName": "LucidaHandwriting-Italic"
+ },
+ {
+  "family": "Noteworthy",
+  "style": "Light",
+  "postScriptName": "Noteworthy-Light"
+ },
+ {
+  "family": "Noteworthy",
+  "style": "Bold",
+  "postScriptName": "Noteworthy-Bold"
+ },
+ {
+  "family": "Marker Felt",
+  "style": "Thin",
+  "postScriptName": "MarkerFelt-Thin"
+ },
+ {
+  "family": "Marker Felt",
+  "style": "Wide",
+  "postScriptName": "MarkerFelt-Wide"
+ },
+ {
+  "family": "Chalkduster",
+  "style": "Regular",
+  "postScriptName": "Chalkduster-Regular"
+ },
+ {
+  "family": "Ink Free",
+  "style": "Regular",
+  "postScriptName": "InkFree-Regular"
+ },
+ {
+  "family": "Segoe Print",
+  "style": "Regular",
+  "postScriptName": "SegoePrint-Regular"
+ },
+ {
+  "family": "Segoe Print",
+  "style": "Bold",
+  "postScriptName": "SegoePrint-Bold"
+ },
+ {
+  "family": "Monotype Corsiva",
+  "style": "Italic",
+  "postScriptName": "MonotypeCorsiva-Italic"
+ },
+ {
+  "family": "Gabriola",
+  "style": "Regular",
+  "postScriptName": "Gabriola-Regular"
+ },
+ {
+  "family": "Mistral",
+  "style": "Regular",
+  "postScriptName": "Mistral-Regular"
+ },
+ {
+  "family": "Arial Narrow",
+  "style": "Regular",
+  "postScriptName": "ArialNarrow-Regular"
+ },
+ {
+  "family": "Arial Narrow",
+  "style": "Bold",
+  "postScriptName": "ArialNarrow-Bold"
+ },
+ {
+  "family": "Arial Narrow",
+  "style": "Italic",
+  "postScriptName": "ArialNarrow-Italic"
+ },
+ {
+  "family": "Arial Narrow",
+  "style": "Bold Italic",
+  "postScriptName": "ArialNarrow-BoldItalic"
+ },
+ {
+  "family": "DIN Condensed",
+  "style": "Bold",
+  "postScriptName": "DINCondensed-Bold"
+ },
+ {
+  "family": "Avenir Next Condensed",
+  "style": "Regular",
+  "postScriptName": "AvenirNextCondensed-Regular"
+ },
+ {
+  "family": "Avenir Next Condensed",
+  "style": "Medium",
+  "postScriptName": "AvenirNextCondensed-Medium"
+ },
+ {
+  "family": "Avenir Next Condensed",
+  "style": "Demi Bold",
+  "postScriptName": "AvenirNextCondensed-DemiBold"
+ },
+ {
+  "family": "Avenir Next Condensed",
+  "style": "Bold",
+  "postScriptName": "AvenirNextCondensed-Bold"
+ },
+ {
+  "family": "Avenir Next Condensed",
+  "style": "Heavy",
+  "postScriptName": "AvenirNextCondensed-Heavy"
+ },
+ {
+  "family": "Avenir Next Condensed",
+  "style": "Ultra Light",
+  "postScriptName": "AvenirNextCondensed-UltraLight"
+ },
+ {
+  "family": "Impact",
+  "style": "Regular",
+  "postScriptName": "Impact-Regular"
+ },
+ {
+  "family": "Franklin Gothic Medium",
+  "style": "Regular",
+  "postScriptName": "FranklinGothicMedium-Regular"
+ },
+ {
+  "family": "Franklin Gothic Medium",
+  "style": "Italic",
+  "postScriptName": "FranklinGothicMedium-Italic"
+ },
+ {
+  "family": "Franklin Gothic Book",
+  "style": "Regular",
+  "postScriptName": "FranklinGothicBook-Regular"
+ },
+ {
+  "family": "Franklin Gothic Book",
+  "style": "Italic",
+  "postScriptName": "FranklinGothicBook-Italic"
+ },
+ {
+  "family": "Futura",
+  "style": "Medium",
+  "postScriptName": "Futura-Medium"
+ },
+ {
+  "family": "Futura",
+  "style": "Medium Italic",
+  "postScriptName": "Futura-MediumItalic"
+ },
+ {
+  "family": "Futura",
+  "style": "Condensed Medium",
+  "postScriptName": "Futura-CondensedMedium"
+ },
+ {
+  "family": "Futura",
+  "style": "Condensed ExtraBold",
+  "postScriptName": "Futura-CondensedExtraBold"
+ },
+ {
+  "family": "Century Gothic",
+  "style": "Regular",
+  "postScriptName": "CenturyGothic-Regular"
+ },
+ {
+  "family": "Century Gothic",
+  "style": "Bold",
+  "postScriptName": "CenturyGothic-Bold"
+ },
+ {
+  "family": "Century Gothic",
+  "style": "Italic",
+  "postScriptName": "CenturyGothic-Italic"
+ },
+ {
+  "family": "Century Gothic",
+  "style": "Bold Italic",
+  "postScriptName": "CenturyGothic-BoldItalic"
+ },
+ {
+  "family": "Avenir",
+  "style": "Book",
+  "postScriptName": "Avenir-Book"
+ },
+ {
+  "family": "Avenir",
+  "style": "Roman",
+  "postScriptName": "Avenir-Roman"
+ },
+ {
+  "family": "Avenir",
+  "style": "Light",
+  "postScriptName": "Avenir-Light"
+ },
+ {
+  "family": "Avenir",
+  "style": "Medium",
+  "postScriptName": "Avenir-Medium"
+ },
+ {
+  "family": "Avenir",
+  "style": "Heavy",
+  "postScriptName": "Avenir-Heavy"
+ },
+ {
+  "family": "Avenir",
+  "style": "Black",
+  "postScriptName": "Avenir-Black"
+ },
+ {
+  "family": "Avenir Next",
+  "style": "Regular",
+  "postScriptName": "AvenirNext-Regular"
+ },
+ {
+  "family": "Avenir Next",
+  "style": "Medium",
+  "postScriptName": "AvenirNext-Medium"
+ },
+ {
+  "family": "Avenir Next",
+  "style": "Demi Bold",
+  "postScriptName": "AvenirNext-DemiBold"
+ },
+ {
+  "family": "Avenir Next",
+  "style": "Bold",
+  "postScriptName": "AvenirNext-Bold"
+ },
+ {
+  "family": "Avenir Next",
+  "style": "Italic",
+  "postScriptName": "AvenirNext-Italic"
+ },
+ {
+  "family": "Gill Sans",
+  "style": "Regular",
+  "postScriptName": "GillSans-Regular"
+ },
+ {
+  "family": "Gill Sans",
+  "style": "Bold",
+  "postScriptName": "GillSans-Bold"
+ },
+ {
+  "family": "Gill Sans",
+  "style": "Italic",
+  "postScriptName": "GillSans-Italic"
+ },
+ {
+  "family": "Gill Sans",
+  "style": "Light",
+  "postScriptName": "GillSans-Light"
+ },
+ {
+  "family": "Gill Sans",
+  "style": "Bold Italic",
+  "postScriptName": "GillSans-BoldItalic"
+ },
+ {
+  "family": "Gill Sans",
+  "style": "UltraBold",
+  "postScriptName": "GillSans-UltraBold"
+ },
+ {
+  "family": "Optima",
+  "style": "Regular",
+  "postScriptName": "Optima-Regular"
+ },
+ {
+  "family": "Optima",
+  "style": "Bold",
+  "postScriptName": "Optima-Bold"
+ },
+ {
+  "family": "Optima",
+  "style": "Italic",
+  "postScriptName": "Optima-Italic"
+ },
+ {
+  "family": "Optima",
+  "style": "Bold Italic",
+  "postScriptName": "Optima-BoldItalic"
+ },
+ {
+  "family": "Optima",
+  "style": "ExtraBlack",
+  "postScriptName": "Optima-ExtraBlack"
+ },
+ {
+  "family": "Helvetica",
+  "style": "Regular",
+  "postScriptName": "Helvetica-Regular"
+ },
+ {
+  "family": "Helvetica",
+  "style": "Bold",
+  "postScriptName": "Helvetica-Bold"
+ },
+ {
+  "family": "Helvetica",
+  "style": "Oblique",
+  "postScriptName": "Helvetica-Oblique"
+ },
+ {
+  "family": "Helvetica",
+  "style": "Light",
+  "postScriptName": "Helvetica-Light"
+ },
+ {
+  "family": "Helvetica",
+  "style": "Bold Oblique",
+  "postScriptName": "Helvetica-BoldOblique"
+ },
+ {
+  "family": "Helvetica Neue",
+  "style": "Regular",
+  "postScriptName": "HelveticaNeue-Regular"
+ },
+ {
+  "family": "Helvetica Neue",
+  "style": "Bold",
+  "postScriptName": "HelveticaNeue-Bold"
+ },
+ {
+  "family": "Helvetica Neue",
+  "style": "Italic",
+  "postScriptName": "HelveticaNeue-Italic"
+ },
+ {
+  "family": "Helvetica Neue",
+  "style": "Light",
+  "postScriptName": "HelveticaNeue-Light"
+ },
+ {
+  "family": "Helvetica Neue",
+  "style": "Medium",
+  "postScriptName": "HelveticaNeue-Medium"
+ },
+ {
+  "family": "Helvetica Neue",
+  "style": "UltraLight",
+  "postScriptName": "HelveticaNeue-UltraLight"
+ },
+ {
+  "family": "Arial",
+  "style": "Regular",
+  "postScriptName": "ArialMT"
+ },
+ {
+  "family": "Arial",
+  "style": "Bold",
+  "postScriptName": "Arial-BoldMT"
+ },
+ {
+  "family": "Arial",
+  "style": "Italic",
+  "postScriptName": "Arial-ItalicMT"
+ },
+ {
+  "family": "Arial",
+  "style": "Bold Italic",
+  "postScriptName": "Arial-BoldItalicMT"
+ },
+ {
+  "family": "Arial Black",
+  "style": "Regular",
+  "postScriptName": "ArialBlack-Regular"
+ },
+ {
+  "family": "Arial Rounded MT Bold",
+  "style": "Regular",
+  "postScriptName": "ArialRoundedMTBold-Regular"
+ },
+ {
+  "family": "Verdana",
+  "style": "Regular",
+  "postScriptName": "Verdana-Regular"
+ },
+ {
+  "family": "Verdana",
+  "style": "Bold",
+  "postScriptName": "Verdana-Bold"
+ },
+ {
+  "family": "Verdana",
+  "style": "Italic",
+  "postScriptName": "Verdana-Italic"
+ },
+ {
+  "family": "Verdana",
+  "style": "Bold Italic",
+  "postScriptName": "Verdana-BoldItalic"
+ },
+ {
+  "family": "Tahoma",
+  "style": "Regular",
+  "postScriptName": "Tahoma-Regular"
+ },
+ {
+  "family": "Tahoma",
+  "style": "Bold",
+  "postScriptName": "Tahoma-Bold"
+ },
+ {
+  "family": "Trebuchet MS",
+  "style": "Regular",
+  "postScriptName": "TrebuchetMS-Regular"
+ },
+ {
+  "family": "Trebuchet MS",
+  "style": "Bold",
+  "postScriptName": "TrebuchetMS-Bold"
+ },
+ {
+  "family": "Trebuchet MS",
+  "style": "Italic",
+  "postScriptName": "TrebuchetMS-Italic"
+ },
+ {
+  "family": "Trebuchet MS",
+  "style": "Bold Italic",
+  "postScriptName": "TrebuchetMS-BoldItalic"
+ },
+ {
+  "family": "Segoe UI",
+  "style": "Regular",
+  "postScriptName": "SegoeUI-Regular"
+ },
+ {
+  "family": "Segoe UI",
+  "style": "Bold",
+  "postScriptName": "SegoeUI-Bold"
+ },
+ {
+  "family": "Segoe UI",
+  "style": "Italic",
+  "postScriptName": "SegoeUI-Italic"
+ },
+ {
+  "family": "Segoe UI",
+  "style": "Light",
+  "postScriptName": "SegoeUI-Light"
+ },
+ {
+  "family": "Segoe UI",
+  "style": "Semibold",
+  "postScriptName": "SegoeUI-Semibold"
+ },
+ {
+  "family": "Segoe UI",
+  "style": "Bold Italic",
+  "postScriptName": "SegoeUI-BoldItalic"
+ },
+ {
+  "family": "Calibri",
+  "style": "Regular",
+  "postScriptName": "Calibri-Regular"
+ },
+ {
+  "family": "Calibri",
+  "style": "Bold",
+  "postScriptName": "Calibri-Bold"
+ },
+ {
+  "family": "Calibri",
+  "style": "Italic",
+  "postScriptName": "Calibri-Italic"
+ },
+ {
+  "family": "Calibri",
+  "style": "Light",
+  "postScriptName": "Calibri-Light"
+ },
+ {
+  "family": "Calibri",
+  "style": "Bold Italic",
+  "postScriptName": "Calibri-BoldItalic"
+ },
+ {
+  "family": "Candara",
+  "style": "Regular",
+  "postScriptName": "Candara-Regular"
+ },
+ {
+  "family": "Candara",
+  "style": "Bold",
+  "postScriptName": "Candara-Bold"
+ },
+ {
+  "family": "Candara",
+  "style": "Italic",
+  "postScriptName": "Candara-Italic"
+ },
+ {
+  "family": "Candara",
+  "style": "Bold Italic",
+  "postScriptName": "Candara-BoldItalic"
+ },
+ {
+  "family": "Corbel",
+  "style": "Regular",
+  "postScriptName": "Corbel-Regular"
+ },
+ {
+  "family": "Corbel",
+  "style": "Bold",
+  "postScriptName": "Corbel-Bold"
+ },
+ {
+  "family": "Corbel",
+  "style": "Italic",
+  "postScriptName": "Corbel-Italic"
+ },
+ {
+  "family": "Corbel",
+  "style": "Bold Italic",
+  "postScriptName": "Corbel-BoldItalic"
+ },
+ {
+  "family": "Lucida Grande",
+  "style": "Regular",
+  "postScriptName": "LucidaGrande-Regular"
+ },
+ {
+  "family": "Lucida Grande",
+  "style": "Bold",
+  "postScriptName": "LucidaGrande-Bold"
+ },
+ {
+  "family": "Geneva",
+  "style": "Regular",
+  "postScriptName": "Geneva-Regular"
+ },
+ {
+  "family": "Rockwell",
+  "style": "Regular",
+  "postScriptName": "Rockwell-Regular"
+ },
+ {
+  "family": "Rockwell",
+  "style": "Bold",
+  "postScriptName": "Rockwell-Bold"
+ },
+ {
+  "family": "Rockwell",
+  "style": "Italic",
+  "postScriptName": "Rockwell-Italic"
+ },
+ {
+  "family": "Rockwell",
+  "style": "Bold Italic",
+  "postScriptName": "Rockwell-BoldItalic"
+ },
+ {
+  "family": "Rockwell Extra Bold",
+  "style": "Regular",
+  "postScriptName": "RockwellExtraBold-Regular"
+ },
+ {
+  "family": "Superclarendon",
+  "style": "Regular",
+  "postScriptName": "Superclarendon-Regular"
+ },
+ {
+  "family": "Superclarendon",
+  "style": "Bold",
+  "postScriptName": "Superclarendon-Bold"
+ },
+ {
+  "family": "Superclarendon",
+  "style": "Light",
+  "postScriptName": "Superclarendon-Light"
+ },
+ {
+  "family": "Superclarendon",
+  "style": "Italic",
+  "postScriptName": "Superclarendon-Italic"
+ },
+ {
+  "family": "Superclarendon",
+  "style": "Black",
+  "postScriptName": "Superclarendon-Black"
+ },
+ {
+  "family": "Bookman Old Style",
+  "style": "Regular",
+  "postScriptName": "BookmanOldStyle-Regular"
+ },
+ {
+  "family": "Bookman Old Style",
+  "style": "Bold",
+  "postScriptName": "BookmanOldStyle-Bold"
+ },
+ {
+  "family": "Bookman Old Style",
+  "style": "Italic",
+  "postScriptName": "BookmanOldStyle-Italic"
+ },
+ {
+  "family": "Bookman Old Style",
+  "style": "Bold Italic",
+  "postScriptName": "BookmanOldStyle-BoldItalic"
+ },
+ {
+  "family": "Times New Roman",
+  "style": "Regular",
+  "postScriptName": "TimesNewRomanPSMT"
+ },
+ {
+  "family": "Times New Roman",
+  "style": "Bold",
+  "postScriptName": "TimesNewRomanPS-BoldMT"
+ },
+ {
+  "family": "Times New Roman",
+  "style": "Italic",
+  "postScriptName": "TimesNewRomanPS-ItalicMT"
+ },
+ {
+  "family": "Times New Roman",
+  "style": "Bold Italic",
+  "postScriptName": "TimesNewRomanPS-BoldItalicMT"
+ },
+ {
+  "family": "Times",
+  "style": "Regular",
+  "postScriptName": "Times-Regular"
+ },
+ {
+  "family": "Times",
+  "style": "Bold",
+  "postScriptName": "Times-Bold"
+ },
+ {
+  "family": "Times",
+  "style": "Italic",
+  "postScriptName": "Times-Italic"
+ },
+ {
+  "family": "Times",
+  "style": "Bold Italic",
+  "postScriptName": "Times-BoldItalic"
+ },
+ {
+  "family": "Georgia",
+  "style": "Regular",
+  "postScriptName": "Georgia-Regular"
+ },
+ {
+  "family": "Georgia",
+  "style": "Bold",
+  "postScriptName": "Georgia-Bold"
+ },
+ {
+  "family": "Georgia",
+  "style": "Italic",
+  "postScriptName": "Georgia-Italic"
+ },
+ {
+  "family": "Georgia",
+  "style": "Bold Italic",
+  "postScriptName": "Georgia-BoldItalic"
+ },
+ {
+  "family": "Palatino",
+  "style": "Regular",
+  "postScriptName": "Palatino-Regular"
+ },
+ {
+  "family": "Palatino",
+  "style": "Bold",
+  "postScriptName": "Palatino-Bold"
+ },
+ {
+  "family": "Palatino",
+  "style": "Italic",
+  "postScriptName": "Palatino-Italic"
+ },
+ {
+  "family": "Palatino",
+  "style": "Bold Italic",
+  "postScriptName": "Palatino-BoldItalic"
+ },
+ {
+  "family": "Palatino Linotype",
+  "style": "Regular",
+  "postScriptName": "PalatinoLinotype-Regular"
+ },
+ {
+  "family": "Palatino Linotype",
+  "style": "Bold",
+  "postScriptName": "PalatinoLinotype-Bold"
+ },
+ {
+  "family": "Palatino Linotype",
+  "style": "Italic",
+  "postScriptName": "PalatinoLinotype-Italic"
+ },
+ {
+  "family": "Palatino Linotype",
+  "style": "Bold Italic",
+  "postScriptName": "PalatinoLinotype-BoldItalic"
+ },
+ {
+  "family": "Baskerville",
+  "style": "Regular",
+  "postScriptName": "Baskerville-Regular"
+ },
+ {
+  "family": "Baskerville",
+  "style": "Bold",
+  "postScriptName": "Baskerville-Bold"
+ },
+ {
+  "family": "Baskerville",
+  "style": "Italic",
+  "postScriptName": "Baskerville-Italic"
+ },
+ {
+  "family": "Baskerville",
+  "style": "SemiBold",
+  "postScriptName": "Baskerville-SemiBold"
+ },
+ {
+  "family": "Garamond",
+  "style": "Regular",
+  "postScriptName": "Garamond-Regular"
+ },
+ {
+  "family": "Garamond",
+  "style": "Bold",
+  "postScriptName": "Garamond-Bold"
+ },
+ {
+  "family": "Garamond",
+  "style": "Italic",
+  "postScriptName": "Garamond-Italic"
+ },
+ {
+  "family": "Cambria",
+  "style": "Regular",
+  "postScriptName": "Cambria-Regular"
+ },
+ {
+  "family": "Cambria",
+  "style": "Bold",
+  "postScriptName": "Cambria-Bold"
+ },
+ {
+  "family": "Cambria",
+  "style": "Italic",
+  "postScriptName": "Cambria-Italic"
+ },
+ {
+  "family": "Cambria",
+  "style": "Bold Italic",
+  "postScriptName": "Cambria-BoldItalic"
+ },
+ {
+  "family": "Book Antiqua",
+  "style": "Regular",
+  "postScriptName": "BookAntiqua-Regular"
+ },
+ {
+  "family": "Book Antiqua",
+  "style": "Bold",
+  "postScriptName": "BookAntiqua-Bold"
+ },
+ {
+  "family": "Book Antiqua",
+  "style": "Italic",
+  "postScriptName": "BookAntiqua-Italic"
+ },
+ {
+  "family": "Book Antiqua",
+  "style": "Bold Italic",
+  "postScriptName": "BookAntiqua-BoldItalic"
+ },
+ {
+  "family": "Hoefler Text",
+  "style": "Regular",
+  "postScriptName": "HoeflerText-Regular"
+ },
+ {
+  "family": "Hoefler Text",
+  "style": "Italic",
+  "postScriptName": "HoeflerText-Italic"
+ },
+ {
+  "family": "Hoefler Text",
+  "style": "Black",
+  "postScriptName": "HoeflerText-Black"
+ },
+ {
+  "family": "Cochin",
+  "style": "Regular",
+  "postScriptName": "Cochin-Regular"
+ },
+ {
+  "family": "Cochin",
+  "style": "Bold",
+  "postScriptName": "Cochin-Bold"
+ },
+ {
+  "family": "Cochin",
+  "style": "Italic",
+  "postScriptName": "Cochin-Italic"
+ },
+ {
+  "family": "Cochin",
+  "style": "Bold Italic",
+  "postScriptName": "Cochin-BoldItalic"
+ },
+ {
+  "family": "Charter",
+  "style": "Roman",
+  "postScriptName": "Charter-Roman"
+ },
+ {
+  "family": "Charter",
+  "style": "Bold",
+  "postScriptName": "Charter-Bold"
+ },
+ {
+  "family": "Charter",
+  "style": "Italic",
+  "postScriptName": "Charter-Italic"
+ },
+ {
+  "family": "Charter",
+  "style": "Black",
+  "postScriptName": "Charter-Black"
+ },
+ {
+  "family": "Constantia",
+  "style": "Regular",
+  "postScriptName": "Constantia-Regular"
+ },
+ {
+  "family": "Constantia",
+  "style": "Bold",
+  "postScriptName": "Constantia-Bold"
+ },
+ {
+  "family": "Constantia",
+  "style": "Italic",
+  "postScriptName": "Constantia-Italic"
+ },
+ {
+  "family": "Constantia",
+  "style": "Bold Italic",
+  "postScriptName": "Constantia-BoldItalic"
+ },
+ {
+  "family": "Big Caslon",
+  "style": "Medium",
+  "postScriptName": "BigCaslon-Medium"
+ },
+ {
+  "family": "Century Schoolbook",
+  "style": "Regular",
+  "postScriptName": "CenturySchoolbook-Regular"
+ },
+ {
+  "family": "Century Schoolbook",
+  "style": "Bold",
+  "postScriptName": "CenturySchoolbook-Bold"
+ },
+ {
+  "family": "Century Schoolbook",
+  "style": "Italic",
+  "postScriptName": "CenturySchoolbook-Italic"
+ },
+ {
+  "family": "Century Schoolbook",
+  "style": "Bold Italic",
+  "postScriptName": "CenturySchoolbook-BoldItalic"
+ },
+ {
+  "family": "Didot",
+  "style": "Regular",
+  "postScriptName": "Didot-Regular"
+ },
+ {
+  "family": "Didot",
+  "style": "Italic",
+  "postScriptName": "Didot-Italic"
+ },
+ {
+  "family": "Didot",
+  "style": "Bold",
+  "postScriptName": "Didot-Bold"
+ },
+ {
+  "family": "Bodoni 72",
+  "style": "Book",
+  "postScriptName": "Bodoni72-Book"
+ },
+ {
+  "family": "Bodoni 72",
+  "style": "Bold",
+  "postScriptName": "Bodoni72-Bold"
+ },
+ {
+  "family": "Bodoni 72",
+  "style": "Book Italic",
+  "postScriptName": "Bodoni72-BookItalic"
+ },
+ {
+  "family": "Bodoni MT",
+  "style": "Regular",
+  "postScriptName": "BodoniMT-Regular"
+ },
+ {
+  "family": "Bodoni MT",
+  "style": "Bold",
+  "postScriptName": "BodoniMT-Bold"
+ },
+ {
+  "family": "Bodoni MT",
+  "style": "Italic",
+  "postScriptName": "BodoniMT-Italic"
+ },
+ {
+  "family": "Bodoni MT",
+  "style": "Bold Italic",
+  "postScriptName": "BodoniMT-BoldItalic"
+ },
+ {
+  "family": "Papyrus",
+  "style": "Regular",
+  "postScriptName": "Papyrus-Regular"
+ },
+ {
+  "family": "Papyrus",
+  "style": "Condensed",
+  "postScriptName": "Papyrus-Condensed"
+ },
+ {
+  "family": "Copperplate",
+  "style": "Regular",
+  "postScriptName": "Copperplate-Regular"
+ },
+ {
+  "family": "Copperplate",
+  "style": "Light",
+  "postScriptName": "Copperplate-Light"
+ },
+ {
+  "family": "Copperplate",
+  "style": "Bold",
+  "postScriptName": "Copperplate-Bold"
+ },
+ {
+  "family": "Copperplate Gothic Bold",
+  "style": "Regular",
+  "postScriptName": "CopperplateGothicBold-Regular"
+ },
+ {
+  "family": "Stencil",
+  "style": "Regular",
+  "postScriptName": "Stencil-Regular"
+ },
+ {
+  "family": "Playbill",
+  "style": "Regular",
+  "postScriptName": "Playbill-Regular"
+ },
+ {
+  "family": "Chalkboard",
+  "style": "Regular",
+  "postScriptName": "Chalkboard-Regular"
+ },
+ {
+  "family": "Chalkboard",
+  "style": "Bold",
+  "postScriptName": "Chalkboard-Bold"
+ },
+ {
+  "family": "Chalkboard SE",
+  "style": "Light",
+  "postScriptName": "ChalkboardSE-Light"
+ },
+ {
+  "family": "Chalkboard SE",
+  "style": "Regular",
+  "postScriptName": "ChalkboardSE-Regular"
+ },
+ {
+  "family": "Chalkboard SE",
+  "style": "Bold",
+  "postScriptName": "ChalkboardSE-Bold"
+ },
+ {
+  "family": "Herculanum",
+  "style": "Regular",
+  "postScriptName": "Herculanum-Regular"
+ },
+ {
+  "family": "Luminari",
+  "style": "Regular",
+  "postScriptName": "Luminari-Regular"
+ },
+ {
+  "family": "Party LET",
+  "style": "Plain",
+  "postScriptName": "PartyLET-Plain"
+ },
+ {
+  "family": "Jokerman",
+  "style": "Regular",
+  "postScriptName": "Jokerman-Regular"
+ },
+ {
+  "family": "Algerian",
+  "style": "Regular",
+  "postScriptName": "Algerian-Regular"
+ },
+ {
+  "family": "Bauhaus 93",
+  "style": "Regular",
+  "postScriptName": "Bauhaus93-Regular"
+ },
+ {
+  "family": "Cooper Black",
+  "style": "Regular",
+  "postScriptName": "CooperBlack-Regular"
+ },
+ {
+  "family": "Comic Sans MS",
+  "style": "Regular",
+  "postScriptName": "ComicSansMS-Regular"
+ },
+ {
+  "family": "Comic Sans MS",
+  "style": "Bold",
+  "postScriptName": "ComicSansMS-Bold"
+ },
+ {
+  "family": "Comic Sans MS",
+  "style": "Italic",
+  "postScriptName": "ComicSansMS-Italic"
+ },
+ {
+  "family": "Comic Sans MS",
+  "style": "Bold Italic",
+  "postScriptName": "ComicSansMS-BoldItalic"
+ },
+ {
+  "family": "Wide Latin",
+  "style": "Regular",
+  "postScriptName": "WideLatin-Regular"
+ },
+ {
+  "family": "Broadway",
+  "style": "Regular",
+  "postScriptName": "Broadway-Regular"
+ },
+ {
+  "family": "Showcard Gothic",
+  "style": "Regular",
+  "postScriptName": "ShowcardGothic-Regular"
+ },
+ {
+  "family": "Old English Text MT",
+  "style": "Regular",
+  "postScriptName": "OldEnglishTextMT-Regular"
+ },
+ {
+  "family": "Blackadder ITC",
+  "style": "Regular",
+  "postScriptName": "BlackadderITC-Regular"
+ },
+ {
+  "family": "Kristen ITC",
+  "style": "Regular",
+  "postScriptName": "KristenITC-Regular"
+ },
+ {
+  "family": "Curlz MT",
+  "style": "Regular",
+  "postScriptName": "CurlzMT-Regular"
+ },
+ {
+  "family": "Bernard MT Condensed",
+  "style": "Regular",
+  "postScriptName": "BernardMTCondensed-Regular"
+ },
+ {
+  "family": "Trattatello",
+  "style": "Regular",
+  "postScriptName": "Trattatello-Regular"
+ },
+ {
+  "family": "Hiragino Mincho ProN",
+  "style": "W3",
+  "postScriptName": "HiraginoMinchoProN-W3"
+ },
+ {
+  "family": "Hiragino Mincho ProN",
+  "style": "W6",
+  "postScriptName": "HiraginoMinchoProN-W6"
+ },
+ {
+  "family": "Hiragino Sans",
+  "style": "W3",
+  "postScriptName": "HiraginoSans-W3"
+ },
+ {
+  "family": "Hiragino Sans",
+  "style": "W6",
+  "postScriptName": "HiraginoSans-W6"
+ },
+ {
+  "family": "Hiragino Sans",
+  "style": "W8",
+  "postScriptName": "HiraginoSans-W8"
+ },
+ {
+  "family": "Yu Mincho",
+  "style": "Regular",
+  "postScriptName": "YuMincho-Regular"
+ },
+ {
+  "family": "Yu Mincho",
+  "style": "Demibold",
+  "postScriptName": "YuMincho-Demibold"
+ },
+ {
+  "family": "Yu Gothic",
+  "style": "Regular",
+  "postScriptName": "YuGothic-Regular"
+ },
+ {
+  "family": "Yu Gothic",
+  "style": "Bold",
+  "postScriptName": "YuGothic-Bold"
+ },
+ {
+  "family": "Yu Gothic",
+  "style": "Light",
+  "postScriptName": "YuGothic-Light"
+ },
+ {
+  "family": "Meiryo",
+  "style": "Regular",
+  "postScriptName": "Meiryo-Regular"
+ },
+ {
+  "family": "Meiryo",
+  "style": "Bold",
+  "postScriptName": "Meiryo-Bold"
+ },
+ {
+  "family": "Meiryo",
+  "style": "Italic",
+  "postScriptName": "Meiryo-Italic"
+ },
+ {
+  "family": "Meiryo",
+  "style": "Bold Italic",
+  "postScriptName": "Meiryo-BoldItalic"
+ },
+ {
+  "family": "MS Gothic",
+  "style": "Regular",
+  "postScriptName": "MSGothic-Regular"
+ },
+ {
+  "family": "MS Mincho",
+  "style": "Regular",
+  "postScriptName": "MSMincho-Regular"
+ }
+]

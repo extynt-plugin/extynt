@@ -1,0 +1,68 @@
+# Every check in the families below is an error. A check is disabled only in this file, with its concrete reason here.
+# The five cppcoreguidelines-pro-type-* checks for reinterpret-cast, const-cast, cstyle-cast, union-access and vararg are listed
+# last and explicitly so that no edit above them can switch them off; they run everywhere clang-tidy runs, ae/ included.
+# HeaderFilterRegex leaves out the sdk_* wrapper headers (ae/, transport/ and catalogue-window/): the wrapper files are the one
+# place coding-rules.md allows the platform-forced casts and varargs. scripts/lib/native-wrapper-tidy.ts derives their
+# configuration from this one (only the five checks above and performance-no-int-to-ptr off) and the gate runs every sdk_* file
+# under it, so no wrapper is left unchecked. performance-no-int-to-ptr stays on everywhere else, wrapper-only off because the
+# Windows pass needs the integer-to-pointer conversions inside the sdk_* files (HWND, FARPROC, refcon). sdk_bits.h alone may use a union.
+# The Windows sources are tidied on Linux against mingw (scripts/lib/native-windows-tidy.ts, same checks) except for two
+# checks that mis-fire against mingw-w64 under clang-tidy 22: readability-duplicate-include and misc-include-cleaner are off
+# there, so the include hygiene of the Windows files is not tidy-checked. sdk_cocoa.h and the Objective-C++ .mm files cannot be
+# tidied on Linux (the stub Cocoa is Objective-C); the .mm pass runs only on a Mac, with EXTYNT_TIDY_MM=1.
+#   modernize-use-trailing-return-type: the code base declares leading return types everywhere; AEGP and Cocoa glue stays readable.
+#   cppcoreguidelines-avoid-magic-numbers, readability-magic-numbers: UTF-8 masks, JSON escapes, hash widths and AEGP enum values are format constants.
+#   cppcoreguidelines-pro-bounds-avoid-unchecked-container-access: operator[] after an explicit bound is the norm; .at() throws across noexcept AE boundaries.
+#   cppcoreguidelines-pro-bounds-pointer-arithmetic: byte-level decoders and AEGP C buffers can only be walked by pointer.
+#   misc-no-recursion: the JSON parser and the AE property tree are recursive structures with a capped depth.
+#   portability-avoid-pragma-once: #pragma once is supported by every compiler we build with (gcc, clang, Apple clang).
+#   bugprone-easily-swappable-parameters: adjacent string or integer parameters (id/op/code, name/value) are the domain's own shape; wrapper types for each would only hide it.
+#   concurrency-mt-unsafe (FunctionSet glibc instead of any): the POSIX list flags getenv, which transport/home_directory.cpp reads exactly once, in a function-local static, before any socket thread exists; the glibc list keeps strtok, localtime, rand and the other thread-unsafe calls flagged.
+Checks: >
+  -*,
+  bugprone-*,
+  cert-*,
+  clang-analyzer-*,
+  concurrency-*,
+  cppcoreguidelines-*,
+  misc-*,
+  modernize-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  -modernize-use-trailing-return-type,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -readability-magic-numbers,
+  -cppcoreguidelines-pro-bounds-avoid-unchecked-container-access,
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  -misc-no-recursion,
+  -portability-avoid-pragma-once,
+  -bugprone-easily-swappable-parameters,
+  cppcoreguidelines-pro-type-reinterpret-cast,
+  cppcoreguidelines-pro-type-const-cast,
+  cppcoreguidelines-pro-type-cstyle-cast,
+  cppcoreguidelines-pro-type-union-access,
+  cppcoreguidelines-pro-type-vararg
+WarningsAsErrors: '*'
+HeaderFilterRegex: '.*/native/extynt-core/(core|tests)/.*|.*/native/extynt-core/(transport|ae)/([^s]|s[^d]|sd[^k]|sdk[^_]).*'
+CheckOptions:
+  cppcoreguidelines-avoid-do-while.IgnoreMacros: true
+  concurrency-mt-unsafe.FunctionSet: glibc
+  # Include what you use, but not the platform-internal headers that define POSIX macros on one libc. glibc defines WNOHANG and
+  # WIFEXITED in bits/ headers that <stdlib.h> and <sys/wait.h> both pull in, and struct timeval in a bits/ header: the check
+  # then attributes them to <stdlib.h> (which modernize-deprecated-headers keeps us from including) or to nothing.
+  # macOS declares unlinkat in <sys/unistd.h>, which <unistd.h> pulls in.
+  misc-include-cleaner.IgnoreHeaders: 'asm-generic/.*;bits/.*;sys/poll.h;signal.h;csignal;stdlib.h;sys/wait.h;sys/time.h;sys/unistd.h'
+  # lizard owns function length, cyclomatic complexity and parameter count; tidy owns nesting only.
+  # tidy counts the function body as level 1, so 4 means at most three nested control statements, like the TS/JS limit.
+  readability-function-size.NestingThreshold: 4
+  readability-function-size.StatementThreshold: -1
+  readability-function-size.ParameterThreshold: -1
+  readability-function-size.LineThreshold: -1
+  readability-function-size.BranchThreshold: -1
+  readability-function-size.VariableThreshold: -1
+  readability-braces-around-statements.ShortStatementLines: 2
+  readability-identifier-length.MinimumVariableNameLength: 1
+  readability-identifier-length.MinimumParameterNameLength: 1
+  readability-implicit-bool-conversion.AllowPointerConditions: true
+  misc-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic: true

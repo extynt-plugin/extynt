@@ -1,0 +1,472 @@
+/* Transcript messages: the user's words as an accent-tinted bubble on the
+   right, the assistant's reply flat and full width, notices as a quiet line. */
+
+.msg {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  font-size: var(--fs);
+  line-height: 1.55;
+}
+
+.msg.user {
+  align-self: flex-end;
+  max-width: 85%;
+  padding: var(--s2) var(--s3);
+  background: var(--user-bg);
+  border: 1px solid var(--accent-line);
+  border-radius: var(--r-lg) var(--r-lg) var(--r-sm) var(--r-lg);
+}
+
+/* A new turn starts with more air than the messages inside a turn. */
+.msg + .msg.user {
+  margin-top: var(--s2);
+}
+
+.msg.assistant {
+  align-self: stretch;
+}
+
+.msg .meta {
+  display: block;
+  margin-top: var(--s1);
+  color: var(--faint);
+  font-size: var(--fs-meta);
+}
+
+.msg.assistant.note {
+  padding-left: var(--s2);
+  color: var(--muted);
+  font-size: var(--fs-small);
+  border-left: 2px solid var(--line-strong);
+}
+
+.msg.error {
+  align-self: flex-start;
+  color: var(--red-text);
+}
+
+.msg.error button {
+  margin-left: var(--s2);
+}
+
+/* The frame attached to a message sits inside that message's bubble. It never
+   draws wider than the bubble or taller than most of the panel, whatever the
+   composition's size, and keeps its aspect ratio. */
+.msg .frame-image {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 60vh;
+  margin-top: var(--s2);
+  background: var(--frame);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
+/* Rendered markdown. The body keeps pre-wrap so the agent's own line breaks
+   survive; a fenced block is the one place columns matter, so it is monospaced
+   and scrolls sideways. A link is a span, not an anchor: the panel cannot
+   navigate, so the label must not look clickable. */
+.msg .para + .para,
+.msg ul,
+.msg ol {
+  margin-top: var(--s2);
+}
+
+.msg ul,
+.msg ol {
+  margin-bottom: 0;
+  padding-left: 20px;
+  white-space: normal;
+}
+
+.msg code {
+  padding: 1px var(--s1);
+  font: var(--fs-small) var(--mono);
+  background: var(--raised);
+  border-radius: var(--r-sm);
+}
+
+.msg .code-block {
+  margin: var(--s2) 0 0;
+  padding: var(--s2) var(--s3);
+  overflow-wrap: anywhere;
+  font: var(--fs-small) / 1.5 var(--mono);
+  white-space: pre-wrap;
+  background: var(--field);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
+.msg .md-heading {
+  margin: var(--s2) 0 0;
+  font-size: var(--fs-title);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.msg .md-rule {
+  margin: var(--s3) 0 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.msg .md-table-wrap {
+  margin: var(--s2) 0 0;
+  max-width: 100%;
+}
+
+.msg .md-table {
+  width: 100%;
+  overflow-wrap: anywhere;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: var(--fs-small);
+}
+
+.msg .md-table th,
+.msg .md-table td {
+  padding: var(--s1) var(--s2);
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid var(--line);
+}
+
+.msg .md-table .md-align-center {
+  text-align: center;
+}
+
+.msg .md-table .md-align-right {
+  text-align: right;
+}
+
+.msg .md-table th {
+  font-weight: 600;
+  background: var(--raised);
+}
+
+.msg .md-link {
+  text-decoration: underline dotted;
+  text-underline-offset: 2px;
+  cursor: default;
+}
+
+details.meta summary {
+  color: var(--faint);
+  cursor: pointer;
+}
+
+.trace {
+  margin: var(--s1) 0 0;
+  padding-left: 20px;
+  font: var(--fs-meta) / 1.5 var(--mono);
+  white-space: normal;
+}
+
+.trace .bad {
+  color: var(--red-text);
+}
+
+/* Reasoning kept after a turn settles. In-flight reasoning lives only in the
+   expandable live row above the composer. */
+.saved-reasoning {
+  margin-top: var(--s2);
+  color: var(--muted);
+  font-size: var(--fs-small);
+}
+
+.saved-reasoning > summary {
+  color: var(--faint);
+  cursor: pointer;
+}
+
+.saved-reasoning-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  margin: var(--s2) 0 0;
+  padding-left: 22px;
+}
+
+.saved-reasoning-step {
+  display: block;
+}
+
+.saved-reasoning-label {
+  color: var(--muted);
+  font-family: var(--mono);
+}
+
+.saved-reasoning-text {
+  margin-top: 2px;
+  color: var(--faint);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* The turn's spend: a faint gauge under the answer. Hover or focus reads the
+   total, a click opens the breakdown. The tool trace is the same kind of
+   detail, so it shows while the answer is hovered or it is open. */
+.usage-pill {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: var(--s1) 0 0 -6px;
+}
+
+.usage-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s1);
+  min-width: 24px;
+  min-height: 24px;
+  padding: 0 6px;
+  color: var(--faint);
+  font-size: var(--fs-meta);
+  font-variant-numeric: tabular-nums;
+  background: transparent;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.usage-trigger:hover:not(:disabled),
+.usage-trigger[aria-expanded="true"] {
+  color: var(--muted);
+  background: var(--surface);
+}
+
+.usage-trigger svg {
+  flex: none;
+}
+
+.usage-label {
+  max-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity var(--t-fast) var(--ease);
+}
+
+.usage-trigger:hover .usage-label,
+.usage-trigger:focus-visible .usage-label,
+.usage-trigger[aria-expanded="true"] .usage-label {
+  max-width: 260px;
+  opacity: 1;
+}
+
+.msg.assistant > details.meta {
+  opacity: 0;
+  transition: opacity var(--t-fast) var(--ease);
+}
+
+.msg.assistant:hover > details.meta,
+.msg.assistant > details.meta:focus-within,
+.msg.assistant > details.meta[open] {
+  opacity: 1;
+}
+
+.usage-panel {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: var(--s1) var(--s3);
+  margin-top: var(--s1);
+  padding: var(--s2) var(--s3);
+  color: var(--faint);
+  font-size: var(--fs-meta);
+  white-space: normal;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
+.usage-row {
+  display: contents;
+}
+
+.usage-key {
+  color: var(--faint);
+}
+
+.usage-value {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+@container panel (min-width: 480px) {
+  .msg.user {
+    max-width: 75%;
+  }
+}
+
+/* Helper agents working on the turn. */
+.agent-roster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--s1);
+  width: 100%;
+  margin-top: var(--s2);
+  font-size: var(--fs-meta);
+  white-space: normal;
+}
+
+.agent-chip {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: var(--s1);
+  max-width: 100%;
+  padding: 3px var(--s2);
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  cursor: default;
+}
+
+.agent-chip[role="button"] {
+  cursor: pointer;
+}
+
+.agent-role {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.agent-status {
+  color: var(--faint);
+}
+
+.agent-chip.owner {
+  color: var(--accent-text);
+  border-color: var(--accent);
+}
+
+.agent-chip.done {
+  color: var(--green);
+  border-color: var(--green-soft);
+}
+
+.agent-chip.unavailable {
+  color: var(--amber);
+  border-color: var(--amber-soft);
+}
+
+.agent-chip[role="button"] .agent-status::after {
+  content: " ›";
+}
+
+.agent-chip[data-open="true"] {
+  flex-basis: 100%;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.agent-chip[data-open="true"] .agent-status::after {
+  content: " ‹";
+}
+
+.agent-stream {
+  display: none;
+  flex-basis: 100%;
+  width: 100%;
+  min-width: 0;
+  padding: var(--s2);
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  font-size: var(--fs-meta);
+  line-height: 1.45;
+  white-space: pre-wrap;
+  border-top: 1px solid var(--line);
+}
+
+.agent-chip[data-open="true"] .agent-stream {
+  display: block;
+}
+
+/* One "Details" disclosure per answer. Reasoning, tools and usage live in it,
+   so it shows while the answer is hovered or focused, or while it is open. */
+
+details.answer-details {
+  margin-top: var(--s1);
+  font-size: var(--fs-small);
+}
+
+.msg.assistant > details.answer-details {
+  opacity: 0;
+  transition: opacity var(--t-fast) var(--ease);
+}
+
+.msg.assistant:hover > details.answer-details,
+.msg.assistant > details.answer-details:focus-within,
+.msg.assistant > details.answer-details[open] {
+  opacity: 1;
+}
+
+details.answer-details > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s1);
+  min-height: var(--control-sm);
+  color: var(--faint);
+  list-style: none;
+}
+
+details.answer-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.answer-details > summary::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+}
+
+details.answer-details[open] > summary::after {
+  transform: rotate(45deg);
+}
+
+.answer-details-section {
+  margin-top: var(--s2);
+  padding-top: var(--s2);
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+
+.answer-details-title {
+  margin-bottom: var(--s1);
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* With no hover to reveal it, the disclosure is always visible. */
+@media (hover: none) {
+  .msg.assistant > details.answer-details {
+    opacity: 1;
+  }
+}
+
+.msg .ref-sent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+  margin-top: var(--s2);
+}
+
+.msg .ref-image {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+}

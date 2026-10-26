@@ -1,0 +1,66 @@
+/* The empty transcript says what to do next: a heading, a sentence, and prompts
+   to start from. Prompts are full-width rows, in two columns once there is room. */
+
+.empty {
+  align-self: center;
+  width: 100%;
+  max-width: 420px;
+  margin: auto 0;
+  padding: var(--s4) 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+.empty h2 {
+  margin: 0 0 var(--s2);
+  color: var(--text);
+  font-size: var(--fs-display);
+  font-weight: 600;
+}
+
+.chips {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  margin-top: var(--s6);
+}
+
+.chips button {
+  justify-content: flex-start;
+  gap: var(--s2);
+  min-width: 0;
+  min-height: 38px;
+  padding: var(--s2) var(--s3);
+  line-height: 1.4;
+  text-align: left;
+  white-space: nowrap;
+  background: var(--surface);
+}
+
+.chips button > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+@container panel (min-width: 480px) {
+  .chips {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Prompt chips fill the composer and focus it; they never send. A mark at the
+   end of the row says so. */
+.chips.fill button::after {
+  content: "";
+  flex: none;
+  width: 14px;
+  height: 14px;
+  margin-left: auto;
+  align-self: center;
+  background: var(--faint);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 5L5 11M5 6.5V11h4.5'/%3E%3C/svg%3E") center / 14px no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 5L5 11M5 6.5V11h4.5'/%3E%3C/svg%3E") center / 14px no-repeat;
+}

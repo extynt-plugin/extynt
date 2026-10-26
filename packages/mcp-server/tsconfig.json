@@ -1,0 +1,6 @@
+{
+  "extends": "../../tsconfig.strict.json",
+  "compilerOptions": { "rootDir": ".", "outDir": "dist", "tsBuildInfoFile": "dist/.tsbuildinfo", "declaration": true, "composite": true },
+  "references": [{ "path": "../decode" }, { "path": "../decide" }, { "path": "../project-graph" }, { "path": "../capability-catalogue" }, { "path": "../action-plan" }, { "path": "../host-ae" }, { "path": "../host-native" }, { "path": "../ui-text" }],
+  "include": ["src/**/*.ts", "tests/**/*.ts"]
+}

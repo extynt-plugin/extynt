@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "0.1",
+  "id": "replace-with-project-slug",
+  "title": "Human-readable project title",
+  "source": {
+    "projectFile": "project.aep",
+    "distribution": "local-only",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "companionFiles": [],
+  "requirements": {
+    "afterEffects": "26.2.1",
+    "fonts": [],
+    "plugins": [
+      {
+        "provider": "Example vendor",
+        "package": "Example plugin",
+        "version": "1.0.0",
+        "matchNames": ["Vendor Effect Match Name"],
+        "required": false
+      }
+    ]
+  },
+  "derived": {
+    "initialProbe": "initial-probe.json",
+    "expectedStructure": "expected-structure.json",
+    "sanitized": true
+  },
+  "scenarios": [
+    {
+      "id": "replace-with-scenario-slug",
+      "promptFile": "prompt.md",
+      "expectedComposition": "Main",
+      "expectedLayer": "Title",
+      "expectedPropertyPaths": ["ADBE Transform Group/ADBE Opacity"],
+      "allowedOperationTypes": ["animate_property"],
+      "forbiddenTargets": ["Background"]
+    }
+  ],
+  "review": {
+    "containsPersonalData": false,
+    "containsClientMaterial": false,
+    "approvedForCommit": false,
+    "notes": "Keep source media local until reviewed."
+  }
+}

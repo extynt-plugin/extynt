@@ -1,0 +1,32 @@
+{
+  "name": "@extynt/mcp-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@extynt/decide": "workspace:*",
+    "@extynt/decode": "workspace:*",
+    "@extynt/project-graph": "workspace:*",
+    "@extynt/capability-catalogue": "workspace:*",
+    "@extynt/action-plan": "workspace:*",
+    "@extynt/visual-evidence": "workspace:*",
+    "@extynt/host-ae": "workspace:*",
+    "@extynt/host-native": "workspace:*",
+    "@extynt/ui-text": "workspace:*"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
+    },
+    "./session": {
+      "types": "./dist/src/session.d.ts",
+      "import": "./dist/src/session.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "pnpm -w build && node ../../scripts/run-tests.ts dist/tests/*.test.js"
+  }
+}

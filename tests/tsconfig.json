@@ -1,0 +1,39 @@
+{
+  "extends": "../tsconfig.strict.json",
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": true,
+    "tsBuildInfoFile": "../node_modules/.cache/extynt-tests.tsbuildinfo",
+    "allowImportingTsExtensions": true,
+    "types": [
+      "node"
+    ],
+    "rootDir": "."
+  },
+  "include": [
+    "*.ts"
+  ],
+  "references": [
+    {
+      "path": "../packages/decode"
+    },
+    {
+      "path": "../packages/project-graph"
+    },
+    {
+      "path": "../packages/mcp-server"
+    },
+    {
+      "path": "../packages/action-plan"
+    },
+    {
+      "path": "../tools/fake-plugin"
+    },
+    {
+      "path": "../packages/collection"
+    },
+    {
+      "path": "../scripts"
+    }
+  ]
+}

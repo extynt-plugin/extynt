@@ -1,0 +1,34 @@
+---
+id: title-ident-from-scratch
+asset: empty-ident
+offline: false
+notes: A detailed from-scratch ident that should span several receipt-gated workflow batches. It exercises shape construction, text animation, parenting, 3D/camera work, expressions, markers, and Essential Graphics without allowing the long job to be misrepresented as one undo unit. Unsupported work must be stated rather than silently dropped.
+expect: {"plans":{"min":2}}
+---
+
+Build a 10-second title ident in this empty comp, from scratch. Work in coherent stages and
+check what actually landed before building a later stage on it.
+Art direction: deep indigo-to-black backdrop, one cyan accent, a warm amber flash
+on the impact frame.
+
+- Backdrop: full-frame solid with a radial indigo-to-black look, using a Ramp
+  effect (not a gradient fill).
+- Rings: a shape layer with a thin cyan stroke — an ellipse plus a repeater at
+  12 copies with scale decay — bursting outward from centre at 0.4s with out-expo
+  easing, then looping pingpong for the rest of the comp.
+- The word "SIGNAL", centred, on a text layer with an outer glow and a drop
+  shadow. Per-letter reveal using a text animator with a range selector: opacity
+  0 to 100, position rising, a few degrees of rotation, animating the selector
+  offset 0 to 100 with out-expo easing from 0.8s.
+- Shine sweep: a thin white shape, heavily blurred, used as an alpha track matte
+  over the word, travelling left to right between 2.0s and 3.0s.
+- Rule line under the word: stroke-only shape, scaling from 0 to full width with
+  out-quint easing at 2.6s.
+- Parent the title group to a null, put the layers in 3D, and add a camera with a
+  slow push-in across the whole comp.
+- Flicker the glow with a wiggle expression for the first half second.
+- Add a marker at the start of every beat so the timeline reads as a shot list.
+- Publish the word as an Essential Graphics property so it's editable as a template.
+
+Name every layer and shape group clearly. Keep each applied batch bounded to one recorded undo
+unit, and distinguish structural receipt evidence from visual or timing judgments.

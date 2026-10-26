@@ -1,0 +1,5 @@
+// The extynt logo as the exe's icon: the lowest ID, so Explorer and the taskbar pick it for the file too.
+// CMake passes the .ico path (EXTYNT_ICON_PATH) so it is referenced in place, not copied.
+#include "catalogue_window_resource.h"
+
+IDI_EXTYNT ICON EXTYNT_ICON_PATH

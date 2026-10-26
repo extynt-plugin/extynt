@@ -1,0 +1,86 @@
+{
+ "description": "Specialists: which specialist roles a request needs besides the agent that builds it.",
+ "cases": [
+  {
+   "id": "ho-hide-layer",
+   "request": "Turn off the visibility of the guide layer",
+   "roles": []
+  },
+  {
+   "id": "ho-de-leer",
+   "request": "Stelle die Ebenenfarbe auf Blau um",
+   "roles": [],
+   "lang": "de"
+  },
+  {
+   "id": "ho-countdown",
+   "request": "Make a timer that counts down from 60 using an expression",
+   "roles": [
+    "expression"
+   ]
+  },
+  {
+   "id": "ho-es-motion",
+   "request": "Haz que el rótulo entre con un efecto elástico y asiente",
+   "roles": [
+    "motion"
+   ],
+   "lang": "es"
+  },
+  {
+   "id": "ho-ja-draw",
+   "request": "夕焼けの海辺の風景を描いてください",
+   "roles": [
+    "visual-scene"
+   ],
+   "lang": "ja"
+  },
+  {
+   "id": "ho-audit",
+   "request": "Go through the finished timeline and flag any text that overlaps the safe margins",
+   "roles": [
+    "reviewer"
+   ],
+   "hard": true
+  },
+  {
+   "id": "ho-storyboard",
+   "request": "Plan a 30 second logo sting with a build, a hit, and a hold, then execute it",
+   "roles": [
+    "planner",
+    "motion",
+    "execution"
+   ]
+  },
+  {
+   "id": "ho-loop-exp",
+   "request": "Make the gears turn forever using a loop expression and ease their start",
+   "roles": [
+    "expression",
+    "motion"
+   ],
+   "hard": true
+  },
+  {
+   "id": "ho-big-scene",
+   "request": "Draw a medieval castle, animate the flag and torches flickering, drive the flicker with expressions, then check every frame and plan the shots",
+   "roles": [
+    "visual-scene",
+    "motion",
+    "expression",
+    "reviewer",
+    "planner",
+    "execution"
+   ]
+  },
+  {
+   "id": "ho-redraw",
+   "request": "Redraw the mascot as a flat vector, then animate it blinking",
+   "roles": [
+    "visual-scene",
+    "motion"
+   ],
+   "hard": true
+  }
+ ]
+}

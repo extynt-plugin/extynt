@@ -1,0 +1,29 @@
+{
+  "name": "@extynt/sidecar",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@extynt/decide": "workspace:*",
+    "@extynt/decode": "workspace:*",
+    "@extynt/llm": "workspace:*",
+    "@extynt/mcp-server": "workspace:*",
+    "@extynt/capability-catalogue": "workspace:*",
+    "@extynt/action-plan": "workspace:*",
+    "@extynt/workflow": "workspace:*",
+    "@extynt/host-ae": "workspace:*",
+    "@extynt/host-native": "workspace:*",
+    "@extynt/project-graph": "workspace:*",
+    "@extynt/visual-evidence": "workspace:*",
+    "@extynt/ui-text": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "pnpm build && node ../../scripts/run-tests.ts dist/tests/*.test.js",
+    "start": "node dist/src/main.js"
+  },
+  "devDependencies": {
+    "@extynt/fake-plugin": "workspace:*"
+  }
+}

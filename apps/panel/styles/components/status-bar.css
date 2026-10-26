@@ -1,0 +1,223 @@
+/* The status bar: one strip above the composer, always present. Slim when idle (still the
+   door to the sheet), full height when something runs or waits. The runtime sets
+   data-state (blocked, offline, needs-you, locked, working, outside, learning, finished,
+   idle) and data-tone (red, grey, amber, accent, dashed, quiet). Amber is a decision only
+   the user can make; dashed is watch-only. The top edge is the job's progress, one
+   segment per phase. */
+
+.status-zone {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+}
+
+/* Lifted, the zone takes the room the transcript gives up; its sheet scrolls and the composer stays below. */
+.status-zone[data-open="true"] {
+  flex: 1 1 0;
+}
+
+.status-bar {
+  position: relative;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  padding: var(--s2) var(--s3);
+  font-size: var(--fs-small);
+  line-height: 1.4;
+  background: var(--surface);
+  border-left: 3px solid var(--faint);
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.bar-main {
+  flex: 1;
+  justify-content: flex-start;
+  gap: var(--s2);
+  min-width: 0;
+  min-height: 32px;
+  padding: var(--s1) 0;
+  text-align: left;
+  white-space: normal;
+  background: transparent;
+  border-color: transparent;
+}
+
+.bar-main:hover:not(:disabled) {
+  background: transparent;
+  border-color: transparent;
+}
+
+.bar-icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  color: var(--faint);
+}
+
+.bar-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.bar-text {
+  overflow-wrap: anywhere;
+  font-weight: 600;
+}
+
+.bar-sub {
+  color: var(--muted);
+  font-size: var(--fs-meta);
+}
+
+.bar-eta {
+  font-variant-numeric: tabular-nums;
+}
+
+.bar-sub.slowing .bar-eta {
+  color: var(--amber);
+}
+
+.bar-tag {
+  margin-left: var(--s2);
+  padding: 0 var(--s2);
+  color: var(--amber);
+  background: var(--amber-soft);
+  border-radius: var(--r-pill);
+}
+
+.bar-count {
+  flex: none;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.bar-chip,
+.source-tag {
+  flex: none;
+  padding: 0 var(--s2);
+  color: var(--muted);
+  font-size: var(--fs-meta);
+  white-space: nowrap;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-pill);
+}
+
+.bar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.bar-step {
+  margin-left: auto;
+  min-height: var(--control-sm);
+  padding: 0 var(--s2);
+  color: var(--muted);
+  font-size: var(--fs-meta);
+  background: transparent;
+  border-color: transparent;
+}
+
+.bar-progress {
+  position: absolute;
+  top: -1px;
+  right: 0;
+  left: 0;
+  display: flex;
+  gap: 2px;
+  height: 3px;
+}
+
+.bar-segment {
+  flex: 1 1 0;
+  min-width: 4px;
+  overflow: hidden;
+  background: var(--line);
+}
+
+.bar-segment-fill {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+}
+
+/* Idle and finished are slim strips: the bar is there, and quiet. */
+.status-bar[data-state="idle"],
+.status-bar[data-state="finished"],
+.status-bar[data-state="learning"] {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.status-bar[data-state="idle"] .bar-text,
+.status-bar[data-state="learning"] .bar-text {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.status-bar[data-tone="accent"] {
+  border-left-color: var(--accent);
+}
+
+.status-bar[data-tone="accent"] .bar-icon {
+  color: var(--accent-text);
+}
+
+.status-bar[data-tone="amber"] {
+  background: var(--amber-soft);
+  border-left-color: var(--amber);
+}
+
+.status-bar[data-tone="amber"] .bar-icon {
+  color: var(--amber);
+}
+
+.status-bar[data-tone="red"] {
+  background: var(--red-soft);
+  border-left-color: var(--red);
+}
+
+.status-bar[data-tone="red"] .bar-icon {
+  color: var(--red-text);
+}
+
+.status-bar[data-tone="grey"] {
+  border-left-color: var(--faint);
+}
+
+.status-bar[data-tone="grey"] .bar-text {
+  color: var(--muted);
+}
+
+.status-bar[data-tone="dashed"] {
+  border-left: 3px dashed var(--line-strong);
+}
+
+.status-bar[data-state="finished"] .bar-icon {
+  color: var(--green);
+}
+
+.status-bar[data-state="working"] .icon-loading {
+  animation: extynt-spin 0.9s linear infinite;
+}
+
+@container panel (min-width: 340px) {
+  .status-bar {
+    padding-left: var(--s4);
+    padding-right: var(--s4);
+  }
+}

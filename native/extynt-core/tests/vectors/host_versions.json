@@ -1,0 +1,20 @@
+{
+  "note": "Shared by the C++ tests (core/host_version) and the TypeScript tests (packages/host-native deriveHostIdentity): the same version text gives the same identity on both sides.",
+  "cases": [
+    { "input": "26.5.0 (build 61)", "known": true, "major": 26, "minor": 5, "patch": 0, "build": "61", "family": "ae26", "svgImport": "native", "supported": true, "measured": true, "experimental": false, "revisionGuard": "on" },
+    { "input": "26.2.1x2", "known": true, "major": 26, "minor": 2, "patch": 1, "build": "2", "family": "ae26", "svgImport": "native", "supported": true, "measured": true, "experimental": false, "revisionGuard": "on" },
+    { "input": "26.0", "known": true, "major": 26, "minor": 0, "patch": 0, "build": null, "family": "ae26", "svgImport": "native", "supported": true, "measured": true, "experimental": false, "revisionGuard": "on" },
+    { "input": "25.6.0 (build 41)", "known": true, "major": 25, "minor": 6, "patch": 0, "build": "41", "family": "ae25", "svgImport": "converter", "supported": true, "measured": false, "experimental": false, "revisionGuard": "on" },
+    { "input": "25.0", "known": true, "major": 25, "minor": 0, "patch": 0, "build": null, "family": "ae25", "svgImport": "converter", "supported": true, "measured": false, "experimental": false, "revisionGuard": "on" },
+    { "input": "24.6.0", "known": true, "major": 24, "minor": 6, "patch": 0, "build": null, "family": "older", "svgImport": "converter", "supported": false, "measured": false, "experimental": false, "revisionGuard": "off" },
+    { "input": "27.1.0 (build 3)", "known": true, "major": 27, "minor": 1, "patch": 0, "build": "3", "family": "newer", "svgImport": "native", "supported": true, "measured": false, "experimental": true, "revisionGuard": "on" },
+    { "input": "unknown", "known": false, "major": null, "minor": null, "patch": null, "build": null, "family": "unknown", "svgImport": "unknown", "supported": true, "measured": false, "experimental": false, "revisionGuard": "on" },
+    { "input": "", "known": false, "major": null, "minor": null, "patch": null, "build": null, "family": "unknown", "svgImport": "unknown", "supported": true, "measured": false, "experimental": false, "revisionGuard": "on" },
+    { "input": "26", "known": false, "major": null, "minor": null, "patch": null, "build": null, "family": "unknown", "svgImport": "unknown", "supported": true, "measured": false, "experimental": false, "revisionGuard": "on" },
+    { "input": "26.5.0-beta", "known": false, "major": null, "minor": null, "patch": null, "build": null, "family": "unknown", "svgImport": "unknown", "supported": true, "measured": false, "experimental": false, "revisionGuard": "on" },
+    { "input": "26.5.0.1", "known": false, "major": null, "minor": null, "patch": null, "build": null, "family": "unknown", "svgImport": "unknown", "supported": true, "measured": false, "experimental": false, "revisionGuard": "on" },
+    { "input": "26.5abc", "known": false, "major": null, "minor": null, "patch": null, "build": null, "family": "unknown", "svgImport": "unknown", "supported": true, "measured": false, "experimental": false, "revisionGuard": "on" },
+    { "input": "2026.5", "known": true, "major": 2026, "minor": 5, "patch": 0, "build": null, "family": "newer", "svgImport": "native", "supported": true, "measured": false, "experimental": true, "revisionGuard": "on" },
+    { "input": "26.5.0 (build 61", "known": true, "major": 26, "minor": 5, "patch": 0, "build": null, "family": "ae26", "svgImport": "native", "supported": true, "measured": true, "experimental": false, "revisionGuard": "on" }
+  ]
+}

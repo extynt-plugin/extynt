@@ -1,0 +1,32 @@
+{
+  "description": "Modal risk: what adding an effect does that needs the user; may-ask-options is by definition the scan flag, true for the flagged rows.",
+  "cases": [
+    {"id": "apply-lut", "matchName": "ADBE Apply Color LUT2", "displayName": "Apply Color LUT", "hasOptionsDialog": null, "label": "opens-dialog"},
+    {"id": "basic-text", "matchName": "ADBE Basic Text2", "displayName": "Basic Text", "hasOptionsDialog": null, "label": "opens-dialog"},
+    {"id": "numbers", "matchName": "ADBE Numbers2", "displayName": "Numbers", "hasOptionsDialog": null, "label": "opens-dialog"},
+    {"id": "path-text", "matchName": "ADBE Path Text", "displayName": "Path Text", "hasOptionsDialog": null, "label": "opens-dialog"},
+    {"id": "mocha", "matchName": "mochaAECC", "displayName": "Mocha AE", "hasOptionsDialog": null, "label": "opens-dialog", "hard": true},
+    {"id": "warp-stabilizer", "matchName": "ADBE SubspaceStabilizer", "displayName": "Warp Stabilizer", "hasOptionsDialog": null, "label": "analyzes-in-background", "hard": true},
+    {"id": "camera-tracker", "matchName": "ADBE 3D Tracker", "displayName": "3D Camera Tracker", "hasOptionsDialog": null, "label": "analyzes-in-background", "hard": true},
+    {"id": "gaussian-blur", "matchName": "ADBE Gaussian Blur 2", "displayName": "Gaussian Blur", "hasOptionsDialog": false, "label": "no-dialog"},
+    {"id": "glow", "matchName": "ADBE Glo2", "displayName": "Glow", "hasOptionsDialog": null, "label": "no-dialog"},
+    {"id": "drop-shadow", "matchName": "ADBE Drop Shadow", "displayName": "Drop Shadow", "hasOptionsDialog": false, "label": "no-dialog"},
+    {"id": "fill", "matchName": "ADBE Fill", "displayName": "Fill", "hasOptionsDialog": null, "label": "no-dialog"},
+    {"id": "tint", "matchName": "ADBE Tint", "displayName": "Tint", "hasOptionsDialog": false, "label": "no-dialog"},
+    {"id": "curves", "matchName": "ADBE CurvesCustom", "displayName": "Curves", "hasOptionsDialog": null, "label": "no-dialog"},
+    {"id": "levels", "matchName": "ADBE Pro Levels2", "displayName": "Levels", "hasOptionsDialog": false, "label": "no-dialog"},
+    {"id": "hue-sat", "matchName": "ADBE HUE SATURATION", "displayName": "Hue/Saturation", "hasOptionsDialog": null, "label": "no-dialog"},
+    {"id": "keylight", "matchName": "Keylight 906", "displayName": "Keylight (1.2)", "hasOptionsDialog": false, "label": "no-dialog"},
+    {"id": "fractal-noise", "matchName": "ADBE Fractal Noise", "displayName": "Fractal Noise", "hasOptionsDialog": null, "label": "no-dialog"},
+    {"id": "turbulent", "matchName": "ADBE Turbulent Displace", "displayName": "Turbulent Displace", "hasOptionsDialog": false, "label": "no-dialog"},
+    {"id": "scan-flagged", "matchName": "ADBE Lens Flare", "displayName": "Lens Flare", "hasOptionsDialog": true, "label": "may-ask-options", "hard": true},
+    {"id": "scan-flagged-wave", "matchName": "ADBE Wave Warp", "displayName": "Wave Warp", "hasOptionsDialog": true, "label": "may-ask-options", "hard": true},
+    {"id": "unscanned-lens-flare", "matchName": "ADBE Lens Flare", "displayName": "Lens Flare", "hasOptionsDialog": null, "label": "no-dialog"},
+    {"id": "unscanned-wave-warp", "matchName": "ADBE Wave Warp", "displayName": "Wave Warp", "hasOptionsDialog": null, "label": "no-dialog"},
+    {"id": "unscanned-optics", "matchName": "ADBE Optics Compensation", "displayName": "Optics Compensation", "hasOptionsDialog": null, "label": "no-dialog"},
+    {"id": "unscanned-cc-particle", "matchName": "CC Particle World", "displayName": "CC Particle World", "hasOptionsDialog": null, "label": "no-dialog"},
+    {"id": "scanned-clear-stabilizer-name", "matchName": "ADBE Posterize", "displayName": "Posterize", "hasOptionsDialog": false, "label": "no-dialog"},
+    {"id": "flagged-glow-es", "matchName": "ADBE Glo2", "displayName": "Resplandor", "hasOptionsDialog": true, "label": "may-ask-options"},
+    {"id": "unscanned-jp-blur", "matchName": "ADBE Gaussian Blur 2", "displayName": "ブラー(ガウス)", "hasOptionsDialog": null, "label": "no-dialog"}
+  ]
+}

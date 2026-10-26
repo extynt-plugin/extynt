@@ -1,0 +1,86 @@
+# Dependencies and build output
+node_modules/
+.pnpm-store/
+dist/
+build/
+*.tsbuildinfo
+coverage/
+.cache/
+
+# Vendor SDKs live in the main checkout only
+/SDKs
+
+# Secrets and local runtime state (model keys, pairing tokens)
+.env
+.env.*
+!.env.example
+llm.env
+session.json
+
+# Logs and editor/OS files
+*.log
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+.claude/settings.local.json
+
+# After Effects project and binary files
+*.jsxbin
+*.aep
+*.aepx
+*.aet
+*.aetx
+
+# Local Adobe material, build artifacts, and Mac evidence
+.local/adobe/
+.local/artifacts/adobe/
+artifacts/
+extynt-macos.zip
+extynt-*-macos*.tar.gz
+extynt-*-macos*.tar.gz.sha256
+/extynt-*-macos*/
+extynt-mac-evidence/
+extynt-evidence.tar.gz
+extynt captures/
+extynt Test Fixtures/
+test-results/
+benchmark-results/
+*.benchmark.jsonl
+
+# Mac release output (signed packages)
+release-out/
+*.zxp
+*.pkg
+*.dmg
+
+# Signing material: certificates, keys, and the passwords that unlock them.
+# make-release.sh keeps these in ~/.extynt-release, but never let a stray copy in here be committable.
+*.p12
+*.p8
+*.password
+*.mobileprovision
+
+# Generated verification kit and the reports and exports from a real-hardware run (hundreds of MB).
+docs/live-reports/
+*.mogrt
+extynt-*-review.zip
+
+# Bug-scrub evidence root (harnesses, findings); local only
+.bug-scrub/
+
+# Local consolidated check logs (the check prints paths only on failure).
+.check-logs/
+
+# Repo-local venv for the pinned native and shell quality tools (pnpm setup:tools).
+/.tools
+__pycache__/
+
+# chat-tests saved run traces
+/tools/chat-tests/traces/
+
+# Panel build outputs (node scripts/build-panel.ts, run by pnpm build): the bundle, its manifest and the gallery's icon table.
+/apps/panel/main.js
+/apps/panel/ui-manifest.json
+/apps/panel/gallery-icons.js

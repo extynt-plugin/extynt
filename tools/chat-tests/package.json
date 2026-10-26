@@ -1,0 +1,30 @@
+{
+  "name": "@extynt/chat-tests",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Chat tests: drives the in-panel agent through realistic composition requests against a committed fixture, offline via the mock provider or live against a configured model, and reports exactly what the agent did.",
+  "dependencies": {
+    "@extynt/capability-catalogue": "workspace:*",
+    "@extynt/decide": "workspace:*",
+    "@extynt/decode": "workspace:*",
+    "@extynt/fake-plugin": "workspace:*",
+    "@extynt/host-native": "workspace:*",
+    "@extynt/llm": "workspace:*",
+    "@extynt/project-graph": "workspace:*"
+  },
+  "bin": {
+    "extynt-chat-tests": "./dist/src/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "pnpm --workspace-root build && node ../../scripts/run-tests.ts dist/tests/*.test.js"
+  }
+}

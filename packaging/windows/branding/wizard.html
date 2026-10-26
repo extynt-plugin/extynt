@@ -1,0 +1,38 @@
+<!doctype html>
+<!-- Source of the Setup wizard images (wizard-*.bmp, wizard-small-*.bmp, light and dark), rendered by scripts/render-wizard-images.ts.
+     ?kind=side (164 x 314) or ?kind=small (55 x 55), &theme=dark for the ink version. The look is background.html's
+     in packaging/macos/release/branding: paper or ink, the tagline with a short rule above it and its turn in brick red,
+     the wordmark, an ink frame with extynt.com's hard offset shadow. -->
+<html><head><meta charset="utf-8">
+<style>
+  :root { --bg: #f4f2ec; --ink: #151515; --drop: #151515; --red: #b3341c; }
+  :root.dark { --bg: #151515; --ink: #f4f2ec; --drop: #4a4741; --red: #ec7a5f; }
+  html, body { margin: 0; background: var(--bg); overflow: hidden; color: var(--ink); }
+  .side, .small { display: none; position: relative; }
+  .side.on { display: block; width: 164px; height: 314px; }
+  .small.on { display: block; width: 55px; height: 55px; }
+  .drop, .frame { position: absolute; box-sizing: border-box; }
+  .side .drop { left: 14px; top: 14px; width: 136px; height: 286px; transform: translate(5px, 5px); background: var(--drop); }
+  .side .frame { left: 14px; top: 14px; width: 136px; height: 286px; border: 2px solid var(--ink); background: var(--bg); }
+  .tagline { position: absolute; left: 26px; top: 36px; margin: 0; font: 600 15.5px/1.12 "IBM Plex Sans", "Segoe UI", Arimo, "Liberation Sans", sans-serif; letter-spacing: -0.02em; }
+  .tagline em { font-style: normal; color: var(--red); }
+  .tagline::before { content: ""; display: block; width: 18px; height: 1.5px; margin-bottom: 10px; background: var(--ink); }
+  .word { position: absolute; left: 26px; bottom: 30px; height: 15px; }
+  .small .drop { left: 6px; top: 6px; width: 40px; height: 40px; transform: translate(4px, 4px); background: var(--drop); }
+  .small .frame { left: 6px; top: 6px; width: 40px; height: 40px; border: 2px solid var(--ink); background: var(--bg); }
+  .small .word { left: 11px; bottom: auto; top: 21px; height: 12px; width: 28px; }
+</style></head>
+<body>
+<div class="side"><div class="drop"></div><div class="frame"></div>
+<p class="tagline"><em>AI has<br>no vision.</em><br>Make it follow<br>yours.</p>
+<svg class="word" viewBox="30 28 453 114" fill="currentColor"><path d="M114.6,94.8H80.3l-1.2,4.7c-0.4,1.6-1.2,2.7-2.5,3.4c-1.2,0.7-2.7,1-4.4,1c-1.8,0-3.1-0.3-3.9-1c-0.8-0.7-1-1.8-0.6-3.4l2.3-9h45.6l7.2-27c0.9-3.3,0.6-6-0.9-8.2c-1.5-2.2-3.9-3.3-7.2-3.3H57.2c-3.3,0-6.2,1.1-8.9,3.3c-2.7,2.2-4.4,4.9-5.3,8.2l-11.6,43.1c-0.8,3.3-0.5,6,1,8.2c1.5,2.2,3.8,3.3,7.1,3.3h57.6c3.3,0,6.3-1.1,9-3.3c2.7-2.2,4.5-4.9,5.3-8.2L114.6,94.8z M75.3,71.1c0.5-1.8,1.3-3.1,2.5-3.8c1.2-0.7,2.6-1.1,4.4-1.1c1.8,0,3.1,0.4,3.9,1.1c0.8,0.7,1,2,0.5,3.8L85,77.2H73.7L75.3,71.1z"/><polygon points="207.8,52 181.7,52 176.5,58.3 172.4,63.4 171.8,63.4 170.2,57.9 168.2,52 128,52 138.9,83.8 108.7,118 134.6,118 140.2,111.4 145.5,104.8 146.1,104.8 147.9,111.5 150,118 190.9,118 179,84.4"/><path d="M313.3,52l-10.2,20.8L292.2,95h-0.5l1.2-22.2L294,52h-36.7H257h-12.4l5.9-22l-38.6,12.3l-17.2,64.3c-0.8,3.3-0.5,6,1,8.2c1.5,2.2,3.8,3.3,7.1,3.3h36.7l5-18.9h-9.8c-0.8,0-1.4-0.3-1.8-0.8c-0.4-0.5-0.5-1.2-0.3-2l6.9-25.3h17l-1.2,47.1h23.2l-11.3,22h31.3L343,52H313.3z"/><path d="M421.7,55.3c-1.5-2.2-3.9-3.3-7.2-3.3h-22.4c-3.3,0-6.2,1.1-8.8,3.3c-2.6,2.2-4.3,4.9-5.2,8.2h-1.2L380,52h-34.6l-17.7,66h34.6l12-44.7c0.3-1.4,1.1-2.4,2.3-3.1c1.2-0.7,2.7-1,4.5-1c1.6,0,2.8,0.4,3.6,1.1c0.8,0.7,1,1.8,0.5,3.2L373.4,118H408l14.6-54.6C423.5,60.2,423.2,57.4,421.7,55.3z"/><path d="M476,70.9l5-18.9h-12.7l5.9-22l-38.6,12.3l-17.2,64.3c-0.8,3.3-0.5,6,1,8.2c1.5,2.2,3.8,3.3,7.1,3.3h36.7l5-18.9h-9.8c-0.8,0-1.4-0.3-1.8-0.8c-0.4-0.5-0.5-1.2-0.3-2l6.9-25.3H476z"/></svg>
+</div>
+<div class="small"><div class="drop"></div><div class="frame"></div>
+<svg class="word" viewBox="30 48 180 76" fill="currentColor"><path d="M114.6,94.8H80.3l-1.2,4.7c-0.4,1.6-1.2,2.7-2.5,3.4c-1.2,0.7-2.7,1-4.4,1c-1.8,0-3.1-0.3-3.9-1c-0.8-0.7-1-1.8-0.6-3.4l2.3-9h45.6l7.2-27c0.9-3.3,0.6-6-0.9-8.2c-1.5-2.2-3.9-3.3-7.2-3.3H57.2c-3.3,0-6.2,1.1-8.9,3.3c-2.7,2.2-4.4,4.9-5.3,8.2l-11.6,43.1c-0.8,3.3-0.5,6,1,8.2c1.5,2.2,3.8,3.3,7.1,3.3h57.6c3.3,0,6.3-1.1,9-3.3c2.7-2.2,4.5-4.9,5.3-8.2L114.6,94.8z M75.3,71.1c0.5-1.8,1.3-3.1,2.5-3.8c1.2-0.7,2.6-1.1,4.4-1.1c1.8,0,3.1,0.4,3.9,1.1c0.8,0.7,1,2,0.5,3.8L85,77.2H73.7L75.3,71.1z"/><polygon points="207.8,52 181.7,52 176.5,58.3 172.4,63.4 171.8,63.4 170.2,57.9 168.2,52 128,52 138.9,83.8 108.7,118 134.6,118 140.2,111.4 145.5,104.8 146.1,104.8 147.9,111.5 150,118 190.9,118 179,84.4"/></svg>
+</div>
+<script>
+  var q = location.search;
+  if (q.indexOf("theme=dark") >= 0) document.documentElement.className = "dark";
+  document.querySelector(q.indexOf("kind=small") >= 0 ? ".small" : ".side").className += " on";
+</script>
+</body></html>

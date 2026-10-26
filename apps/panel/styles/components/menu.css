@@ -1,0 +1,145 @@
+/* The model menu: a trigger in the composer and a popup the runtime places.
+   The size here is only the fallback before it has measured the popup; the
+   inline values it writes keep the popup inside the frame. overflow:hidden
+   keeps anything from painting outside the rounded box, and min-height:0 on
+   the list lets it scroll instead of pushing the box past its cap. */
+
+.menu {
+  position: fixed;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  max-width: calc(100vw - 24px);
+  max-height: min(440px, calc(100vh - 24px));
+  padding: var(--s1);
+  overflow: hidden;
+  background: var(--raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+}
+
+.menu-head {
+  flex: none;
+  padding: 6px var(--s2) var(--s1);
+  color: var(--faint);
+  font-size: var(--fs-meta);
+}
+
+.menu-body {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.menu-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-group {
+  margin: 2px 0;
+}
+
+.menu-group-title {
+  position: sticky;
+  top: 0;
+  padding: 6px var(--s2) var(--s1);
+  color: var(--faint);
+  font-size: var(--fs-meta);
+  background: var(--raised);
+}
+
+.menu-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--s2);
+  width: 100%;
+  min-height: 34px;
+  padding: var(--s1) var(--s2);
+  color: var(--text);
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.menu-row:hover:not(:disabled) {
+  background: var(--hover);
+  border-color: transparent;
+}
+
+.menu-row .icon {
+  flex: none;
+  margin-left: auto;
+  color: var(--accent-text);
+}
+
+.menu-row-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.menu-row-name,
+.menu-row-detail {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menu-row-detail {
+  color: var(--faint);
+  font-size: var(--fs-meta);
+}
+
+.menu-status {
+  padding: 6px var(--s2);
+  color: var(--faint);
+  font-size: var(--fs-meta);
+}
+
+.menu-status-bad {
+  color: var(--amber);
+}
+
+.menu-filter {
+  width: 100%;
+  margin: 2px 0 var(--s1);
+}
+
+/* The model popover's footnote: one sentence and a pointer to Settings. */
+.menu-foot {
+  padding: var(--s2) var(--s2) var(--s1);
+  color: var(--faint);
+  font-size: var(--fs-meta);
+  line-height: 1.4;
+}
+
+.menu-link {
+  display: inline;
+  min-height: 0;
+  padding: 0;
+  color: var(--accent-text);
+  font-size: inherit;
+  white-space: normal;
+  background: transparent;
+  border: 0;
+}
+
+.menu-group .segmented {
+  display: flex;
+  flex-wrap: wrap;
+  margin: var(--s1) var(--s2);
+}
+
+.menu-group .segmented button {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0 var(--s1);
+}

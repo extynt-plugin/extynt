@@ -1,0 +1,144 @@
+/* The empty state when extynt is not ready: no model connected. A flat column, not a box: steps, one
+   heading, one sentence, the controls. A provider list with hairlines, a key field, one primary. */
+
+.setup-card {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+  width: 100%;
+  max-width: 420px;
+  margin: auto 0;
+  padding: 0 var(--s1);
+}
+
+.setup-card h2 {
+  margin: 0;
+  font-size: var(--fs-display);
+  font-weight: 600;
+}
+
+.setup-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.setup-card .setup-foot {
+  color: var(--faint);
+  font-size: var(--fs-small);
+}
+
+.setup-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1);
+}
+
+/* The first-run card: three numbered steps, the one in front open, the finished ones a line. */
+.setup-step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  padding: var(--s3) 0;
+  border-top: 1px solid var(--line);
+  opacity: 0.6;
+}
+
+.setup-step.on,
+.setup-step.done {
+  opacity: 1;
+}
+
+.setup-step-head {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  font-weight: 600;
+}
+
+.setup-step-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.setup-card.first-run {
+  gap: var(--s2);
+}
+
+.setup-num {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--muted);
+  font-size: var(--fs-meta);
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+}
+
+.setup-step.on .setup-num {
+  color: var(--on-accent);
+  background: var(--accent-solid);
+  border-color: var(--accent-solid);
+}
+
+.setup-step.done .setup-num {
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.setup-step .chips {
+  margin-top: 0;
+}
+
+.setup-providers {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+
+.setup-provider {
+  justify-content: space-between;
+  min-height: 38px;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+}
+
+.setup-provider::before {
+  content: "";
+  flex: none;
+  width: 12px;
+  height: 12px;
+  margin-right: var(--s2);
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+}
+
+.setup-provider > span:first-child {
+  flex: 1;
+}
+
+.setup-provider[aria-pressed="true"]::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 2px var(--bg);
+}
+
+.setup-card .field > label {
+  margin-top: 0;
+}
+
+.setup-card input {
+  width: 100%;
+  margin-top: var(--s1);
+}
+
+.setup-card .setup-status {
+  min-height: 18px;
+  font-size: var(--fs-small);
+}

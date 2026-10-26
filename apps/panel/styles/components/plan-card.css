@@ -1,0 +1,206 @@
+/* A plan's detail in the sheet: the rows of what will change, the notices that matter before
+   Apply, and the quiet lines under them. The plan card is gone from the thread (it keeps one
+   fold line, see sheet.css), so these rules serve the sheet's Waiting and Changes. */
+
+.plan-sub {
+  margin: 2px 0 0;
+  color: var(--faint);
+  font-size: var(--fs-meta);
+}
+
+.plan-sub.ok {
+  color: var(--green);
+}
+
+.plan-sub.bad {
+  color: var(--red-text);
+}
+
+.plan-sub.undo-reason {
+  color: var(--muted);
+  font-size: var(--fs-small);
+  line-height: 1.4;
+}
+
+.plan-sub.wait {
+  color: var(--amber);
+}
+
+/* A mark per operation, by what it does rather than which of the sixty it is.
+   A row reads "Label · target: before → after" and wraps rather than cuts, so a
+   long layer name stays readable at the minimum width. */
+.plan-ops {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: var(--s3) 0 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: var(--fs-small);
+  list-style: none;
+}
+
+.plan-ops li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s2);
+  min-height: 24px;
+  padding: 3px 0;
+  line-height: 1.4;
+}
+
+.plan-ops li .icon {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  margin-top: 2px;
+  color: var(--accent-text);
+}
+
+.plan-op-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.plan-op-label {
+  color: var(--text);
+}
+
+.plan-op-before {
+  color: var(--muted);
+}
+
+.plan-op-values {
+  font-variant-numeric: tabular-nums;
+}
+
+.plan-op-after {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* "What will change": a small heading, up to four rows, then "+N more". The
+   target of a row is a quieter second part: "Rename the layer · BAKERY". */
+.plan-ops-title {
+  margin: var(--s3) 0 0;
+  color: var(--faint);
+  font-size: var(--fs-meta);
+  font-weight: 600;
+}
+
+.plan-ops-title + .plan-ops {
+  margin-top: var(--s1);
+}
+
+.plan-op-target {
+  color: var(--faint);
+}
+
+button.plan-ops-more {
+  align-self: flex-start;
+  min-height: var(--control-sm);
+  margin-left: calc(-1 * var(--s2));
+  padding: 0 var(--s2);
+  color: var(--accent-text);
+  font-size: var(--fs-small);
+  background: transparent;
+  border-color: transparent;
+}
+
+/* Notices sit inline as one line under the list and expand in place. A red
+   error is always open and has no toggle. */
+.plan-note {
+  margin-top: var(--s3);
+  font-size: var(--fs-small);
+  border-left: 2px solid var(--line-strong);
+}
+
+.plan-note[data-tone="warn"] {
+  border-color: var(--amber);
+}
+
+.plan-note[data-tone="bad"] {
+  border-color: var(--red);
+}
+
+.plan-note > summary {
+  display: flex;
+  align-items: center;
+  gap: var(--s1);
+  min-height: var(--control-sm);
+  padding-left: var(--s2);
+  color: var(--muted);
+  list-style: none;
+  cursor: pointer;
+}
+
+.plan-note > summary::-webkit-details-marker {
+  display: none;
+}
+
+.plan-note[data-tone="warn"] > summary {
+  color: var(--amber);
+}
+
+.plan-note[data-tone="bad"] > summary {
+  color: var(--red-text);
+  cursor: default;
+}
+
+.plan-note[data-tone="bad"] > summary::after {
+  content: none;
+}
+
+.plan-note > summary::after {
+  content: "›";
+  margin-left: var(--s1);
+}
+
+.plan-note[open] > summary::after {
+  content: "‹";
+}
+
+.plan-note-body {
+  padding: var(--s1) 0 var(--s1) var(--s2);
+  color: var(--muted);
+}
+
+.plan-note-action {
+  margin-top: var(--s1);
+  color: var(--accent-text);
+}
+
+/* The card's overflow menu sits at the end of the footer and opens upward, so
+   the transcript's edge never cuts it. */
+.card-menu {
+  position: relative;
+  flex: none;
+}
+
+.card-menu-btn {
+  width: var(--control-sm);
+  min-height: var(--control-sm);
+  font-size: var(--fs-title);
+  line-height: 1;
+}
+
+.card-menu-pop {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  min-width: 190px;
+  padding: var(--s1);
+  background: var(--raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+}
+
+.plan-warning {
+  margin: var(--s2) 0 0;
+  color: var(--amber);
+  font-size: var(--fs-small);
+}

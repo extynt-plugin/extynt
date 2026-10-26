@@ -1,0 +1,248 @@
+/* The receipt: the verdict first, then the before and after frames side by
+   side (stacked when the panel is too narrow), then a closed checklist of the
+   changes. The pair is one button; pressing it makes the frames larger. */
+
+.thumb-slot {
+  margin: var(--s3) 0 0;
+}
+
+button.thumb-pair {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--s2);
+  width: 100%;
+  height: auto;
+  margin: var(--s3) 0 0;
+  padding: var(--s2);
+  color: var(--muted);
+  font-size: var(--fs-meta);
+  text-align: left;
+  background: var(--field);
+  border-color: var(--line);
+  border-radius: var(--r);
+}
+
+.thumb-slot button.thumb-pair {
+  margin: 0;
+}
+
+.thumb-pair .thumb {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1);
+  min-width: 0;
+}
+
+.thumb-pair img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--frame);
+  border-radius: var(--r-sm);
+}
+
+.thumb-meta {
+  color: var(--faint);
+  font-size: var(--fs-meta);
+  font-variant-numeric: tabular-nums;
+}
+
+/* A skeleton keeps the frame's place until the capture arrives. */
+.thumb-skeleton {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--hover);
+  border-radius: var(--r-sm);
+  animation: extynt-fade 1.2s ease-in-out infinite;
+}
+
+/* A frame the sidecar never took: the cell keeps the pair's shape without animating. */
+.thumb-empty {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--hover);
+  border-radius: var(--r-sm);
+  opacity: 0.5;
+}
+
+/* The receipt's verdict: one line, which opens to a reason only when there is one. */
+.receipt-line {
+  margin-top: var(--s3);
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+
+.receipt-line[data-tone="ok"] {
+  color: var(--green);
+}
+
+.receipt-line[data-tone="warn"] {
+  color: var(--amber);
+}
+
+.receipt-line[data-tone="bad"] {
+  color: var(--red-text);
+}
+
+.receipt-line > summary {
+  display: flex;
+  align-items: center;
+  gap: var(--s1);
+  min-height: var(--control-sm);
+  color: inherit;
+  list-style: none;
+  cursor: pointer;
+}
+
+.receipt-line > summary::-webkit-details-marker {
+  display: none;
+}
+
+.receipt-line > summary::after {
+  content: "›";
+}
+
+.receipt-line[open] > summary::after {
+  content: "‹";
+}
+
+.receipt-line-body {
+  padding: var(--s1) 0 0;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* The checklist: one row per change with a check, a question mark or a cross.
+   It is closed until opened; the mark is a glyph as well as a colour. */
+.receipt-checklist {
+  margin-top: var(--s2);
+  font-size: var(--fs-small);
+}
+
+.receipt-checklist > summary {
+  display: flex;
+  align-items: center;
+  gap: var(--s1);
+  min-height: var(--control-sm);
+  list-style: none;
+}
+
+.receipt-checklist > summary::-webkit-details-marker {
+  display: none;
+}
+
+.receipt-checklist > summary::after {
+  content: "›";
+}
+
+.receipt-checklist[open] > summary::after {
+  content: "‹";
+}
+
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: var(--s1) 0 0;
+  padding: 0;
+  color: var(--muted);
+  list-style: none;
+}
+
+.check-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s2);
+  padding: 3px 0;
+  line-height: 1.4;
+}
+
+.check-mark {
+  flex: none;
+  width: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.check-row[data-mark="ok"] .check-mark {
+  color: var(--green);
+}
+
+.check-row[data-mark="unknown"] .check-mark {
+  color: var(--amber);
+}
+
+.check-row[data-mark="bad"] .check-mark {
+  color: var(--red-text);
+}
+
+.check-row[data-mark="skip"] .check-mark {
+  color: var(--faint);
+}
+
+.check-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.check-note {
+  display: block;
+  color: var(--faint);
+  font-size: var(--fs-meta);
+}
+
+.thumb-cap {
+  color: var(--muted);
+  font-size: var(--fs-meta);
+  font-weight: 600;
+}
+
+.result {
+  margin-top: var(--s2);
+  padding: var(--s2) var(--s3);
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  font: var(--fs-meta) / 1.5 var(--mono);
+  white-space: pre-wrap;
+  background: var(--field);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
+details summary {
+  color: var(--muted);
+  cursor: pointer;
+}
+
+details summary:hover {
+  color: var(--text);
+}
+
+@container panel (min-width: 340px) {
+  button.thumb-pair {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  button.thumb-pair .thumb {
+    flex: 1 1 0;
+  }
+
+  button.thumb-pair[aria-expanded="true"] {
+    flex-direction: column;
+  }
+
+  button.thumb-pair[aria-expanded="true"] .thumb {
+    flex: none;
+  }
+}
+
+@container panel (min-width: 480px) {
+  button.thumb-pair {
+    padding: var(--s3);
+    gap: var(--s3);
+  }
+}

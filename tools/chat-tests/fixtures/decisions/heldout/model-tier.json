@@ -1,0 +1,62 @@
+{
+ "description": "Model tier: whether a request fits a fast model (small, well-defined edit) or needs a strong one (design judgement, drawing, coordinated parts, timing, expressions).",
+ "cases": [
+  {
+   "id": "ho-lock",
+   "request": "Lock the background layer",
+   "label": "fast"
+  },
+  {
+   "id": "ho-de-fast",
+   "request": "Benenne die Komposition in INTRO um",
+   "label": "fast",
+   "lang": "de"
+  },
+  {
+   "id": "ho-es-strong",
+   "request": "Dibuja un paisaje de montañas con niebla",
+   "label": "strong",
+   "lang": "es"
+  },
+  {
+   "id": "ho-ja-fast",
+   "request": "レイヤーの不透明度を30%にして",
+   "label": "fast",
+   "lang": "ja"
+  },
+  {
+   "id": "ho-ja-strong-expr",
+   "request": "文字が揺れるイージング付きのカウントアップをエクスプレッションで作って",
+   "label": "strong",
+   "lang": "ja"
+  },
+  {
+   "id": "ho-shy",
+   "request": "Add a Gaussian Blur set to 12 on the footage",
+   "label": "fast",
+   "hard": true
+  },
+  {
+   "id": "ho-brand-feel",
+   "request": "Give the whole intro a more cinematic, high-end feel",
+   "label": "strong",
+   "hard": true
+  },
+  {
+   "id": "ho-sync",
+   "request": "Time three text lines to appear one after another with staggered overshoot",
+   "label": "strong"
+  },
+  {
+   "id": "ho-solo-toggle",
+   "request": "Solo the title layer",
+   "label": "fast"
+  },
+  {
+   "id": "ho-simple-looking",
+   "request": "Make the loader spin forever, nothing else",
+   "label": "strong",
+   "hard": true
+  }
+ ]
+}
