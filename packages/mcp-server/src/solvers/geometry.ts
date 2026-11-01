@@ -204,8 +204,7 @@ export function measureLayer(snapshot: ProjectSnapshot, compositionId: string, l
   return measurementOf({ layer, composition, anchor: read.anchor.value, parentChain, size, state: accumulateParents(composition, parentChain, start) });
 }
 
-/** The space a layer's Position lives in: `toComp` maps it to composition pixels (identity for an unparented layer), with the parent ids nearest first and caveats about the parents. */
-export interface ParentSpace {
+interface ParentSpace {
   readonly parentChain: ReadonlyArray<string>;
   readonly toComp: Matrix2D;
   readonly caveats: ReadonlyArray<string>;

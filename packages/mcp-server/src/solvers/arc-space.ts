@@ -5,8 +5,7 @@ import type { ArcPathResult } from "./path.js";
 import { round3 } from "./types.js";
 import type { SolvedKeyframe, Vec2 } from "./types.js";
 
-/** The arc's keys in parent space, with the caveats that apply to them. */
-export interface ArcInParentSpace {
+interface ArcInParentSpace {
   readonly result: ArcPathResult;
   readonly caveats: ReadonlyArray<string>;
 }
