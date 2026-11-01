@@ -136,6 +136,21 @@ test("ae_solve_arc_path operations validate with ae_propose_plan and compile cor
   assert.ok("operations" in compiled && compiled.operations.length >= 2);
 });
 
+test("ae_solve_arc_path eased elliptical operations validate with ae_propose_plan and compile correctly", () => {
+  for (const speed of ["accelerate", "decelerate", "ease-in-out"]) {
+    const context = arcContext();
+    const args = { center: [960, 540], radius: 300, radiusY: 90, axisRotation: 15, startAngle: 0, sweep: 300, startTime: 0, duration: 2, speed, orient: { forwardAngle: 0 }, target: LAYER };
+    const arc = callTool("ae_solve_arc_path", args, context);
+    assert.equal(arc.ok, true, JSON.stringify(arc));
+    const proposal = callTool("ae_propose_plan", { summary: `Eased ${speed} ellipse`, operations: arrayAt(resultData(arc), "operations") ?? [] }, context);
+    assert.equal(proposal.ok, true, JSON.stringify(proposal));
+    const planId = stringAt(resultData(proposal), "planId");
+    assert.ok(planId);
+    const compiled = compiledPlan(context.plans.get(planId), representativeSnapshot);
+    assert.equal("ok" in compiled, false, JSON.stringify(compiled));
+  }
+});
+
 test("ae_solve_arc_path refuses a malformed target instead of dropping it", () => {
   const error = refusalFor("ae_solve_arc_path", { ...ARC, target: { layerId: "layer-footage" } }, withSnapshot);
   assert.equal(error.code, "INVALID_ARGUMENT");

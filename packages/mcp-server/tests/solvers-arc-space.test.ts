@@ -97,6 +97,22 @@ test("Parent space: a full turn under a mirrored parent turns the other way", ()
   assert.equal(Math.round((rotations.at(-1) ?? 0) - (rotations[0] ?? 0)), -360);
 });
 
+function outSpeed(keyframe: SolvedKeyframe): number {
+  assert.ok(keyframe.ease);
+  return keyframe.ease.out.speed;
+}
+
+test("Parent space: ease speeds are rescaled into the parent's pixels, and a mirror reverses Rotation's", () => {
+  const comp = solvedArc({ ...ARC, radiusY: 300, axisRotation: 0, speed: "ease-in-out" });
+  const halfSize = arcInParentSpace(comp, toCompOf([{ scale: [50, 50], rotation: 40 }])).result;
+  const mirrored = arcInParentSpace(comp, toCompOf([{ scale: [-100, 100] }])).result;
+  comp.position.keyframes.forEach((keyframe, index) => {
+    assert.ok(Math.abs(outSpeed(keyframeAt(halfSize.position.keyframes, index)) - 2 * outSpeed(keyframe)) < 0.01, `key ${index}`);
+  });
+  const compTurns = (comp.rotation?.keyframes ?? []).map(outSpeed);
+  assert.deepEqual((mirrored.rotation?.keyframes ?? []).map(outSpeed), compTurns.map((speed) => -speed + 0));
+});
+
 test("Parent space: an unparented layer keeps the composition-space answer exactly", () => {
   const comp = solvedArc(ARC);
   assert.deepEqual(arcInParentSpace(comp, toCompOf([])), { result: comp, caveats: [] });

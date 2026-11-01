@@ -11,6 +11,12 @@ All notable changes are recorded here. The format follows [Keep a Changelog](htt
   distance along the path, so a constant speed profile looks constant on screen, and `orient` faces the true tangent
   at every key. A circle gives exactly the same keyframes as before.
 
+- **Smooth speed profiles on arcs.** `accelerate`, `decelerate` and `ease-in-out` arcs now carry temporal eases (the
+  profile's exact speed at each key, one-third influence), so speed changes smoothly instead of stepping at every key.
+  Across tested sweeps and segment counts, the path stays within 0.15% of the intended profile, where the stepped
+  keys strayed by 4 to 25%. A one-segment arc now eases too (before, its profile had no effect). Rotation from
+  `orient` turns in step. A `constant` profile keeps its linear keys unchanged.
+
 ### Fixed
 
 - **Developer page.** An expanded Request history scrolls inside its box instead of spilling over the Tools section.

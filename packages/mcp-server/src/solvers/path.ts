@@ -1,4 +1,6 @@
 // The arc-path solver: position (and optional rotation) keyframes that carry a layer around a circle or an ellipse at a chosen speed profile.
+import { easedArcKeys } from "./arc-ease.js";
+import type { ArcDistances } from "./arc-ease.js";
 import { keyTimesProblem, orientProblem, resolveCircle, resolveSegments, motionProblem } from "./arc-validation.js";
 import type { CircleArgs, MotionArgs } from "./arc-validation.js";
 import { ellipseArcLength, isCircle, pointOnEllipse, tangentOnEllipse } from "./ellipse.js";
@@ -31,6 +33,7 @@ interface Arc {
   readonly sweep: number;
   readonly segments: number;
   readonly times: ReadonlyArray<number>;
+  readonly distances: ArcDistances;
 }
 
 const RADIANS_PER_DEGREE = Math.PI / 180;
@@ -130,20 +133,22 @@ function arcLength(ellipse: Ellipse, sweep: number): number {
   return ellipseArcLength(ellipse, ellipse.startAngle, ellipse.startAngle + sweep);
 }
 
-function distanceProgress(ellipse: Ellipse, sweep: number, segments: number): ReadonlyArray<number> {
-  if (isCircle(ellipse)) return Array.from({ length: segments + 1 }, (_, index) => index / segments);
-  const travelled = [0];
-  for (let index = 1; index <= segments; index += 1) {
-    const length = ellipseArcLength(ellipse, angleAt(ellipse, sweep, segments, index - 1), angleAt(ellipse, sweep, segments, index));
-    travelled.push((travelled[index - 1] ?? 0) + length);
-  }
-  const total = travelled[segments] ?? 1;
-  return travelled.map((distance, index) => (index === segments ? 1 : distance / total));
+function segmentLength(ellipse: Ellipse, sweep: number, segments: number, index: number): number {
+  if (isCircle(ellipse)) return ellipse.radius * Math.abs(turnPerSegment({ sweep, segments }) * RADIANS_PER_DEGREE);
+  return ellipseArcLength(ellipse, angleAt(ellipse, sweep, segments, index - 1), angleAt(ellipse, sweep, segments, index));
 }
 
-function keyTimes(input: ArcPathInput, ellipse: Ellipse, segments: number): ReadonlyArray<number> {
+function arcDistances(ellipse: Ellipse, sweep: number, segments: number): ArcDistances {
+  const travelled = [0];
+  for (let index = 1; index <= segments; index += 1) travelled.push((travelled[index - 1] ?? 0) + segmentLength(ellipse, sweep, segments, index));
+  const total = travelled[segments] ?? 1;
+  const progress = isCircle(ellipse) ? travelled.map((_, index) => index / segments) : travelled.map((distance, index) => (index === segments ? 1 : distance / total));
+  return { travelled, progress };
+}
+
+function keyTimes(input: ArcPathInput, distances: ArcDistances): ReadonlyArray<number> {
   const fraction = TIME_FRACTION[input.speed ?? "constant"];
-  return distanceProgress(ellipse, input.sweep, segments).map((progress) => round3(input.startTime + input.duration * fraction(progress)));
+  return distances.progress.map((progress) => round3(input.startTime + input.duration * fraction(progress)));
 }
 
 function prepareArc(input: ArcPathInput): Arc | string {
@@ -153,9 +158,10 @@ function prepareArc(input: ArcPathInput): Arc | string {
   if (problem) return problem;
   const segments = resolveSegments(input.sweep, input.segments);
   if (typeof segments === "string") return segments;
-  const times = keyTimes(input, ellipse, segments);
+  const distances = arcDistances(ellipse, input.sweep, segments);
+  const times = keyTimes(input, distances);
   const trailing = keyTimesProblem(times) ?? orientProblem(input.orient);
-  return trailing ?? { ellipse, sweep: input.sweep, segments, times };
+  return trailing ?? { ellipse, sweep: input.sweep, segments, times, distances };
 }
 
 /**
@@ -165,7 +171,9 @@ function prepareArc(input: ArcPathInput): Arc | string {
 export function solveArcPath(input: ArcPathInput): ArcPathResult | SolverFailure {
   const arc = prepareArc(input);
   if (typeof arc === "string") return solverFailure(arc);
-  const position = { propertyPath: "ADBE Transform Group/ADBE Position", keyframes: positionKeyframes(arc) } as const;
-  const rotation = input.orient ? { propertyPath: "ADBE Transform Group/ADBE Rotate Z", keyframes: rotationKeyframes(arc, input.orient.forwardAngle ?? 0) } as const : undefined;
+  const linear = { position: positionKeyframes(arc), ...(input.orient ? { rotation: rotationKeyframes(arc, input.orient.forwardAngle ?? 0) } : {}) };
+  const keys = easedArcKeys(linear, { profile: input.speed ?? "constant", distances: arc.distances, duration: input.duration });
+  const position = { propertyPath: "ADBE Transform Group/ADBE Position", keyframes: keys.position } as const;
+  const rotation = keys.rotation ? { propertyPath: "ADBE Transform Group/ADBE Rotate Z", keyframes: keys.rotation } as const : undefined;
   return { ok: true, position, ...describeArc(input, arc.ellipse), ...(rotation ? { rotation } : {}) };
 }

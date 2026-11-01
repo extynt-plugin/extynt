@@ -21,11 +21,17 @@ interface SolvedSpatial {
   readonly continuous: boolean;
 }
 
+interface SolvedEase {
+  readonly speed: number;
+  readonly influence: number;
+}
+
 /** Exactly the keyframe shape `animate_property` accepts, so a result can be pasted into a plan unchanged. */
 export interface SolvedKeyframe {
   readonly time: number;
   readonly value: number | Vec2;
   readonly interpolation?: SolvedInterpolation;
+  readonly ease?: { readonly in: SolvedEase; readonly out: SolvedEase };
   readonly spatial?: SolvedSpatial;
 }
 

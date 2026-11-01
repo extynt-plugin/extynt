@@ -36,7 +36,10 @@ read-only tools the model calls when it needs a number:
 - `ae_solve_arc_path` — Position keyframes on an exact circular or elliptical
   arc with Bézier spatial tangents (`4/3·tan(θ/4)·r` handles; on an ellipse the
   same handles scaled per axis, which stays exact because an ellipse is an affine
-  image of a circle), times spread by a speed profile, and optional Rotation
+  image of a circle), times spread by a speed profile with temporal eases that
+  reproduce it between keys (the profiles are quadratic in distance over time,
+  which a one-third-influence Bézier carrying the exact key speeds matches),
+  and optional Rotation
   keyframes along the tangent. On an ellipse the angles are parametric (as in
   SVG) and the key times follow measured distance along the path, so equal
   angles do not mean equal speed. Given a target it returns ready

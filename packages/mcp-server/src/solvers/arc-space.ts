@@ -42,11 +42,23 @@ function keepsShape(matrix: Matrix2D): boolean {
   return rotates || mirrors;
 }
 
+function scaledEase(keyframe: SolvedKeyframe, factor: number): Pick<SolvedKeyframe, "ease"> {
+  if (!keyframe.ease) return {};
+  const scaled = (side: { readonly speed: number; readonly influence: number }): typeof side => ({ ...side, speed: round3(side.speed * factor) });
+  return { ease: { in: scaled(keyframe.ease.in), out: scaled(keyframe.ease.out) } };
+}
+
+function lengthOf(vector: Vec2): number {
+  return Math.hypot(vector[0], vector[1]);
+}
+
 function mappedKeyframe(fromComp: Matrix2D, keyframe: SolvedKeyframe): SolvedKeyframe {
   if (typeof keyframe.value === "number" || !keyframe.spatial) return keyframe;
   const { inTangent, outTangent } = keyframe.spatial;
   const spatial = { ...keyframe.spatial, inTangent: rounded(applyLinear(fromComp, inTangent)), outTangent: rounded(applyLinear(fromComp, outTangent)) };
-  return { ...keyframe, value: rounded(applyMatrix(fromComp, keyframe.value)), spatial };
+  const direction = travelDirection(keyframe);
+  const stretch = lengthOf(direction) > 0 ? lengthOf(applyLinear(fromComp, direction)) / lengthOf(direction) : 1;
+  return { ...keyframe, value: rounded(applyMatrix(fromComp, keyframe.value)), spatial, ...scaledEase(keyframe, stretch) };
 }
 
 function travelDirection(keyframe: SolvedKeyframe | undefined): Vec2 {
@@ -71,7 +83,9 @@ function parentRotations(fromComp: Matrix2D, position: ReadonlyArray<SolvedKeyfr
 function mappedRotation(fromComp: Matrix2D, result: ArcPathResult): Pick<ArcPathResult, "rotation"> {
   if (!result.rotation) return {};
   const values = parentRotations(fromComp, result.position.keyframes, result.rotation.keyframes);
-  const keyframes = result.rotation.keyframes.map((keyframe, index) => ({ ...keyframe, value: round3(values[index] ?? 0) }));
+  const [a, b, c, d] = fromComp;
+  const turning = Math.sign(a * d - b * c);
+  const keyframes = result.rotation.keyframes.map((keyframe, index) => ({ ...keyframe, value: round3(values[index] ?? 0), ...scaledEase(keyframe, turning) }));
   return { rotation: { ...result.rotation, keyframes } };
 }
 
