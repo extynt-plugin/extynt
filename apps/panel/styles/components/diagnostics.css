@@ -37,13 +37,11 @@
   color: var(--faint);
 }
 
-/* An open disclosure keeps its log to a fixed height and scrolls inside it, so
-   rows never spill over the sections below. */
+/* An open disclosure's log takes its full height and the page body scrolls
+   (one scroller per surface); a capped height without a scroller let the rows
+   spill over the sections below. */
 details > .log {
-  max-height: 150px;
   margin-top: var(--s2);
-  overflow-y: auto;
-  overscroll-behavior: contain;
 }
 
 /* The poll heartbeat: a poll that worked is not work, so it never reaches the

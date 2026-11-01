@@ -19,7 +19,8 @@ All notable changes are recorded here. The format follows [Keep a Changelog](htt
 
 ### Fixed
 
-- **Developer page.** An expanded Request history scrolls inside its box instead of spilling over the Tools section.
+- **Developer page.** An expanded Request history takes its full height (the page scrolls) instead of spilling over the
+  Tools section.
 - **Arcs on parented layers.** Given a `target`, `ae_solve_arc_path` reads the layer's parents from the snapshot and
   returns Position keys in the parent's space and Rotation that faces along the path on screen, so the model passes
   composition pixels and does no matrix arithmetic. Rotated, scaled, mirrored and nested parents are exact; a

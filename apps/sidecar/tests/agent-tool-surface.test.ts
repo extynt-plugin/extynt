@@ -12,7 +12,7 @@ import { MockProvider, type AgentToolCall } from "@extynt/llm";
 const STANDARD_TURN = { acceptsImages: true, workflowStage: true, workflowSpecialists: true };
 const MAX_TOOL_BLOCK_CHARS = 15_000;
 const MAX_TOOL_BLOCK_TOKENS = 4_300;
-const EXTERNAL_SURFACE_SHA256 = "776c8e47736ea1bc70ca122ea44ae08155e8594f436cdb40bc12dfe071c42bae";
+const EXTERNAL_SURFACE_SHA256 = "675779c9e1704290de3dec32b1fc1811bcd425261ae15f27c0a8e64fb5eaed68";
 
 const ok = (data: ToolPayload = {}): ToolResult => ({ ok: true, data });
 const trace = { id: "m1", name: "ae_call_tool", arguments: { name: "ae_trace_dependencies", arguments: { compositionId: "comp-1", layerId: "layer-1" } } };
