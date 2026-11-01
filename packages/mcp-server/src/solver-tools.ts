@@ -31,7 +31,7 @@ function arcTarget(target: Target | undefined): Target | undefined | ToolFailure
   return { compositionId: target.compositionId, layerId: target.layerId };
 }
 
-/** Answers ae_solve_arc_path: the keyframes of a circular arc, or ready operations when a target is given. */
+/** Answers ae_solve_arc_path: the keyframes of a circular or elliptical arc, or ready operations when a target is given. */
 export function arcPathTool({ name, args }: HostRequest<ArcPathArgs>): ToolResult {
   const input = arcPathInput(args);
   if (typeof input === "string") return toolError("INVALID_ARGUMENT", input);

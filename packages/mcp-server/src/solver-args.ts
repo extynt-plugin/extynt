@@ -31,7 +31,8 @@ function circleOf(args: ArcPathArgs): CircleArgs | string {
   if (typeof center === "string") return center;
   const start = args.start === undefined ? undefined : pointOf(args.start, "start");
   if (typeof start === "string") return start;
-  return { center, ...present("start", start), ...present("radius", args.radius), ...present("startAngle", args.startAngle) };
+  return { center, ...present("start", start), ...present("radius", args.radius), ...present("startAngle", args.startAngle),
+    ...present("radiusY", args.radiusY), ...present("axisRotation", args.axisRotation) };
 }
 
 /** The arc-path solver's input from the tool arguments, or the message naming the argument that cannot be used. */

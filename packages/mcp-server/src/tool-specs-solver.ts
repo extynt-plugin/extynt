@@ -4,12 +4,14 @@ import { defineTool } from "./tool.js";
 import type { ToolEntry } from "./tool.js";
 
 export const AE_SOLVE_ARC_PATH = defineTool("ae_solve_arc_path", {
-  description: "Compute an exact circular-arc motion: Position keyframes with Bézier spatial tangents, timed by a speed profile, plus optional Rotation keyframes facing along the path. Pass target to get ready animate_property operations. Coordinates are composition pixels, y down; positive sweep is clockwise on screen. Required: center, sweep, startTime and duration, plus either start or radius with startAngle. To judge an existing path, read it with ae_measure_layer instead; this tool only computes new motion.",
+  description: "Exact circular or elliptical arc motion: Position keys with Bézier spatial tangents, timed by a speed profile, plus optional Rotation facing along the path. Pass target for ready animate_property operations. Pixels in the layer's parent space (comp if unparented), y down. Required: center, sweep, startTime and duration, plus start or radius with startAngle. radiusY/axisRotation make an ellipse (parametric angles). To read an existing path, use ae_measure_layer.",
   input: {
     center: arrayArg(numberArg(), { minItems: 2, maxItems: 2, description: "Arc center [x, y] px." }),
-    start: optionalArg(arrayArg(numberArg(), { minItems: 2, maxItems: 2, description: "Arc start [x, y]; instead of radius/startAngle." })),
+    start: optionalArg(arrayArg(numberArg(), { minItems: 2, maxItems: 2, description: "Arc start [x, y]." })),
     radius: optionalArg(numberArg({ description: "Arc radius; only without start." })),
-    startAngle: optionalArg(numberArg({ description: "Start angle in degrees; only without start." })),
+    startAngle: optionalArg(numberArg({ description: "Start angle, degrees." })),
+    radiusY: optionalArg(numberArg({ description: "Ellipse y radius." })),
+    axisRotation: optionalArg(numberArg({ description: "Ellipse tilt, degrees." })),
     sweep: numberArg({ description: "Degrees to travel; positive clockwise; |sweep| <= 3600." }),
     startTime: numberArg({ description: "Start time, seconds." }),
     duration: numberArg({ description: "Motion length, seconds." }),

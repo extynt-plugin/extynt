@@ -43,6 +43,14 @@ test("ae_solve_arc_path works host-independent with no snapshot", () => {
   assert.equal(typeof data.arcLength, "number");
 });
 
+test("ae_solve_arc_path passes radiusY and axisRotation through to an ellipse", () => {
+  const ellipseView = object({ radius: number(), radiusY: number(), axisRotation: number(), endPoint: array(number()) });
+  const args = { center: [100, 100], radius: 80, radiusY: 20, axisRotation: 90, startAngle: 0, sweep: 90, startTime: 0, duration: 1 };
+  const data = decodeOrThrow(ellipseView, payloadOf(callTool("ae_solve_arc_path", args, {})));
+  assert.deepEqual([data.radius, data.radiusY, data.axisRotation], [80, 20, 90]);
+  assert.deepEqual(data.endPoint, [80, 100]);
+});
+
 test("ae_solve_arc_path with orient generates rotation keyframes", () => {
   const data = decodeOrThrow(arcView, payloadOf(callTool("ae_solve_arc_path", { center: [100, 100], start: [150, 100], sweep: 180, startTime: 0, duration: 2, orient: { forwardAngle: 0 } }, {})));
   assert.equal(data.rotation?.propertyPath, "ADBE Transform Group/ADBE Rotate Z");

@@ -33,10 +33,14 @@ read-only tools the model calls when it needs a number:
 - `ae_measure_layer` — a layer's anchor, corners, bounds, and layer-to-comp
   matrix from the snapshot, parents resolved, with caveats for animation, 3D,
   and layers that have no fixed size.
-- `ae_solve_arc_path` — Position keyframes on an exact circular arc with
-  Bézier spatial tangents (`4/3·tan(θ/4)·r` handles), times spread by a speed
-  profile, and optional Rotation keyframes along the tangent. Given a target it
-  returns ready `animate_property` operations.
+- `ae_solve_arc_path` — Position keyframes on an exact circular or elliptical
+  arc with Bézier spatial tangents (`4/3·tan(θ/4)·r` handles; on an ellipse the
+  same handles scaled per axis, which stays exact because an ellipse is an affine
+  image of a circle), times spread by a speed profile, and optional Rotation
+  keyframes along the tangent. On an ellipse the angles are parametric (as in
+  SVG) and the key times follow measured distance along the path, so equal
+  angles do not mean equal speed. Given a target it returns ready
+  `animate_property` operations.
 - `ae_solve_stagger` — per-item start times for forward, reverse, centre-out,
   edges-in, and seeded random orders, by step or total span, optionally eased.
 

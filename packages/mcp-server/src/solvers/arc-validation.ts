@@ -1,13 +1,20 @@
 // Argument checks for the arc-path solver: range checks on already-typed numbers, each refusal naming the offending argument.
 import { firstProblem } from "./types.js";
+import type { Ellipse } from "./ellipse.js";
 import type { SpeedProfile, Vec2 } from "./types.js";
 
-/** Where the arc is drawn, around `center`: either from `start` (radius and startAngle are derived from it, so they must not also be passed), or from `radius` with `startAngle`. */
+/**
+ * Where the arc is drawn, around `center`: either a circle from `start` (radius and startAngle are derived from it, so they must not also be passed),
+ * or from `radius` with `startAngle`. With the second form, `radiusY` (default `radius`) and `axisRotation` (degrees, default 0) make it an ellipse;
+ * startAngle and sweep are then parametric angles on it, as in SVG.
+ */
 export interface CircleArgs {
   readonly center: Vec2;
   readonly start?: Vec2;
   readonly radius?: number;
   readonly startAngle?: number;
+  readonly radiusY?: number;
+  readonly axisRotation?: number;
 }
 
 /**
@@ -24,13 +31,6 @@ export interface MotionArgs {
   readonly orient?: { readonly forwardAngle?: number };
 }
 
-/** A circle in composition pixels with the angle the motion starts at. */
-export interface Circle {
-  readonly center: Vec2;
-  readonly radius: number;
-  readonly startAngle: number;
-}
-
 const MAX_SWEEP_DEGREES = 3600;
 const MAX_SEGMENT_DEGREES = 90;
 const DEFAULT_SEGMENT_DEGREES = 30;
@@ -41,36 +41,54 @@ function finitePointProblem(point: Vec2, name: string): string | undefined {
   return point.every(Number.isFinite) ? undefined : `${name} must contain 2 finite numbers`;
 }
 
-function radiusProblem(radius: number, startAngle: number): string | undefined {
-  if (!Number.isFinite(radius)) return "radius must be a finite number";
-  if (radius <= 0) return "radius must be > 0";
-  return Number.isFinite(startAngle) ? undefined : "startAngle must be a finite number";
+function lengthProblem(value: number, name: string): string | undefined {
+  if (!Number.isFinite(value)) return `${name} must be a finite number`;
+  return value <= 0 ? `${name} must be > 0` : undefined;
 }
 
-function circleFromStart(center: Vec2, start: Vec2): Circle | string {
+function angleProblem(value: number, name: string): string | undefined {
+  return Number.isFinite(value) ? undefined : `${name} must be a finite number`;
+}
+
+function circleFromStart(center: Vec2, start: Vec2): Ellipse | string {
   const dx = start[0] - center[0];
   const dy = start[1] - center[1];
   const radius = Math.hypot(dx, dy);
   if (radius === 0) return "start cannot equal center (radius must be > 0)";
-  return { center, radius, startAngle: Math.atan2(dy, dx) * DEGREES_PER_RADIAN };
+  return { center, radius, radiusY: radius, axisRotation: 0, startAngle: Math.atan2(dy, dx) * DEGREES_PER_RADIAN };
 }
 
-function circleFromParts({ center, start, radius, startAngle }: CircleArgs): Circle | string {
-  if (start !== undefined) {
-    if (radius !== undefined || startAngle !== undefined) return "cannot pass both start and radius/startAngle";
-    return circleFromStart(center, start);
-  }
-  if (radius === undefined || startAngle === undefined) return "must pass either start or both radius and startAngle";
-  return radiusProblem(radius, startAngle) ?? { center, radius, startAngle };
+function ellipseFromRadius(args: CircleArgs, radius: number, startAngle: number): Ellipse | string {
+  const radiusY = args.radiusY ?? radius;
+  const axisRotation = args.axisRotation ?? 0;
+  const problem = firstProblem([
+    () => lengthProblem(radius, "radius"),
+    () => angleProblem(startAngle, "startAngle"),
+    () => lengthProblem(radiusY, "radiusY"),
+    () => angleProblem(axisRotation, "axisRotation"),
+  ]);
+  return problem ?? { center: args.center, radius, radiusY, axisRotation, startAngle };
 }
 
-/** The circle the arc runs on, or the message explaining why the arguments do not describe one. */
-export function resolveCircle(args: CircleArgs): Circle | string {
+function ellipseFromStart(args: CircleArgs, start: Vec2): Ellipse | string {
+  if (args.radius !== undefined || args.startAngle !== undefined) return "cannot pass both start and radius/startAngle";
+  if (args.radiusY !== undefined || args.axisRotation !== undefined) return "radiusY and axisRotation describe an ellipse: pass them with radius and startAngle, not with start";
+  return circleFromStart(args.center, start);
+}
+
+function ellipseFromParts(args: CircleArgs): Ellipse | string {
+  if (args.start !== undefined) return ellipseFromStart(args, args.start);
+  if (args.radius === undefined || args.startAngle === undefined) return "must pass either start or both radius and startAngle";
+  return ellipseFromRadius(args, args.radius, args.startAngle);
+}
+
+/** The circle or ellipse the arc runs on, or the message explaining why the arguments do not describe one. */
+export function resolveCircle(args: CircleArgs): Ellipse | string {
   const problem = firstProblem([
     () => finitePointProblem(args.center, "center"),
     () => (args.start === undefined ? undefined : finitePointProblem(args.start, "start")),
   ]);
-  return problem ?? circleFromParts(args);
+  return problem ?? ellipseFromParts(args);
 }
 
 function sweepProblem(sweep: number): string | undefined {

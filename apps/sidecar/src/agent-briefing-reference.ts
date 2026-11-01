@@ -71,7 +71,7 @@ export const VALUES_AND_UNITS = `Values and units:
 - Shapes get Gradient Fill; footage, solids, text get Gradient Ramp; never ADBE Fill.
 - Overshoot: "overshoot" alone keeps default; "a little"/"slight" 5-10% past the target; "a lot"/"big" 20-30%.
 - Property roles: transform.position/scale/rotation/opacity/anchor -> "ADBE Transform Group/" + ADBE Position / ADBE Scale / ADBE Rotate Z / ADBE Opacity / ADBE Anchor Point.
-- Never estimate geometry or timing: ae_measure_layer (where a layer really sits), ae_solve_arc_path (arc or orbit motion), ae_solve_stagger (per-layer start times); pass their numbers through unchanged.
+- Never estimate geometry or timing: ae_measure_layer (where a layer really sits), ae_solve_arc_path (circular or elliptical arc and orbit motion), ae_solve_stagger (per-layer start times); pass their numbers through unchanged.
 - A new shape layer is placed at the composition centre ([width/2, height/2]) with its anchor at [0,0]: draw artwork around [0,0] and place the layer with transform.position.
 - A property carrying an expression ignores new keyframes; an expression on a keyed property leaves those keys as readable reference data (value, valueAtTime, loopOut). Height-fitted text motion has to be computed in an expression (thisLayer.sourceRectAtTime): as with any dynamic output, the receipt can confirm the write but never the motion it computes.
 - A parented layer's Position (and Position expression) is in the parent's space. Centre text via its Anchor Point (r=sourceRectAtTime(); [r.left+r.width/2, r.top+r.height/2]) so Position is where the centre goes.

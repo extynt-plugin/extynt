@@ -2,6 +2,21 @@
 
 All notable changes are recorded here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## Unreleased
+
+### Added
+
+- **Elliptical arcs.** `ae_solve_arc_path` takes `radiusY` and `axisRotation` with `radius` and `startAngle`, and moves a
+  layer along an ellipse, tilted or not. Angles on an ellipse are parametric, as in SVG. Key times follow measured
+  distance along the path, so a constant speed profile looks constant on screen, and `orient` faces the true tangent
+  at every key. A circle gives exactly the same keyframes as before.
+
+### Fixed
+
+- **Developer page.** An expanded Request history scrolls inside its box instead of spilling over the Tools section.
+- **Arc solver description.** It now says coordinates are in the layer's parent space (composition pixels when the
+  layer has no parent), which is what the solver's own guidance already said.
+
 ## 0.1.0 — first public release
 
 2026-10-25
