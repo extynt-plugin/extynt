@@ -14,8 +14,11 @@ All notable changes are recorded here. The format follows [Keep a Changelog](htt
 ### Fixed
 
 - **Developer page.** An expanded Request history scrolls inside its box instead of spilling over the Tools section.
-- **Arc solver description.** It now says coordinates are in the layer's parent space (composition pixels when the
-  layer has no parent), which is what the solver's own guidance already said.
+- **Arcs on parented layers.** Given a `target`, `ae_solve_arc_path` reads the layer's parents from the snapshot and
+  returns Position keys in the parent's space and Rotation that faces along the path on screen, so the model passes
+  composition pixels and does no matrix arithmetic. Rotated, scaled, mirrored and nested parents are exact; a
+  non-uniform parent scale keeps the path but notes that on-screen speed varies a little. The answer lists the parent
+  chain and any caveats. Previously the model was told to convert the points itself, and no tool did that.
 
 ## 0.1.0 — first public release
 

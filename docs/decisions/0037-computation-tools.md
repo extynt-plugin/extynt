@@ -40,7 +40,9 @@ read-only tools the model calls when it needs a number:
   keyframes along the tangent. On an ellipse the angles are parametric (as in
   SVG) and the key times follow measured distance along the path, so equal
   angles do not mean equal speed. Given a target it returns ready
-  `animate_property` operations.
+  `animate_property` operations, carried from composition pixels into the
+  target's parent space from the snapshot (keys and handles through the
+  inverse parent matrix, Rotation from the mapped direction of travel).
 - `ae_solve_stagger` — per-item start times for forward, reverse, centre-out,
   edges-in, and seeded random orders, by step or total span, optionally eased.
 

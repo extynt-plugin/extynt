@@ -7,14 +7,17 @@ import { jsonFieldsOf, jsonOf } from "./json.js";
 import type { JsonObject } from "@extynt/decode";
 import { arcPathInput, staggerInput } from "./solver-args.js";
 import type { ArcPathArgs, StaggerArgs } from "./solver-args.js";
-import { measureLayer } from "./solvers/geometry.js";
+import { arcInParentSpace } from "./solvers/arc-space.js";
+import { measureLayer, parentSpaceOf } from "./solvers/geometry.js";
 import { solveArcPath } from "./solvers/path.js";
+import type { ArcPathResult } from "./solvers/path.js";
 import { solveStagger } from "./solvers/stagger.js";
 import type { HostRequest } from "./tool-handle.js";
 import type { ToolBase, ToolFailure, ToolResult } from "./tool-result.js";
 
-const ARC_NEXT_VALUES = "Paste position.keyframes (and rotation.keyframes if present) into animate_property for this layer, or pass target to receive ready operations. Values are in the layer's parent space.";
-const ARC_NEXT_OPERATIONS = "Queue or propose these operations as they are. Values are in the layer's parent space: correct for an unparented layer; for a parented layer, convert center/start with ae_measure_layer first.";
+const ARC_NEXT_VALUES = "Paste position.keyframes (and rotation.keyframes if present) into animate_property for an unparented layer. For a parented layer pass target instead: the keys come back converted into its parent's space.";
+const ARC_NEXT_OPERATIONS = "Queue or propose these operations as they are; Position is already in the layer's parent space.";
+const UNCONVERTED = "The keys are in composition pixels, right for an unparented layer.";
 
 interface Target {
   readonly compositionId: string;
@@ -31,20 +34,37 @@ function arcTarget(target: Target | undefined): Target | undefined | ToolFailure
   return { compositionId: target.compositionId, layerId: target.layerId };
 }
 
-/** Answers ae_solve_arc_path: the keyframes of a circular or elliptical arc, or ready operations when a target is given. */
-export function arcPathTool({ name, args }: HostRequest<ArcPathArgs>): ToolResult {
+function arcFields(result: ArcPathResult): JsonObject {
+  const { ok: _ok, ...solved } = result;
+  return jsonFieldsOf(solved);
+}
+
+interface PlacedArc {
+  readonly result: ArcPathResult;
+  readonly parentSpace: { readonly parentChain: ReadonlyArray<string>; readonly caveats: ReadonlyArray<string> };
+}
+
+function placedArc(result: ArcPathResult, target: Target, snapshot: ProjectSnapshot | undefined): PlacedArc {
+  if (!snapshot) return { result, parentSpace: { parentChain: [], caveats: [`No project snapshot, so the layer's parents were not checked. ${UNCONVERTED}`] } };
+  const space = parentSpaceOf(snapshot, target.compositionId, target.layerId);
+  if ("ok" in space) return { result, parentSpace: { parentChain: [], caveats: [`${space.error.message} ${UNCONVERTED}`] } };
+  const mapped = arcInParentSpace(result, space.toComp);
+  return { result: mapped.result, parentSpace: { parentChain: space.parentChain, caveats: [...space.caveats, ...mapped.caveats] } };
+}
+
+/** Answers ae_solve_arc_path: the keyframes of a circular or elliptical arc in composition pixels, or, given a target, ready operations converted into that layer's parent space. */
+export function arcPathTool({ name, args, context }: HostRequest<ArcPathArgs>): ToolResult {
   const input = arcPathInput(args);
   if (typeof input === "string") return toolError("INVALID_ARGUMENT", input);
   const target = arcTarget(args.target);
   if (target !== undefined && "error" in target) return target;
-  const result = solveArcPath(input);
-  if (!result.ok) return toolError(result.error.code, result.error.message);
-  const { ok: _ok, ...solved } = result;
-  const data = jsonFieldsOf(solved);
-  if (target === undefined) return answer(name, { ...data, next: ARC_NEXT_VALUES });
+  const solved = solveArcPath(input);
+  if (!solved.ok) return toolError(solved.error.code, solved.error.message);
+  if (target === undefined) return answer(name, { ...arcFields(solved), next: ARC_NEXT_VALUES });
+  const { result, parentSpace } = placedArc(solved, target, context.snapshot);
   const tracks = [{ track: result.position, role: "transform.position" }, ...(result.rotation ? [{ track: result.rotation, role: "transform.rotation" }] : [])];
   const operations = tracks.map(({ track, role }) => ({ type: "animate_property", target: { ...target, propertyPath: track.propertyPath }, role, keyframes: track.keyframes }));
-  return answer(name, { ...data, ...jsonFieldsOf({ operations, next: ARC_NEXT_OPERATIONS }) });
+  return answer(name, { ...arcFields(result), ...jsonFieldsOf({ parentSpace, operations, next: ARC_NEXT_OPERATIONS }) });
 }
 
 function staggerLayerIds(value: ReadonlyArray<string> | undefined, count: number): ReadonlyArray<string> | undefined | ToolFailure {

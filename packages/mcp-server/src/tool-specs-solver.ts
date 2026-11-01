@@ -4,7 +4,7 @@ import { defineTool } from "./tool.js";
 import type { ToolEntry } from "./tool.js";
 
 export const AE_SOLVE_ARC_PATH = defineTool("ae_solve_arc_path", {
-  description: "Exact circular or elliptical arc motion: Position keys with Bézier spatial tangents, timed by a speed profile, plus optional Rotation facing along the path. Pass target for ready animate_property operations. Pixels in the layer's parent space (comp if unparented), y down. Required: center, sweep, startTime and duration, plus start or radius with startAngle. radiusY/axisRotation make an ellipse (parametric angles). To read an existing path, use ae_measure_layer.",
+  description: "Exact circular or elliptical arc motion: Position keys with Bézier spatial tangents, timed by a speed profile, plus optional Rotation facing along the path. Pass target for ready animate_property operations. Composition pixels, y down; with target, keys return in its parent's space. Required: center, sweep, startTime and duration, plus start or radius with startAngle. radiusY/axisRotation make an ellipse (parametric angles). To read an existing path, use ae_measure_layer.",
   input: {
     center: arrayArg(numberArg(), { minItems: 2, maxItems: 2, description: "Arc center [x, y] px." }),
     start: optionalArg(arrayArg(numberArg(), { minItems: 2, maxItems: 2, description: "Arc start [x, y]." })),

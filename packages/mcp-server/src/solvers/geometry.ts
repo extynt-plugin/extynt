@@ -203,3 +203,23 @@ export function measureLayer(snapshot: ProjectSnapshot, compositionId: string, l
   const start = startState(read, layerCaveats(layer, composition, read, size));
   return measurementOf({ layer, composition, anchor: read.anchor.value, parentChain, size, state: accumulateParents(composition, parentChain, start) });
 }
+
+/** The space a layer's Position lives in: `toComp` maps it to composition pixels (identity for an unparented layer), with the parent ids nearest first and caveats about the parents. */
+export interface ParentSpace {
+  readonly parentChain: ReadonlyArray<string>;
+  readonly toComp: Matrix2D;
+  readonly caveats: ReadonlyArray<string>;
+}
+
+const IDENTITY: Matrix2D = [1, 0, 0, 1, 0, 0];
+
+/** The parent space of a layer, read from the snapshot, or the reason it cannot be read. */
+export function parentSpaceOf(snapshot: ProjectSnapshot, compositionId: string, layerId: string): ParentSpace | SolverFailure {
+  const composition = snapshot.compositions.find((candidate) => candidate.id === compositionId);
+  if (!composition) return solverFailure(`Composition ${compositionId} is not in the snapshot.`);
+  if (!findLayer(composition, layerId)) return solverFailure(`Layer ${layerId} is not in composition ${compositionId}.`);
+  const parentChain = parentChainOf(composition, layerId);
+  if ("ok" in parentChain) return parentChain;
+  const state = accumulateParents(composition, parentChain, { matrix: IDENTITY, rotationInComp: 0, scaleInComp: [100, 100], caveats: [] });
+  return { parentChain, toComp: state.matrix, caveats: state.caveats };
+}

@@ -42,3 +42,18 @@ export function applyMatrix(matrix: Matrix2D, point: Vec2): Vec2 {
   const [a, b, c, d, e, f] = matrix;
   return [a * point[0] + c * point[1] + e, b * point[0] + d * point[1] + f];
 }
+
+/** The matrix that undoes `matrix`, or null when it cannot be undone (a zero scale collapses the plane). */
+export function invertMatrix(matrix: Matrix2D): Matrix2D | null {
+  const [a, b, c, d, e, f] = matrix;
+  const determinant = a * d - b * c;
+  if (!Number.isFinite(determinant) || Math.abs(determinant) < 1e-12) return null;
+  const [ia, ib, ic, id] = [d / determinant, -b / determinant, -c / determinant, a / determinant];
+  return [ia, ib, ic, id, -(ia * e + ic * f), -(ib * e + id * f)];
+}
+
+/** A direction after the matrix's linear part is applied: translation does not move a vector. */
+export function applyLinear(matrix: Matrix2D, vector: Vec2): Vec2 {
+  const [a, b, c, d] = matrix;
+  return [a * vector[0] + c * vector[1], b * vector[0] + d * vector[1]];
+}
