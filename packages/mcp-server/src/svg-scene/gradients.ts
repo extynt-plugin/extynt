@@ -1,7 +1,8 @@
 // SVG gradients reduced to what After Effects can script: a two-colour ramp
 // (Gradient Ramp) with its start and end in composition pixels. Shape-layer
 // gradient colour stops cannot be written by script, so a gradient keeps its
-// first and last stop, and a flattened fallback keeps its midpoint colour.
+// first and last stop (their offsets move the ramp's ends), a flattened fallback
+// keeps its midpoint colour, and what the ramp cannot carry is listed as losses.
 import { mixRgb, parseColor, type Rgb } from "./color.js";
 import type { Bounds } from "./shapes.js";
 import { applyPoint, IDENTITY, multiply, parseTransform, type Matrix, type Point } from "./transform.js";
@@ -19,10 +20,18 @@ export interface GradientDefinition {
   readonly stops: readonly GradientStop[];
 }
 
-/** A gradient reduced to a two-colour ramp in composition pixels. */
-export interface ResolvedRamp { readonly kind: "linear" | "radial"; readonly start: Point; readonly end: Point; readonly startColor: Rgb; readonly endColor: Rgb; readonly translucentStops: boolean }
+/**
+ * What a two-colour ramp could not carry from the SVG gradient: stop opacity, middle stops whose colour is not on the straight blend, a radial
+ * focal point (fx, fy), a radial stretched into an ellipse (the ramp is always circular), and a radial's first stop sitting off its centre.
+ */
+export type RampLoss = "opacity" | "middle-stops" | "focal-point" | "elliptical" | "inner-offset";
 
-const GRADIENT_ATTRIBUTES = ["x1", "y1", "x2", "y2", "cx", "cy", "r", "gradientUnits", "gradientTransform"] as const;
+/** A gradient reduced to a two-colour ramp in composition pixels, with what the reduction lost. */
+export interface ResolvedRamp { readonly kind: "linear" | "radial"; readonly start: Point; readonly end: Point; readonly startColor: Rgb; readonly endColor: Rgb; readonly losses: readonly RampLoss[] }
+
+const GRADIENT_ATTRIBUTES = ["x1", "y1", "x2", "y2", "cx", "cy", "r", "fx", "fy", "gradientUnits", "gradientTransform"] as const;
+const COLOR_TOLERANCE = 2 / 255;
+const NEAR = 1e-6;
 
 function hrefOf(element: SvgElement): string | undefined {
   const reference = element.attributes.href ?? element.attributes["xlink:href"];
@@ -126,30 +135,71 @@ function coordinate(value: string | undefined, fallback: number, boundingBox: bo
   return parsed;
 }
 
-interface RampGeometry { start: Point; end: Point }
+interface RampGeometry { start: Point; end: Point; focalMoved?: boolean }
 
 function rampGeometry(gradient: GradientDefinition, viewport: Point): RampGeometry {
   const box = gradient.boundingBoxUnits, a = gradient.attributes;
   const unit = (key: string, fallback: number, extent: number) => coordinate(a[key], fallback, box, extent);
   if (gradient.kind === "radial") {
     const cx = unit("cx", box ? 0.5 : viewport[0] / 2, viewport[0]), cy = unit("cy", box ? 0.5 : viewport[1] / 2, viewport[1]), r = unit("r", box ? 0.5 : Math.hypot(viewport[0], viewport[1]) / (2 * Math.SQRT2), viewport[0]);
-    return { start: [cx, cy], end: [cx + r, cy] };
+    const focalMoved = Math.abs(unit("fx", cx, viewport[0]) - cx) > NEAR || Math.abs(unit("fy", cy, viewport[1]) - cy) > NEAR;
+    return { start: [cx, cy], end: [cx + r, cy], focalMoved };
   }
   return { start: [unit("x1", 0, viewport[0]), unit("y1", 0, viewport[1])], end: [unit("x2", box ? 1 : viewport[0], viewport[0]), unit("y2", 0, viewport[1])] };
 }
 
+function between(from: Point, to: Point, amount: number): Point {
+  return [from[0] + (to[0] - from[0]) * amount, from[1] + (to[1] - from[1]) * amount];
+}
+
+function offsetGeometry(kind: GradientDefinition["kind"], geometry: RampGeometry, first: number, last: number): RampGeometry {
+  if (last - first <= NEAR) return geometry;
+  const start = kind === "linear" ? between(geometry.start, geometry.end, first) : geometry.start;
+  return { ...geometry, start, end: between(geometry.start, geometry.end, last) };
+}
+
+function offBlend(stops: readonly GradientStop[]): boolean {
+  const first = stops[0], last = stops.at(-1);
+  if (!first || !last || last.offset - first.offset <= NEAR) return false;
+  return stops.slice(1, -1).some((stop) => {
+    const expected = mixRgb(first.color, last.color, (stop.offset - first.offset) / (last.offset - first.offset));
+    return stop.color.some((channel, index) => Math.abs(channel - (expected[index] ?? channel)) > COLOR_TOLERANCE);
+  });
+}
+
+function keepsCircles(matrix: Matrix): boolean {
+  const [a, b, c, d] = matrix;
+  const scale = Math.max(Math.hypot(a, b), Math.hypot(c, d), NEAR);
+  const rotates = Math.abs(a - d) / scale < 1e-3 && Math.abs(b + c) / scale < 1e-3;
+  const mirrors = Math.abs(a + d) / scale < 1e-3 && Math.abs(b - c) / scale < 1e-3;
+  return rotates || mirrors;
+}
+
+function rampLosses(gradient: GradientDefinition, sorted: readonly GradientStop[], geometry: RampGeometry, matrix: Matrix): RampLoss[] {
+  const radial = gradient.kind === "radial";
+  const checks: ReadonlyArray<readonly [RampLoss, boolean]> = [
+    ["opacity", sorted.some((stop) => stop.opacity < 0.999)],
+    ["middle-stops", offBlend(sorted)],
+    ["focal-point", radial && geometry.focalMoved === true],
+    ["elliptical", radial && !keepsCircles(matrix)],
+    ["inner-offset", radial && (sorted[0]?.offset ?? 0) > 0.001],
+  ];
+  return checks.filter(([, lost]) => lost).map(([loss]) => loss);
+}
+
 /** Resolves a gradient for one painted element; `userBox` is its bounds in its own user space and `toCanvas` maps that space to composition pixels. */
 export function resolveRamp(gradient: GradientDefinition, userBox: Bounds, toCanvas: Matrix, viewport: Point): ResolvedRamp {
-  const geometry = rampGeometry(gradient, viewport);
+  const sorted = [...gradient.stops].sort((left, right) => left.offset - right.offset);
+  const raw = rampGeometry(gradient, viewport);
+  const geometry = offsetGeometry(gradient.kind, raw, sorted[0]?.offset ?? 0, sorted.at(-1)?.offset ?? 1);
   const boxMatrix: Matrix = gradient.boundingBoxUnits ? [userBox[2], 0, 0, userBox[3], userBox[0], userBox[1]] : IDENTITY;
   const matrix = multiply(toCanvas, multiply(boxMatrix, gradient.transform));
-  const sorted = [...gradient.stops].sort((left, right) => left.offset - right.offset);
   return {
     kind: gradient.kind,
     start: applyPoint(matrix, geometry.start),
     end: applyPoint(matrix, geometry.end),
     startColor: colorOf(sorted[0]),
     endColor: colorOf(sorted.at(-1)),
-    translucentStops: sorted.some((stop) => stop.opacity < 0.999),
+    losses: rampLosses(gradient, sorted, raw, matrix),
   };
 }

@@ -17,6 +17,11 @@ All notable changes are recorded here. The format follows [Keep a Changelog](htt
   keys strayed by 4 to 25%. A one-segment arc now eases too (before, its profile had no effect). Rotation from
   `orient` turns in step. A `constant` profile keeps its linear keys unchanged.
 
+- **SVG gradients say what they lose.** A gradient imported as a two-colour ramp now warns when it drops middle colour
+  stops that are off the straight blend, a radial focal point, a radial stretched into an ellipse, or a radial first
+  stop off its centre, as well as stop opacity. First and last stop offsets are now carried: they move a linear ramp's
+  ends and shrink a radial ramp's radius, where before they were ignored.
+
 ### Fixed
 
 - **Developer page.** An expanded Request history takes its full height (the page scrolls) instead of spilling over the

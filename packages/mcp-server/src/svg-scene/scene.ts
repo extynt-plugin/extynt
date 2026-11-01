@@ -5,7 +5,7 @@ import type { Rgb } from "./color.js";
 import type { ScenePath } from "./path.js";
 import { elementPaths, pathBounds, SHAPE_ELEMENTS, transformPath, type Bounds } from "./shapes.js";
 import { computeStyle, declaredProperties, DEFAULT_STYLE, ownOpacity, parseStyleSheets } from "./style.js";
-import { collectGradients } from "./gradients.js";
+import { collectGradients, type RampLoss } from "./gradients.js";
 import { collectClipPaths, collectFilters, effectScale, filterDescription, mapBlendMode, referenceId, resolveFilter, unsupportedFilterReason, type ClipPathDefinition } from "./effects.js";
 import { applyPoint, multiply, parseTransform, type Matrix, type Point } from "./transform.js";
 import { liftedAnchorAt, liftedPosition, liftLayerTransform, type LayerLift } from "./lift.js";
@@ -167,6 +167,14 @@ function liftFields(lift: LayerLift | undefined, anchor: Point): Pick<CompiledSc
 
 function samePoint(left: Point, right: Point): boolean { return Math.abs(left[0] - right[0]) < 0.5 && Math.abs(left[1] - right[1]) < 0.5; }
 
+const RAMP_LOSS_WORDS: Readonly<Record<RampLoss, string>> = {
+  opacity: "gradient stop opacity is not carried; the ramp is opaque.",
+  "middle-stops": "the gradient's middle colour stops are not carried; the ramp blends straight from the first stop's colour to the last's.",
+  "focal-point": "the radial gradient's focal point (fx, fy) is not carried; the ramp is centred on cx, cy.",
+  elliptical: "the radial gradient is stretched into an ellipse, but the ramp is always circular; it uses the stretched x radius.",
+  "inner-offset": "the radial gradient's first stop is off its centre, but the ramp starts at the centre; colours inside the first stop shift outward.",
+};
+
 function layerRamp(leaves: readonly DrawnShape[], anchor: Point, name: string, warnings: Set<string>): SceneLayerRamp | undefined {
   const [firstGradient] = leaves.flatMap((leaf) => [leaf.fill?.gradient, leaf.stroke?.gradient]).flatMap((gradient) => (gradient ? [gradient] : []));
   if (!firstGradient) return undefined;
@@ -176,7 +184,7 @@ function layerRamp(leaves: readonly DrawnShape[], anchor: Point, name: string, w
     warnings.add(`"${name}" mixes a gradient with other paint, so each gradient there was flattened to one colour; give a gradient-filled shape its own top-level group to keep its gradient.`);
     return undefined;
   }
-  if (first.translucentStops) warnings.add(`"${name}": gradient stop opacity is not carried; the ramp is opaque.`);
+  for (const loss of first.losses) warnings.add(`"${name}": ${RAMP_LOSS_WORDS[loss]}`);
   return { kind: first.kind, start: roundPoint([first.start[0] - anchor[0], first.start[1] - anchor[1]]), end: roundPoint([first.end[0] - anchor[0], first.end[1] - anchor[1]]), startColor: first.startColor, endColor: first.endColor };
 }
 
